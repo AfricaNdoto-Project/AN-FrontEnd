@@ -1,7 +1,7 @@
 import './home.css'
 const Home = () => {
   return (
-    <div>Body</div>
+    <div className='container'>Body</div>
   )
 }
 
