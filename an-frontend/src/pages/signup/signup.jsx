@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Signup } from '../../services/signupService'
+import { signup } from '../../services/signupService'
 
 import {
   Card,
@@ -26,15 +26,17 @@ const SignupCard = () => {
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
   const [role, setRole] = useState('')
+  const [profession, setProfession] = useState('')
   // const [errorMessage, setErrorMessage] = useState('')
 
   const onSignup = async () => {
-    const form = { name, lastname, email, password, idNumber, phone, address, role }
-    const result = await Signup(form)
+    const form = { name, lastname, email, password, idNumber, phone, address, role, profession }
+    const result = await signup(form)
     if (result === 200) {
+        console.log(result)
       navigate('/profile')
     } else {
-      console.log(result)
+      // console.log(result)
     }
   }
 
@@ -42,18 +44,18 @@ const SignupCard = () => {
     <Card sx={{ maxWidth: '500px' }}>
       <CardHeader title="Signup" />
       <CardContent>
-          <TextField
-            onChange={(e) => setName(e.target.value)}
-            label="Name"
-            variant="outlined"
-            fullWidth={true}
-          />
-          <TextField
-            onChange={(e) => setLastname(e.target.value)}
-            label="Lastname"
-            variant="outlined"
-            fullWidth={true}
-          />
+        <TextField
+          onChange={(e) => setName(e.target.value)}
+          label="Name"
+          variant="outlined"
+          fullWidth={true}
+        />
+        <TextField
+          onChange={(e) => setLastname(e.target.value)}
+          label="Lastname"
+          variant="outlined"
+          fullWidth={true}
+        />
         <TextField
           onChange={(e) => setEmail(e.target.value)}
           label="Email"
@@ -88,6 +90,12 @@ const SignupCard = () => {
         <TextField
           onChange={(e) => setRole(e.target.value)}
           label="Role"
+          variant="outlined"
+          fullWidth={true}
+        />
+        <TextField
+          onChange={(e) => setProfession(e.target.value)}
+          label="profession"
           variant="outlined"
           fullWidth={true}
         />
