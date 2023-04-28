@@ -4,6 +4,7 @@ import Main from "../layouts";
 import Home from "../pages/home/home";
 import LoginCard from "../pages/login/login";
 import Signup from "../pages/signup/signup";
+import Profile from "../pages/profile/profile";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <Home />,
+        element: <Profile />,
         loader: () => {
           if (!localStorage.getItem('token')) {
             return redirect('/login')
@@ -33,13 +34,12 @@ const router = createBrowserRouter([
           }
         },
         children: [
-            {
-              path: '/profile',
-              element: <Home />,
-            }
-        ]
+          {
+            path: '/profile',
+            element: <Profile />,
+          },
+        ],
       },
-      
     ],
   },
 ])

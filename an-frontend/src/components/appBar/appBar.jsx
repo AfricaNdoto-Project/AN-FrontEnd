@@ -1,6 +1,6 @@
 import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import SwipeableTemporaryDrawer from './sideMenu/sideMenu'
 
@@ -41,6 +41,12 @@ export default function ButtonAppBar() {
     setState({ ...state, [anchor]: open })
   }
 
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
 
   const list = (anchor) => {
      <IconButton
@@ -92,11 +98,17 @@ export default function ButtonAppBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 ,}}>
-      <AppBar position="static" >
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex' }} >
-            <a href='/' style={{textDecoration: 'none', color:'white'}} >Logo</a>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, display: 'flex' }}
+          >
+            <a href="/" style={{ textDecoration: 'none', color: 'white' }}>
+              Logo
+            </a>
           </Typography>
           <Link to="/signup">
             <Button color="inherit">Sign Up</Button>
@@ -104,6 +116,12 @@ export default function ButtonAppBar() {
           <Link to="/login">
             <Button color="inherit">Login</Button>
           </Link>
+
+          {/* logout button */}
+          <Button color="inherit" onClick={logout}>
+            LogOut
+          </Button>
+
           {['right'].map((anchor) => (
             <React.Fragment key={anchor}>
               <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
