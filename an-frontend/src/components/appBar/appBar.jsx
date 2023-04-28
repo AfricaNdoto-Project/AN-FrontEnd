@@ -92,12 +92,15 @@ export default function ButtonAppBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 ,}}>
+      <AppBar position="static" >
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex' }}>
+            Logo
           </Typography>
+          <Link to="/signup">
+            <Button color="inherit">Sign Up</Button>
+          </Link>
           <Link to="/login">
             <Button color="inherit">Login</Button>
           </Link>
