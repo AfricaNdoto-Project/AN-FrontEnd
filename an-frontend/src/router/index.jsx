@@ -3,6 +3,7 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import Main from "../layouts";
 import Home from "../pages/home/home";
 import LoginCard from "../pages/login/login";
+import Signup from "../pages/signup/signup";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/signup',
-        element: <Home />,
+        element: <Signup />,
       },
       {
         path: '/profile',

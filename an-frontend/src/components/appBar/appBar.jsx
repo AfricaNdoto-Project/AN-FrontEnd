@@ -95,8 +95,8 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 ,}}>
       <AppBar position="static" >
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex' }}>
-            Logo
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex' }} >
+            <a href='/' style={{textDecoration: 'none', color:'white'}} >Logo</a>
           </Typography>
           <Link to="/signup">
             <Button color="inherit">Sign Up</Button>
