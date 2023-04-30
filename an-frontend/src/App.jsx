@@ -6,11 +6,11 @@ import { UserContext } from './context/userContext'
 
 function App() {
 const [user, setUser] = useState({})
-const obj = { user, setUser}
+const member = { user, setUser}
 
   return (
     <>
-    <UserContext.Provider value={ obj }>
+    <UserContext.Provider value={ member }>
       <RouterProvider router= { router } />
     </UserContext.Provider>
     </>
