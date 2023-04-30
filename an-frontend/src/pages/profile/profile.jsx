@@ -26,7 +26,6 @@ const Profile = () => {
   }
 
   const displayUserName = () => {
-    console.log(projects)
     return (
       <>
         <div>{user.name}</div>
@@ -62,10 +61,11 @@ const Profile = () => {
 
   const displayData = () => {
     if(user.role === 'donor') {
-      displayDonations()
+      return displayDonations()
     }
     else if(user.role === 'volunteer') {
-      console.log('aqui los proyectos')
+      //console.log('aqui los proyectos')
+      return displayProjects()
     }
     else {
       console.log('aqui proyectos y donaciones')
@@ -77,7 +77,6 @@ const Profile = () => {
       { displayUserName() }
       <div className='donations'>
         { displayData() }
-        { displayProjects() }
        {/* { user.role === 'donor' ? displayDonations() : 'aqui los proyectos a los que perteneces' } */}
        {/* { user.role === 'volunteer_donor' ? displayDonations() : 'aqui los proyectos a los que perteneces' } */}
       </div>
