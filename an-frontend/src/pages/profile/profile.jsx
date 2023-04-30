@@ -47,7 +47,7 @@ const Profile = () => {
      <>
       { displayUserName() }
       <div className='donations'>
-       { displayDonations() }
+       { user.role === 'donor' ? displayDonations() : 'aqui los proyectos a los que perteneces' }
       </div>
      </>
    )
