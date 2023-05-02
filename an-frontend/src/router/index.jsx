@@ -8,7 +8,7 @@ import Profile from "../pages/profile/profile";
 import Projects from "../pages/projects/projects";
 import Events from "../pages/events/events";
 import Calendar from "../pages/calendar/calendar";
-import aboutUs from "../pages/aboutUs/aboutUs";
+import AboutUs from "../pages/aboutUs/aboutUs";
 
 const router = createBrowserRouter([
   {
@@ -57,9 +57,13 @@ const router = createBrowserRouter([
           {
             path: '/profile',
             element: <Profile />,
-          },
+          }
         ],
       },
+      {
+        path: '/donations/:id',
+        element: <Calendar />
+      }
     ],
   },
 ])

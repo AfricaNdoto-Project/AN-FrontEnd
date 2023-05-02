@@ -14,8 +14,6 @@ import {
 } from '@mui/material'
 
 const LoginCard = () => {
-  console.log(import.meta.env.VITE_TEST)
-
   const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
