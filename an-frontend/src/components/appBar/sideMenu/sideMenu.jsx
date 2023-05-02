@@ -7,9 +7,6 @@ import Divider from '@mui/material/Divider'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 
@@ -38,30 +35,43 @@ export default function SwipeableTemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding sx={{ width: 100 }}>
+          <ListItemButton>
+            <Link to="/projects">
+              <Button color="inherit">Projects</Button>
+            </Link>
+            <ListItemIcon></ListItemIcon>
+          </ListItemButton>
+        </ListItem>
+        {/*         {['Projects', 'Events', 'Calendar', 'About Us'].map((text, index) => (
+          
+        ))} */}
+        <ListItem disablePadding sx={{ width: 100 }}>
+          <ListItemButton>
+            <Link to="/events">
+              <Button color="inherit">Events</Button>
+            </Link>
+            <ListItemIcon></ListItemIcon>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding sx={{ width: 100 }}>
+          <ListItemButton>
+            <Link to="/calendar">
+              <Button color="inherit">Calendar</Button>
+            </Link>
+            <ListItemIcon></ListItemIcon>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding sx={{ width: 100 }}>
+          <ListItemButton>
+            <Link to="/aboutUs">
+              <Button color="inherit">About Us</Button>
+            </Link>
+            <ListItemIcon></ListItemIcon>
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
       <Link to="/login">
         <Button color="inherit">Login</Button>
       </Link>
@@ -72,10 +82,17 @@ export default function SwipeableTemporaryDrawer() {
   )
 
   return (
-    <div style={{width: 30, height: 30, display: 'flex', justifyContent: 'center'}}>
+    <div
+      style={{
+        width: 30,
+        height: 30,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} >
+          <Button onClick={toggleDrawer(anchor, true)}>
             {<MenuIcon sx={{ color: 'white' }} />}
           </Button>
           <SwipeableDrawer
