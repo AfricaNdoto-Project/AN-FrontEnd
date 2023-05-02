@@ -5,6 +5,14 @@ import getDonations from '../../services/memberDonations'
 import getProjects from '../../services/projectsService'
 import './profile.css'
 
+
+import * as React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+
+import RecipeReviewCard from './userInfo/userInfo'
+
 const Profile = () => {
   const [donation, setDonation] = useState([])
   const [projects, setProjects] = useState([])
@@ -14,7 +22,7 @@ const Profile = () => {
   useEffect(() => {
     getData()
     getProjects()
-  }, [])
+  }, [user])
 //In this function search the donations, projects and the info of one member
   const getData = async () => {
     const result = await getProfile()
@@ -28,8 +36,7 @@ const Profile = () => {
   const displayUserName = () => {
     return (
       <>
-        <div>Name: {user.name}</div>
-        <div>Role: {user.role}</div>
+        <RecipeReviewCard user={ user }/>
       </>
     )
   }
@@ -39,8 +46,8 @@ const Profile = () => {
       return (
         <div className='donation' key={ elem.id }>
           <div ><h3>Project Name: { elem.name }</h3></div>
-          <div><p>Target: </p>{elem.target}</div>
-          <div><p>Description: </p>{elem.description}</div>
+          <div><p>Target: </p>{ elem.target }</div>
+          <div><p>Description: </p>{ elem.description }</div>
         </div>
       )
     })
@@ -74,7 +81,6 @@ const Profile = () => {
       return displayDonationsAndProjects()
     }
   }
-  
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
      <>
@@ -84,6 +90,12 @@ const Profile = () => {
       </div>
      </>
    )
+ } else {
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
+      <CircularProgress />
+    </Box>
+  )
  }
 }
 
