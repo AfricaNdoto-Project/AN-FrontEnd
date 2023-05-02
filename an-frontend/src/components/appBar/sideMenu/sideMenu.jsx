@@ -10,6 +10,8 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
+import { Link } from 'react-router-dom'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -60,14 +62,22 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         ))}
       </List>
+      <Link to="/login">
+        <Button color="inherit">Login</Button>
+      </Link>
+      <Link to="/signup">
+        <Button color="inherit">Sign Up</Button>
+      </Link>
     </Box>
   )
 
   return (
-    <div>
+    <div style={{width: 30, height: 30, display: 'flex', justifyContent: 'center'}}>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)} >
+            {<MenuIcon sx={{ color: 'white' }} />}
+          </Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
