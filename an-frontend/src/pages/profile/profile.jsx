@@ -22,7 +22,7 @@ const Profile = () => {
   useEffect(() => {
     getData()
     getProjects()
-  }, [user])
+  }, [])
 //In this function search the donations, projects and the info of one member
   const getData = async () => {
     const result = await getProfile()
@@ -77,6 +77,9 @@ const Profile = () => {
     else if(user.role === 'volunteer') {
       return displayProjects()
     }
+    else if(user.role === 'admin') {
+      return <div>Soy Admin</div>
+    }
     else {
       return displayDonationsAndProjects()
     }
@@ -90,7 +93,8 @@ const Profile = () => {
       </div>
      </>
    )
- } else {
+  }
+  else {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
       <CircularProgress />

@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../../services/signupService'
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 import {
   Card,
@@ -15,7 +21,9 @@ import {
 
 const SignupCard = () => {
   console.log(import.meta.env.VITE_TEST)
-
+  const handleChange = (event) => {
+    setRole(event.target.value)
+  }
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
@@ -87,12 +95,28 @@ const SignupCard = () => {
           variant="outlined"
           fullWidth={true}
         />
-        <TextField
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Role</InputLabel>
+            <Select
+              labelId="role-label"
+              id="role"
+              value={role}
+              label="Role"
+              onChange={handleChange}
+            >
+              <MenuItem value={'donor'}>Donor</MenuItem>
+              <MenuItem value={'volunteer'}>Volunteer</MenuItem>
+              <MenuItem value={'volunteer_donor'}>Volunteer and Donor</MenuItem>
+            </Select>
+          </FormControl>
+    </Box>
+        {/* <TextField
           onChange={(e) => setRole(e.target.value)}
           label="Role"
           variant="outlined"
           fullWidth={true}
-        />
+        /> */}
         <TextField
           onChange={(e) => setProfession(e.target.value)}
           label="profession"
