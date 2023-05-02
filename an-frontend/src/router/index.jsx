@@ -5,6 +5,10 @@ import Home from "../pages/home/home";
 import LoginCard from "../pages/login/login";
 import Signup from "../pages/signup/signup";
 import Profile from "../pages/profile/profile";
+import Projects from "../pages/projects/projects";
+import Events from "../pages/events/events";
+import Calendar from "../pages/calendar/calendar";
+import aboutUs from "../pages/aboutUs/aboutUs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup />,
+      },
+      {
+        path: '/projects',
+        element: <Projects />
+      },
+      {
+        path: '/events',
+        element: <Events />
+      },
+      {
+        path: '/calendar',
+        element: <Calendar />
+      },
+      {
+        path: 'aboutus',
+        element: <AboutUs />
       },
       {
         path: '/profile',

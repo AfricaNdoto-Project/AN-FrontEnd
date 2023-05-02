@@ -43,9 +43,6 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemIcon></ListItemIcon>
           </ListItemButton>
         </ListItem>
-        {/*         {['Projects', 'Events', 'Calendar', 'About Us'].map((text, index) => (
-          
-        ))} */}
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
             <Link to="/events">
@@ -64,7 +61,7 @@ export default function SwipeableTemporaryDrawer() {
         </ListItem>
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
-            <Link to="/aboutUs">
+            <Link to="/aboutus">
               <Button color="inherit">About Us</Button>
             </Link>
             <ListItemIcon></ListItemIcon>
