@@ -15,7 +15,7 @@ const Profile = () => {
     getData()
     getProjects()
   }, [])
-
+//In this function search the donations, projects and the info of one member
   const getData = async () => {
     const result = await getProfile()
     const donations = await getDonations()
@@ -24,16 +24,16 @@ const Profile = () => {
     setUser(result)
     setDonation(donations)
   }
-
+//Here display the user information
   const displayUserName = () => {
     return (
       <>
-        <div>{user.name}</div>
-        <div>{user.role}</div>
+        <div>Name: {user.name}</div>
+        <div>Role: {user.role}</div>
       </>
     )
   }
-
+//Here show the projects by Member/Volunteer
   const displayProjects = () => {
     return projects.map(elem => {
       return (
@@ -46,39 +46,41 @@ const Profile = () => {
     })
   }
 
-
+//Here show the donations by Member/Donor
   const displayDonations = () => {
     return donation.donations.map(elem => {
       return (
         <div className='donation' key={ elem.id }>
           <div ><h3>Donation { elem.id }</h3></div>
-          <div><p>Amount: </p>{elem.amount}</div>
-          <div><p>Type: </p>{elem.type}</div>
+          <div><p>Amount: </p>{ elem.amount }</div>
+          <div><p>Type: </p>{ elem.type }</div>
         </div>
       )
     })
   }
 
+  const displayDonationsAndProjects = () => {
+    return [ displayDonations(), displayProjects() ]
+  }
+//Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if(user.role === 'donor') {
       return displayDonations()
     }
     else if(user.role === 'volunteer') {
-      //console.log('aqui los proyectos')
       return displayProjects()
     }
     else {
-      console.log('aqui proyectos y donaciones')
+      return displayDonationsAndProjects()
     }
   }
+  
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
      <>
       { displayUserName() }
       <div className='donations'>
         { displayData() }
-       {/* { user.role === 'donor' ? displayDonations() : 'aqui los proyectos a los que perteneces' } */}
-       {/* { user.role === 'volunteer_donor' ? displayDonations() : 'aqui los proyectos a los que perteneces' } */}
       </div>
      </>
    )
