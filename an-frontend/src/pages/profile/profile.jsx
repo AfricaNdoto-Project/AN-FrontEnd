@@ -94,7 +94,12 @@ const Profile = () => {
       </div>
       <Link to='/profile/edit'>
         <button>
-          Click me
+          Edit Account
+        </button>
+      </Link>
+      <Link to='/profile/delete'>
+        <button>
+          Delete Account
         </button>
       </Link>
      </>
