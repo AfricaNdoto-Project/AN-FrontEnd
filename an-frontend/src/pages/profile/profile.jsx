@@ -4,6 +4,7 @@ import getProfile from '../../services/userService'
 import getDonations from '../../services/memberDonations'
 import getProjects from '../../services/projectsService'
 import './profile.css'
+import { Link } from 'react-router-dom'
 
 
 import * as React from 'react';
@@ -91,6 +92,11 @@ const Profile = () => {
       <div className='donations'>
         { displayData() }
       </div>
+      <Link to='/profile/edit'>
+        <button>
+          Click me
+        </button>
+      </Link>
      </>
    )
   }

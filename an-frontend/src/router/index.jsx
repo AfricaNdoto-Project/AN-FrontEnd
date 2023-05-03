@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <Profile />,
+        // element: <Profile />,
         loader: () => {
           if (!localStorage.getItem('token')) {
             return redirect('/login')
@@ -35,9 +35,13 @@ const router = createBrowserRouter([
         },
         children: [
           {
-            path: '/profile',
+            path: '',
             element: <Profile />,
           },
+          {
+            path: 'edit',
+            element: <Home />,
+          }
         ],
       },
     ],
