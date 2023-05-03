@@ -1,14 +1,16 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
-import Main from "../layouts";
-import Home from "../pages/home/home";
-import LoginCard from "../pages/login/login";
-import Signup from "../pages/signup/signup";
-import Profile from "../pages/profile/profile";
-import Projects from "../pages/projects/projects";
-import Events from "../pages/events/events";
-import Calendar from "../pages/calendar/calendar";
-import AboutUs from "../pages/aboutUs/aboutUs";
+import Main from '../layouts'
+import Home from '../pages/home/home'
+import LoginCard from '../pages/login/login'
+import Signup from '../pages/signup/signup'
+import Profile from '../pages/profile/profile'
+import Projects from '../pages/projects/projects'
+import Events from '../pages/events/events'
+import Calendar from '../pages/calendar/calendar'
+import AboutUs from '../pages/aboutUs/aboutUs'
+import AllMembers from '../pages/adminView/members/allMembers'
+import OneMember from '../pages/adminView/members/oneMember'
 
 const router = createBrowserRouter([
   {
@@ -29,23 +31,22 @@ const router = createBrowserRouter([
       },
       {
         path: '/projects',
-        element: <Projects />
+        element: <Projects />,
       },
       {
         path: '/events',
-        element: <Events />
+        element: <Events />,
       },
       {
         path: '/calendar',
-        element: <Calendar />
+        element: <Calendar />,
       },
       {
         path: 'aboutus',
-        element: <AboutUs />
+        element: <AboutUs />,
       },
       {
         path: '/profile',
-        element: <Profile />,
         loader: () => {
           if (!localStorage.getItem('token')) {
             return redirect('/login')
@@ -55,15 +56,35 @@ const router = createBrowserRouter([
         },
         children: [
           {
-            path: '/profile',
+            path: '',
             element: <Profile />,
-          }
+          },
         ],
       },
       {
-        path: '/donations/:id',
-        element: <Calendar />
-      }
+        path: '/adminView',
+        loader: () => {
+          if (!localStorage.getItem('token')) {
+            return redirect('/login')
+          } else {
+            return null
+          }
+        },
+        children: [
+          {
+            path: '',
+            element: <Home />,
+          },
+          {
+            path: 'members',
+            element: <AllMembers />,
+          },
+          {
+            path: 'members/:id',
+            element: <OneMember />
+          },
+        ],
+      },
     ],
   },
 ])
