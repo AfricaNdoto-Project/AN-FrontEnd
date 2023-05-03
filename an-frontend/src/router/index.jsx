@@ -1,4 +1,6 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
+import { MemberContext } from '../context/memberContext'
+import MemberData from '../components/memberData/memberData'
 
 import Main from '../layouts'
 import Home from '../pages/home/home'
@@ -77,11 +79,20 @@ const router = createBrowserRouter([
           },
           {
             path: 'members',
-            element: <AllMembers />,
-          },
-          {
-            path: 'members/:id',
-            element: <OneMember />
+            children: [
+              {
+                path: '',
+                element: (
+
+                <AllMembers />
+
+                ),
+              },
+              {
+                path: ':id',
+                element: <OneMember />
+              }
+            ],
           },
         ],
       },

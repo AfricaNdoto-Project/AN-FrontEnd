@@ -1,9 +1,7 @@
-import { getOneMember } from "../../../services/admin/oneMember"
+
 
 const OneMember = () => {
-  
-  
-    return (
+  return (
     <div>oneMember</div>
   )
 }

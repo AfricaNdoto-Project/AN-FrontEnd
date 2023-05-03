@@ -7,7 +7,6 @@ const getOneMember = async (id) => {
                 'token': localStorage.getItem('token')
             }
         })
-
         return data
     } catch (e) {
         return e.response.data
