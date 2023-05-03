@@ -39,6 +39,7 @@ const Project = () => {
     const [volunteer, setVolunteer] = useState('')
     const [volunteerData, setVolunteerData] = useState([])
     const [profession, setProfession] = useState('')
+    // const [professionId, setProfessionId] = useState(0)
     const [professionData, setProfessionData] = useState([])
     const [equipmentName, setEquipmentName] = useState('')
     const [equipmentDescription, setEquipmentDescription] = useState('')
@@ -50,9 +51,6 @@ const Project = () => {
         getProfessionData()
     }, [])
 
-    // useEffect(() => {
-    //     getVolunteerData()
-    // }, [])
 
     const getProfessionData = async () => {
         const result = await getProfessions()
@@ -60,10 +58,6 @@ const Project = () => {
         setProfessionData(result) 
         setVolunteerData(result2)
     }
-
-    // const getVolunteerData = async () => {
-       
-    // }
 
     const onSubmit = async () => {
       const form = { name, target, description, objective, budget, deadline, status, volunteer, profession, equipmentName, equipmentDescription, equipmentCost}
@@ -88,7 +82,7 @@ const Project = () => {
       };
 
     if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {
-        console.log(volunteer)
+        // console.log(volunteer)
     return (
       <Card sx={{ maxWidth: '500px' }}>
         <CardHeader title="Project" />
@@ -101,12 +95,14 @@ const Project = () => {
             fullWidth={true}
             sx={{ marginBottom: '20px' }}
           />
+
           <TextField
             onChange={(e) => setTarget(e.target.value)}
             label="Target"
             variant="outlined"
             fullWidth={true}
           />
+
           <TextField
             required
             onChange={(e) => setDescription(e.target.value)}
@@ -114,6 +110,7 @@ const Project = () => {
             variant="outlined"
             fullWidth={true}
           />
+
           <TextField
             required
             onChange={(e) => setObjective(e.target.value)}
@@ -121,6 +118,7 @@ const Project = () => {
             variant="outlined"
             fullWidth={true}
           />
+
           <TextField
             required
             onChange={(e) => setBudget(e.target.value)}
@@ -128,18 +126,14 @@ const Project = () => {
             variant="outlined"
             fullWidth={true}
           />
+
           <TextField
             onChange={(e) => setDeadline(e.target.value)}
             label="Date"
             variant="outlined"
             fullWidth={true}
           />
-          {/* <TextField
-            onChange={(e) => setStatus(e.target.value)}
-            label="Status"
-            variant="outlined"
-            fullWidth={true}
-          /> */}
+         
            <FormControl>
         <FormLabel id="status-selector" >Status</FormLabel>
             <RadioGroup
@@ -155,13 +149,6 @@ const Project = () => {
                 <FormControlLabel value="denied" control={<Radio />} label="Denied" />
             </RadioGroup>
         </FormControl>
-          {/* <TextField
-            required
-            onChange={(e) => setProfession(e.target.value)}
-            label="Profession"
-            variant="outlined"
-            fullWidth={true}
-          /> */}
 
         <FormControl fullWidth>
             <InputLabel id="profession-selector">Profession</InputLabel>
@@ -178,14 +165,6 @@ const Project = () => {
                 </Select>
         </FormControl>
 
-          {/* <TextField
-            required
-            onChange={(e) => setVolunteer(e.target.value)}
-            label="Volunteer"
-            variant="outlined"
-            fullWidth={true}
-          /> */}
-
         <FormControl fullWidth>
             <InputLabel id="volunteer-selector">Volunteer</InputLabel>
                 <Select
@@ -196,7 +175,7 @@ const Project = () => {
                 onChange={handleVolunteerChange}
                 >
                     {volunteerData.filter(elem => (elem.role==='volunteer'|| elem.role==='volunteer_donor')).map((elem) => {
-                        return <MenuItem value={elem.name} key={elem.id}>{elem.name}</MenuItem>
+                        return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
                     })}
                 </Select>
         </FormControl>
