@@ -22,7 +22,7 @@ const Profile = () => {
 
   useEffect(() => {
     getData()
-    getProjects()
+    // getProjects()
   }, [])
 //In this function search the donations, projects and the info of one member
   const getData = async () => {
@@ -76,7 +76,11 @@ const Profile = () => {
       return displayDonations()
     }
     else if(user.role === 'volunteer') {
-      return displayProjects()
+      if(projects.length !== 0){
+        return displayProjects()
+      } else {
+        return <div>No hay proyectos relacionados a este miembro</div>
+      }
     }
     else if(user.role === 'admin') {
       return <div>Soy Admin</div>
@@ -92,12 +96,12 @@ const Profile = () => {
       <div className='donations'>
         { displayData() }
       </div>
-      <Link to='/profile/edit'>
+      <Link to={`/profile/edit/${user.id}`}>
         <button>
           Edit Account
         </button>
       </Link>
-      <Link to='/profile/delete'>
+      <Link to={`/profile/delete/${user.id}`}>
         <button>
           Delete Account
         </button>

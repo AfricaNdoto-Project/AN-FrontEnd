@@ -40,11 +40,11 @@ const router = createBrowserRouter([
             element: <Profile />,
           },
           {
-            path: 'edit',
+            path: 'edit/:id',
             element: <Edit />,
           },
           {
-            path: 'delete',
+            path: 'delete/:id',
             element: <Delete />,
           }
         ],
