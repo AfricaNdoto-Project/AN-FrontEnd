@@ -20,9 +20,10 @@ const LoginCard = () => {
   const [password, setPassword] = useState('')
   // const [errorMessage, setErrorMessage] = useState('')
 
-  const onLogin = async () => {
+  const onLogin = async (res) => {
     const form = { email, password }
     const result = await login(form)
+    console.log(res.token)
     if (result === 200) {
       navigate('/profile')
     } else {

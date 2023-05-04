@@ -2,20 +2,25 @@ import { RouterProvider } from 'react-router-dom'
 import './App.css'
 import router from './router'
 import { useState } from 'react'
-import { MemberContext } from './context/memberListContext'
+import { AuthContext } from './context/authContext'
+import {MemberProvider} from './context/memberProvider'
 
 function App() {
-  const [membersList, setMembersList] = useState([])
-  const [memberData, setMemberData] = useState([])
 
-  const list = { membersList, setMembersList }
-  const data = {memberData, setMemberData}
+  
+  const [auth, setAuth] = useState({})
+
+  const verify = {auth, setAuth}
+
+
 
   return (
     <>
-      <MemberContext.Provider value={{memberDataList: list, memberInfo: data}}>
+    <AuthContext.Provider value={verify}>
+      <MemberProvider>
         <RouterProvider router={router} />
-      </MemberContext.Provider>
+        </MemberProvider>
+      </AuthContext.Provider>
     </>
   )
 }

@@ -1,11 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { getMembersList } from '../../../services/members'
-import { MemberContext } from '../../../context/memberListContext'
+
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'
+import useMember from '../../../hooks/useMember'
 
 const AllMembers = () => {
-  const { memberDataList } = useContext(MemberContext)
+  const { memberDataList } = useMember()
   const { membersList, setMembersList } = memberDataList
 
   useEffect(() => {
