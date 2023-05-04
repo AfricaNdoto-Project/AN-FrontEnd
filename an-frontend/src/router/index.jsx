@@ -7,6 +7,7 @@ import Signup from "../pages/signup/signup";
 import Profile from "../pages/profile/profile";
 import Edit from "../pages/profile/edit/edit";
 import Delete from "../pages/profile/delete/delete";
+import Donation from "../pages/makeDonation/makeDonation";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,21 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup />,
+      },
+      {
+        path: '/donation',
+        loader: () => {
+          if (!localStorage.getItem('token')) {
+            return redirect('/')
+          } else {
+          return null
+        }},
+        children: [
+          {
+            path: '',
+            element: <Donation />,
+          }
+        ]
       },
       {
         path: '/profile',
