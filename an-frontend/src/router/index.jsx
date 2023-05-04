@@ -12,6 +12,15 @@ import AboutUs from '../pages/aboutUs/aboutUs'
 import AllMembers from '../pages/adminView/members/allMembers'
 import OneMember from '../pages/adminView/members/oneMember'
 
+
+const tokenLoader = () => {
+  if (!localStorage.getItem('token')) {
+    return redirect('/login')
+  } else {
+    return null
+  }
+}
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,13 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        loader: () => {
-          if (!localStorage.getItem('token')) {
-            return redirect('/login')
-          } else {
-            return null
-          }
-        },
+        loader: tokenLoader,
         children: [
           {
             path: '',
@@ -63,13 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/adminView',
-        loader: () => {
-          if (!localStorage.getItem('token')) {
-            return redirect('/login')
-          } else {
-            return null
-          }
-        },
+        loader: tokenLoader,
         children: [
           {
             path: '',
@@ -80,14 +77,12 @@ const router = createBrowserRouter([
             children: [
               {
                 path: '',
-                element: (
-                <AllMembers />
-                ),
+                element: <AllMembers />,
               },
               {
                 path: ':id',
-                element: <OneMember />
-              }
+                element: <OneMember />,
+              },
             ],
           },
         ],
