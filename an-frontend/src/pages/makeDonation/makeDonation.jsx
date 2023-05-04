@@ -55,7 +55,7 @@ const Donation = () => {
     setProfession(event.target.value)
   }
 
-  const onSignup = async () => {
+  const submit = async () => {
     const form = { name, lastname, email, password, idNumber, phone, address, role, profession }
     const result = await signup(form)
     if (result === 200) {
@@ -77,50 +77,13 @@ const Donation = () => {
       <CardContent>
         <TextField
           onChange={(e) => setName(e.target.value)}
-          label="Name"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <TextField
-          onChange={(e) => setLastname(e.target.value)}
-          label="Lastname"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <TextField
-          onChange={(e) => setEmail(e.target.value)}
-          label="Email"
-          variant="outlined"
-          fullWidth={true}
-          sx={{ marginBottom: '20px' }}
-        />
-        <TextField
-          onChange={(e) => setPassword(e.target.value)}
-          label="Password"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <TextField
-          onChange={(e) => setIdNumber(e.target.value)}
-          label="idNumber"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <TextField
-          onChange={(e) => setPhone(e.target.value)}
-          label="Phone"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <TextField
-          onChange={(e) => setAddress(e.target.value)}
-          label="Address"
+          label="Amount"
           variant="outlined"
           fullWidth={true}
         />
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Role</InputLabel>
+          <InputLabel id="demo-simple-select-label">Projects</InputLabel>
             <Select
               labelId="role-label"
               id="role"
@@ -128,15 +91,31 @@ const Donation = () => {
               label="Role"
               onChange={ handleRoleChange }
             >
-              <MenuItem value={'donor'}>Donor</MenuItem>
-              <MenuItem value={'volunteer'}>Volunteer</MenuItem>
-              <MenuItem value={'volunteer_donor'}>Volunteer and Donor</MenuItem>
+              <MenuItem value={'punctual'}>Punctual</MenuItem>
+              <MenuItem value={'monthly'}>Monthly</MenuItem>
+              <MenuItem value={'anual'}>Anual</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <Select
+              labelId="role-label"
+              id="role"
+              value={ role }
+              label="Role"
+              onChange={ handleRoleChange }
+            >
+              <MenuItem value={'punctual'}>Punctual</MenuItem>
+              <MenuItem value={'monthly'}>Monthly</MenuItem>
+              <MenuItem value={'anual'}>Anual</MenuItem>
             </Select>
           </FormControl>
         </Box>
          <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Profession</InputLabel>
+          <InputLabel id="demo-simple-select-label">Product</InputLabel>
             <Select
               labelId="professione-label"
               id="profession"
@@ -158,7 +137,7 @@ const Donation = () => {
       </CardContent>
       <Divider />
       <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button onClick={ onSignup } color="success">
+        <Button onClick={ submit } color="success">
           Submit
         </Button>
       </CardActions>

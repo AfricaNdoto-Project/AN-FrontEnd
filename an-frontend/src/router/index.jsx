@@ -28,18 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/donation',
-        loader: () => {
-          if (!localStorage.getItem('token')) {
-            return redirect('/')
-          } else {
-          return null
-        }},
-        children: [
-          {
-            path: '',
-            element: <Donation />,
-          }
-        ]
+        element: <Donation />
       },
       {
         path: '/profile',
