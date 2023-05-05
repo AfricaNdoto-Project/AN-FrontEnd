@@ -17,12 +17,11 @@ import RecipeReviewCard from './userInfo/userInfo'
 const Profile = () => {
   const [donation, setDonation] = useState([])
   const [projects, setProjects] = useState([])
-  const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
     getData()
-    // getProjects()
   }, [])
 //In this function search the donations, projects and the info of one member
   const getData = async () => {

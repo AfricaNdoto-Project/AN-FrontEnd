@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../../services/signupService'
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import getProfessions from '../../services/professionService';
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import getAllProjects from '../../services/allProjectsService'
+import getProducts from '../../services/getproducts'
 
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress'
 
 
 import {
@@ -28,35 +29,37 @@ const Donation = () => {
   console.log(import.meta.env.VITE_TEST)
   const navigate = useNavigate()
   
-  const [name, setName] = useState('')
-  const [lastname, setLastname] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [idNumber, setIdNumber] = useState('')
-  const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
-  const [role, setRole] = useState('')
-  const [professions, setProfessions] = useState([])
-  const [profession, setProfession] = useState('')
+  const [amount, setAmount] = useState(0)
+  const [type, setType] = useState('')
+  const [projectName, setProjectName] = useState([])
+  const [product, setProduct] = useState([])
+  const [proj, setProj] = useState('')
+  const [prod, setProd] = useState('')
+
   //const [errorMessage, setErrorMessage] = useState('')
   useEffect(() => {
-    getProfessionsData()
+    getData()
   },[])
 
-  const getProfessionsData = async () => {
-    const professions = await getProfessions()
-    setProfessions(professions)
+  const getData = async () => {
+    const result = await getProducts()
+    const result2 = await getAllProjects()
+    setProduct(result)
+    setProjectName(result2)
   }
 
-  const handleRoleChange = (event) => {
-    setRole(event.target.value)
+  const handleTypeChange = (event) => {
+    setType(event.target.value)
   }
-  const handleProfessionChange = (event) => {
-    setProfession(event.target.value)
+  const handleProjectNameChange = (event) => {
+    setProjectName(event.target.value)
+  }
+  const handleProductChange = (event) => {
+    setProduct(event.target.value)
   }
 
   const submit = async () => {
-    const form = { name, lastname, email, password, idNumber, phone, address, role, profession }
+    const form = { amount, projectName, type, product }
     const result = await signup(form)
     if (result === 200) {
         console.log(result)
@@ -65,18 +68,21 @@ const Donation = () => {
       // console.log(result)
     }
   }
-  if(Object.keys(professions).length !== 0) {
-  // console.log(profession)
+  if(product.length !== 0 && projectName.length !== 0) {
+
+  console.log(type)
+  console.log(projectName)
+  console.log(product)
   // profession.map(elem => console.log(elem.name))
-    // console.log(role)
-    // console.log(prof)
+  // console.log(role)
+  // console.log(prof)
 
   return (
     <Card sx={{ maxWidth: '500px' }}>
       <CardHeader title="Donation" />
       <CardContent>
         <TextField
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setAmount(e.target.value)}
           label="Amount"
           variant="outlined"
           fullWidth={true}
@@ -85,11 +91,27 @@ const Donation = () => {
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Projects</InputLabel>
             <Select
-              labelId="role-label"
-              id="role"
-              value={ role }
-              label="Role"
-              onChange={ handleRoleChange }
+              labelId="project-label"
+              id="project"
+              value={ projectName }
+              label="Project"
+              onChange={ handleProjectNameChange }
+            >
+              {projectName.map((elem) => {
+                return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
+              })}
+            </Select>
+          </FormControl>
+        </Box>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <Select
+              labelId="type-label"
+              id="type"
+              value={ type }
+              label="Type"
+              onChange={ handleTypeChange }
             >
               <MenuItem value={'punctual'}>Punctual</MenuItem>
               <MenuItem value={'monthly'}>Monthly</MenuItem>
@@ -99,31 +121,15 @@ const Donation = () => {
         </Box>
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
-            <Select
-              labelId="role-label"
-              id="role"
-              value={ role }
-              label="Role"
-              onChange={ handleRoleChange }
-            >
-              <MenuItem value={'punctual'}>Punctual</MenuItem>
-              <MenuItem value={'monthly'}>Monthly</MenuItem>
-              <MenuItem value={'anual'}>Anual</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-         <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Product</InputLabel>
             <Select
               labelId="professione-label"
               id="profession"
-              value={ profession }
+              value={ product }
               label="Profession"
-              onChange={ handleProfessionChange }
+              onChange={ handleProductChange }
             >
-              {professions.map((elem) => {
+              {product.map((elem) => {
                 return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
               })}
             </Select>
