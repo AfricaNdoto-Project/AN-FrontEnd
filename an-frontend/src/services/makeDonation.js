@@ -17,7 +17,6 @@ const makeDonation = async (body) => {
       password: 'password1'
     })
     localStorage.setItem('token', data.token)
-    console.log('entra')
 
     await api.post('/donations', body, {
       headers: {
