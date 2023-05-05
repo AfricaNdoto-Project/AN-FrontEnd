@@ -1,4 +1,4 @@
-import * as React from 'react'
+
 import { 
     Card,
     CardHeader,
@@ -24,7 +24,7 @@ export default function RecipeReviewCard({ project }) {
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
           <h4>Description: </h4> <p>{ project.description }</p> 
         </Typography>
-        <Link to='/project' >
+        <Link to='/project' state={{data: project}} >
           <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
             <h4>See more</h4> 
           </Typography>

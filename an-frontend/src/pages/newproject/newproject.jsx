@@ -82,7 +82,8 @@ const NewProject = () => {
       };
 
     if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {
-        // console.log(volunteer)
+        console.log(volunteer)
+        console.log(volunteerData.filter(elem => elem.role==='volunteer' && elem.volunteer.professional.name===profession))
     return (
       <Card sx={{ maxWidth: '500px' }}>
         <CardHeader title="Project" />
@@ -149,12 +150,13 @@ const NewProject = () => {
                 <FormControlLabel value="denied" control={<Radio />} label="Denied" />
             </RadioGroup>
         </FormControl>
-
-        <FormControl fullWidth>
+          <p>Select a profession</p>
+        <FormControl required fullWidth>
             <InputLabel id="profession-selector">Profession</InputLabel>
                 <Select
                 labelId="profession-selector"
                 id="profession-selector"
+                placeholder='Select a profession'
                 value={profession}
                 label="Profession"
                 onChange={handleProfessionChange}
@@ -174,9 +176,12 @@ const NewProject = () => {
                 label="Volunteer"
                 onChange={handleVolunteerChange}
                 >
-                    {volunteerData.filter(elem => (elem.role==='volunteer'|| elem.role==='volunteer_donor')).map((elem) => {
-                        return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
-                    })}
+            
+                    { volunteerData.filter(elem => elem.role==='volunteer' && elem.volunteer.professional.name===profession).map((elem) =>{
+                      return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
+                    })
+
+                    }
                 </Select>
         </FormControl>
 

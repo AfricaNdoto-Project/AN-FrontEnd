@@ -1,9 +1,8 @@
-import React from 'react'
 
 import { useState, useEffect } from 'react'
 import RecipeReviewCard from './projectcard/projectcard'
 
-import getAllProjects from '../../services/allprojectsService'
+import getAllProjects from '../../services/allprojectsservice'
 
 const AllProjects = () => {
   const [allProjects, setAllProjects] = useState([])

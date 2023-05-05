@@ -1,11 +1,35 @@
-import React from 'react'
+
+import { useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
+import RecipeReviewCard from "./fullinfocard/fullinfocard";
 
 const Project = () => {
-  return (
-    <div>
-      <p>This is</p>
+  const location = useLocation()
+  const data = location.state?.data
+
+  const displayProject = () => {
+    return (
+      <>
+        <RecipeReviewCard project={data}/>
+      </>
+    )
+  } 
+
+  if(!data) {
+   return (
+    <>
+    <Navigate to='/allprojects' replace={true}/>
+    </>
+   ) 
+  } else {
+    console.log(data)
+   return (
+   <div>
+      {displayProject()}
     </div>
-  )
+   )
+  }
 }
 
 export default Project

@@ -2,7 +2,7 @@ import api from "./config";
 
 const getVolunteers = async () => {
     try {
-        const { data } = await api.get('/member', {
+        const { data } = await api.get('/member/projects', {
           headers: {
               'token': localStorage.getItem('token')
           }
