@@ -73,7 +73,12 @@ const Profile = () => {
 //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if(user.role === 'donor') {
-      return displayDonations()
+      if(donation.donations.length !== 0) {
+        return displayDonations()
+      }
+      else {
+        return <div>No hay donaciones relacionados a este miembro</div>
+      }
     }
     else if(user.role === 'volunteer') {
       if(projects.length !== 0){

@@ -34,7 +34,7 @@ const SignupCard = () => {
   const [password, setPassword] = useState('')
   const [idNumber, setIdNumber] = useState('')
   const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
+  const [adress, setAddress] = useState('')
   const [role, setRole] = useState('')
   const [professions, setProfessions] = useState([])
   const [profession, setProfession] = useState('')
@@ -56,7 +56,7 @@ const SignupCard = () => {
   }
 
   const onSignup = async () => {
-    const form = { name, lastname, email, password, idNumber, phone, address, role, profession }
+    const form = { name, lastname, email, password, idNumber, phone, adress, role, profession }
     const result = await signup(form)
     if (result === 200) {
         console.log(result)
@@ -68,8 +68,8 @@ const SignupCard = () => {
   if(Object.keys(professions).length !== 0) {
   // console.log(profession)
   // profession.map(elem => console.log(elem.name))
-    // console.log(role)
-    // console.log(prof)
+  // console.log(role)
+  // console.log(profession)
 
   return (
     <Card sx={{ maxWidth: '500px' }}>
