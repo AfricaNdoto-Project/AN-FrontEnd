@@ -34,7 +34,6 @@ const router = createBrowserRouter([
         path: '/profile',
         loader: () => {
           if (!localStorage.getItem('token')) {
-            alert('Registrese')
             return redirect('/login')
           } else {
             return null
@@ -52,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: 'delete/:id',
             element: <Delete />,
+          },
+          {
+            path: 'donations',
+            element: <Donation />,
           }
         ],
       },

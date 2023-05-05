@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import getAllProjects from '../../services/allProjectsService'
 import getProducts from '../../services/getproducts'
+import { makeDonation } from '../../services/makeDonation'
 
 import CircularProgress from '@mui/material/CircularProgress'
 
@@ -31,12 +32,11 @@ const Donation = () => {
   
   const [amount, setAmount] = useState(0)
   const [type, setType] = useState('')
-  const [projectName, setProjectName] = useState([])
-  const [product, setProduct] = useState([])
-  const [proj, setProj] = useState('')
-  const [prod, setProd] = useState('')
+  const [projects, setProjects] = useState([])
+  const [products, setProducts] = useState([])
+  const [projectName, setProjectName] = useState('')
+  const [name, setName] = useState('')
 
-  //const [errorMessage, setErrorMessage] = useState('')
   useEffect(() => {
     getData()
   },[])
@@ -44,8 +44,8 @@ const Donation = () => {
   const getData = async () => {
     const result = await getProducts()
     const result2 = await getAllProjects()
-    setProduct(result)
-    setProjectName(result2)
+    setProducts(result)
+    setProjects(result2)
   }
 
   const handleTypeChange = (event) => {
@@ -55,39 +55,33 @@ const Donation = () => {
     setProjectName(event.target.value)
   }
   const handleProductChange = (event) => {
-    setProduct(event.target.value)
+    setName(event.target.value)
   }
 
   const submit = async () => {
-    const form = { amount, projectName, type, product }
-    const result = await signup(form)
+    const form = { amount,type , projectName, name }
+    // console.log(form)
+    const result = await makeDonation(form)
     if (result === 200) {
         console.log(result)
-      navigate('/profile')
+      navigate('/')
     } else {
-      // console.log(result)
+      navigate('/')
     }
   }
-  if(product.length !== 0 && projectName.length !== 0) {
-
-  console.log(type)
-  console.log(projectName)
-  console.log(product)
-  // profession.map(elem => console.log(elem.name))
-  // console.log(role)
-  // console.log(prof)
-
+  if(products.length !== 0 && projects.length !== 0) {
   return (
-    <Card sx={{ maxWidth: '500px' }}>
+    <Card sx={{ maxWidth: '500px', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <CardHeader title="Donation" />
       <CardContent>
         <TextField
+        sx={{minWidth: 120, margin: '10px'}}
           onChange={(e) => setAmount(e.target.value)}
           label="Amount"
           variant="outlined"
           fullWidth={true}
         />
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, margin: '10px'  }}>
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Projects</InputLabel>
             <Select
@@ -97,13 +91,13 @@ const Donation = () => {
               label="Project"
               onChange={ handleProjectNameChange }
             >
-              {projectName.map((elem) => {
+              {projects.map((elem) => {
                 return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
               })}
             </Select>
           </FormControl>
         </Box>
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, margin: '10px' }}>
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Type</InputLabel>
             <Select
@@ -119,17 +113,17 @@ const Donation = () => {
             </Select>
           </FormControl>
         </Box>
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, margin: '10px' }}>
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Product</InputLabel>
             <Select
               labelId="professione-label"
               id="profession"
-              value={ product }
+              value={ name }
               label="Profession"
               onChange={ handleProductChange }
             >
-              {product.map((elem) => {
+              {products.map((elem) => {
                 return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
               })}
             </Select>
@@ -142,7 +136,7 @@ const Donation = () => {
         )} */}
       </CardContent>
       <Divider />
-      <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
         <Button onClick={ submit } color="success">
           Submit
         </Button>
@@ -151,9 +145,12 @@ const Donation = () => {
   )}
   else {
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
+      <>
+      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <h1>Loading...</h1>
         <CircularProgress />
       </Box>
+      </>
     )
   }
 }
