@@ -12,10 +12,20 @@ import AboutUs from '../pages/aboutUs/aboutUs'
 import AllMembers from '../pages/adminView/members/allMembers'
 import OneMember from '../pages/adminView/members/oneMember'
 
-
-const tokenLoader = () => {
+const privateRoutes = () => {
   if (!localStorage.getItem('token')) {
     return redirect('/login')
+  } else {
+    return null
+  }
+}
+
+const adminRoutes = () => {
+  if (
+    localStorage.getItem('role') !== 'admin' ||
+    !localStorage.getItem('token')
+  ) {
+    return redirect('/')
   } else {
     return null
   }
@@ -27,27 +37,27 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Home />,
       },
       {
-        path: '/login',
+        path: 'login',
         element: <LoginCard />,
       },
       {
-        path: '/signup',
+        path: 'signup',
         element: <Signup />,
       },
       {
-        path: '/projects',
+        path: 'projects',
         element: <Projects />,
       },
       {
-        path: '/events',
+        path: 'events',
         element: <Events />,
       },
       {
-        path: '/calendar',
+        path: 'calendar',
         element: <Calendar />,
       },
       {
@@ -55,18 +65,21 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: '/profile',
-        loader: tokenLoader,
+        element: <Calendar />,
+      },
+      {
+        path: '',
+        loader: privateRoutes,
         children: [
           {
-            path: '',
+            path: 'profile',
             element: <Profile />,
           },
         ],
       },
       {
         path: '/adminView',
-        loader: tokenLoader,
+        loader: adminRoutes,
         children: [
           {
             path: '',

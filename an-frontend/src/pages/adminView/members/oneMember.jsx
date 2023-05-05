@@ -26,8 +26,7 @@ const OneMember = () => {
   }
 
   const isDonor = donationsList.map((donation, idx) => {
-
-    if( memberData.role !== 'volunteer' && Object.keys(donation).length !== 0) {
+    if (memberData.role !== 'volunteer' && Object.keys(donation).length !== 0) {
       return (
         <React.Fragment key={idx}>
           {donation.amount}
@@ -38,10 +37,7 @@ const OneMember = () => {
     } else {
       null
     }
-
   })
-
-
 
   if (Object.keys(memberData).length !== 0) {
     return (
