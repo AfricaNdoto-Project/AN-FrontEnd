@@ -1,7 +1,5 @@
 import React from 'react'
 import deleteMember from '../../../services/deleteMember'
-import deleteVolunteer from '../../../services/deleteVolunteer'
-import deleteDonor from '../../../services/deletedonor'
 import { getVolunteer, getDonor } from '../../../services/getDonorAndVolunteerById'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -28,8 +26,6 @@ const Delete = () => {
 
     const deleteMemberById = async () => {
         await deleteMember(id)
-        await deleteVolunteer(volunteerUser.id)
-        await deleteDonor(donorUser.id)
         localStorage.removeItem('token')
         alert('Account deleted')
         return navigate('/login')
