@@ -31,6 +31,13 @@ const adminRoutes = () => {
   }
 }
 
+import NewProject from "../pages/newproject/newproject";
+import Project from "../pages/project/project";
+import AllProjects from "../pages/allprojects/allprojects";
+import Edit from "../pages/profile/edit/edit";
+import Delete from "../pages/profile/delete/delete";
+import Donation from "../pages/makeDonation/makeDonation";
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -49,10 +56,6 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: 'projects',
-        element: <Projects />,
-      },
-      {
         path: 'events',
         element: <Events />,
       },
@@ -65,15 +68,42 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        element: <Calendar />,
+        path: '/project',
+        element: <Project />,
+      },
+      {
+        path: '/allprojects',
+        element: <AllProjects />,
+      },
+      {
+        path: '/newproject',
+        element: <NewProject />,
+       },
+       {
+        path: '/donation',
+        element: <Donation />
       },
       {
         path: '',
-        loader: privateRoutes,
+        loader: privateRoutes
         children: [
           {
             path: 'profile',
             element: <Profile />,
+            children: [
+           {
+            path: 'edit/:id',
+            element: <Edit />,
+          },
+          {
+            path: 'delete/:id',
+            element: <Delete />,
+          },
+          {
+            path: 'donations',
+            element: <Donation />,
+          },
+            ],
           },
         ],
       },

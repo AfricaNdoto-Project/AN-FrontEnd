@@ -36,7 +36,9 @@ export default function ButtonAppBar() {
           <Link to="/login">
             <Button color="inherit">Login</Button>
           </Link>
-
+          <Link to="/donation">
+            <Button color="inherit">Donation</Button>
+          </Link>
           {/* logout button */}
           <Button color="inherit" onClick={logout}>
             LogOut

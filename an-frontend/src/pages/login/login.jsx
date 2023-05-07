@@ -13,7 +13,6 @@ import {
   // Typography
 } from '@mui/material'
 
-
 const LoginCard = () => {
   const navigate = useNavigate()
 
