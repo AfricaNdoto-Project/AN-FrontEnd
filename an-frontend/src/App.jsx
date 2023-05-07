@@ -4,6 +4,8 @@ import router from './router'
 import { useState } from 'react'
 import { UserContext } from './context/userContext'
 
+import { MemberProvider } from './context/memberProvider'
+
 function App() {
 const [user, setUser] = useState({})
 const member = { user, setUser }
@@ -11,7 +13,9 @@ const member = { user, setUser }
   return (
     <>
     <UserContext.Provider value={ member }>
-      <RouterProvider router= { router } />
+      <MemberProvider>
+        <RouterProvider router= { router } />
+      </MemberProvider>
     </UserContext.Provider>
     </>
   )

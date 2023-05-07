@@ -1,10 +1,35 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
-import Main from "../layouts";
-import Home from "../pages/home/home";
-import LoginCard from "../pages/login/login";
-import Signup from "../pages/signup/signup";
-import Profile from "../pages/profile/profile";
+import Main from '../layouts'
+import Home from '../pages/home/home'
+import LoginCard from '../pages/login/login'
+import Signup from '../pages/signup/signup'
+import Profile from '../pages/profile/profile'
+import Projects from '../pages/projects/projects'
+import Events from '../pages/events/events'
+import Calendar from '../pages/calendar/calendar'
+import AboutUs from '../pages/aboutUs/aboutUs'
+import AllMembers from '../pages/adminView/members/allMembers'
+import OneMember from '../pages/adminView/members/oneMember'
+
+const privateRoutes = () => {
+  if (!localStorage.getItem('token')) {
+    return redirect('/login')
+  } else {
+    return null
+  }
+}
+
+const adminRoutes = () => {
+  if (
+    localStorage.getItem('role') !== 'admin' ||
+    !localStorage.getItem('token')
+  ) {
+    return redirect('/')
+  } else {
+    return null
+  }
+}
 
 import NewProject from "../pages/newproject/newproject";
 import Project from "../pages/project/project";
@@ -19,19 +44,30 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Home />,
       },
       {
-        path: '/login',
+        path: 'login',
         element: <LoginCard />,
       },
       {
-        path: '/signup',
+        path: 'signup',
         element: <Signup />,
       },
       {
-
+        path: 'events',
+        element: <Events />,
+      },
+      {
+        path: 'calendar',
+        element: <Calendar />,
+      },
+      {
+        path: 'aboutus',
+        element: <AboutUs />,
+      },
+      {
         path: '/project',
         element: <Project />,
       },
@@ -42,26 +78,20 @@ const router = createBrowserRouter([
       {
         path: '/newproject',
         element: <NewProject />,
-
+       },
+       {
         path: '/donation',
         element: <Donation />
-
       },
       {
-        path: '/profile',
-        loader: () => {
-          if (!localStorage.getItem('token')) {
-            return redirect('/login')
-          } else {
-            return null
-          }
-        },
+        path: '',
+        loader: privateRoutes
         children: [
           {
-            path: '',
+            path: 'profile',
             element: <Profile />,
-          },
-          {
+            children: [
+           {
             path: 'edit/:id',
             element: <Edit />,
           },
@@ -72,7 +102,32 @@ const router = createBrowserRouter([
           {
             path: 'donations',
             element: <Donation />,
-          }
+          },
+            ],
+          },
+        ],
+      },
+      {
+        path: '/adminView',
+        loader: adminRoutes,
+        children: [
+          {
+            path: '',
+            element: <Home />,
+          },
+          {
+            path: 'members',
+            children: [
+              {
+                path: '',
+                element: <AllMembers />,
+              },
+              {
+                path: ':id',
+                element: <OneMember />,
+              },
+            ],
+          },
         ],
       },
     ],
