@@ -4,6 +4,7 @@ import getProfile from '../../services/userService'
 import getDonations from '../../services/memberDonations'
 import getProjects from '../../services/projectsService'
 import './profile.css'
+import { Link } from 'react-router-dom'
 
 
 import * as React from 'react';
@@ -16,12 +17,11 @@ import RecipeReviewCard from './userInfo/userInfo'
 const Profile = () => {
   const [donation, setDonation] = useState([])
   const [projects, setProjects] = useState([])
-  const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
     getData()
-    getProjects()
   }, [])
 //In this function search the donations, projects and the info of one member
   const getData = async () => {
@@ -72,10 +72,19 @@ const Profile = () => {
 //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if(user.role === 'donor') {
-      return displayDonations()
+      if(donation.donations.length !== 0) {
+        return displayDonations()
+      }
+      else {
+        return <div>No hay donaciones relacionados a este miembro</div>
+      }
     }
     else if(user.role === 'volunteer') {
-      return displayProjects()
+      if(projects.length !== 0){
+        return displayProjects()
+      } else {
+        return <div>No hay proyectos relacionados a este miembro</div>
+      }
     }
     else if(user.role === 'admin') {
       return <div>Soy Admin</div>
@@ -91,6 +100,16 @@ const Profile = () => {
       <div className='donations'>
         { displayData() }
       </div>
+      <Link to={`/profile/edit/${user.id}`}>
+        <button>
+          Edit Account
+        </button>
+      </Link>
+      <Link to={`/profile/delete/${user.id}`}>
+        <button>
+          Delete Account
+        </button>
+      </Link>
      </>
    )
   }

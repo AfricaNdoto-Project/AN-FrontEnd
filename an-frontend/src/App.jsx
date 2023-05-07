@@ -6,7 +6,7 @@ import { UserContext } from './context/userContext'
 
 function App() {
 const [user, setUser] = useState({})
-const member = { user, setUser}
+const member = { user, setUser }
 
   return (
     <>

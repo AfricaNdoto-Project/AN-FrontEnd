@@ -34,9 +34,10 @@ const SignupCard = () => {
   const [password, setPassword] = useState('')
   const [idNumber, setIdNumber] = useState('')
   const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
+  const [adress, setAddress] = useState('')
   const [role, setRole] = useState('')
-  const [profession, setProfession] = useState({})
+  const [professions, setProfessions] = useState([])
+  const [profession, setProfession] = useState('')
   //const [errorMessage, setErrorMessage] = useState('')
   useEffect(() => {
     getProfessionsData()
@@ -44,15 +45,18 @@ const SignupCard = () => {
 
   const getProfessionsData = async () => {
     const professions = await getProfessions()
-    setProfession(professions)
+    setProfessions(professions)
   }
 
   const handleRoleChange = (event) => {
     setRole(event.target.value)
   }
+  const handleProfessionChange = (event) => {
+    setProfession(event.target.value)
+  }
 
   const onSignup = async () => {
-    const form = { name, lastname, email, password, idNumber, phone, address, role, profession }
+    const form = { name, lastname, email, password, idNumber, phone, adress, role, profession }
     const result = await signup(form)
     if (result === 200) {
         console.log(result)
@@ -61,10 +65,12 @@ const SignupCard = () => {
       // console.log(result)
     }
   }
-  console.log(profession)
-  if(Object.keys(profession).length !== 0) {
-  console.log(profession)
-  
+  if(Object.keys(professions).length !== 0) {
+  // console.log(profession)
+  // profession.map(elem => console.log(elem.name))
+  // console.log(role)
+  // console.log(profession)
+
   return (
     <Card sx={{ maxWidth: '500px' }}>
       <CardHeader title="Signup" />
@@ -128,34 +134,22 @@ const SignupCard = () => {
             </Select>
           </FormControl>
         </Box>
-        {/* <TextField
-          onChange={(e) => setRole(e.target.value)}
-          label="Role"
-          variant="outlined"
-          fullWidth={true}
-        /> */}
          <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Profession</InputLabel>
             <Select
               labelId="professione-label"
               id="profession"
-              value={ role }
+              value={ profession }
               label="Profession"
-              // onChange={ handleRoleChange }
+              onChange={ handleProfessionChange }
             >
-              {profession.map((prof) => {
-                return <MenuItem value={prof.name}>{prof.name}</MenuItem>
+              {professions.map((elem) => {
+                return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
               })}
             </Select>
           </FormControl>
         </Box>
-        {/* <TextField
-          onChange={(e) => setProfession(e.target.value)}
-          label="profession"
-          variant="outlined"
-          fullWidth={true}
-        /> */}
         {/* {errorMessage && (
           <Typography color="error" textAlign="center" mt={2}>
             {errorMessage}
@@ -164,7 +158,7 @@ const SignupCard = () => {
       </CardContent>
       <Divider />
       <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button onClick={onSignup} color="success">
+        <Button onClick={ onSignup } color="success">
           Submit
         </Button>
       </CardActions>
