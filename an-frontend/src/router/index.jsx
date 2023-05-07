@@ -5,9 +5,13 @@ import Home from "../pages/home/home";
 import LoginCard from "../pages/login/login";
 import Signup from "../pages/signup/signup";
 import Profile from "../pages/profile/profile";
+
 import NewProject from "../pages/newproject/newproject";
 import Project from "../pages/project/project";
 import AllProjects from "../pages/allprojects/allprojects";
+import Edit from "../pages/profile/edit/edit";
+import Delete from "../pages/profile/delete/delete";
+import Donation from "../pages/makeDonation/makeDonation";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +31,7 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
+
         path: '/project',
         element: <Project />,
       },
@@ -37,10 +42,13 @@ const router = createBrowserRouter([
       {
         path: '/newproject',
         element: <NewProject />,
+
+        path: '/donation',
+        element: <Donation />
+
       },
       {
         path: '/profile',
-        element: <Profile />,
         loader: () => {
           if (!localStorage.getItem('token')) {
             return redirect('/login')
@@ -50,9 +58,21 @@ const router = createBrowserRouter([
         },
         children: [
           {
-            path: '/profile',
+            path: '',
             element: <Profile />,
           },
+          {
+            path: 'edit/:id',
+            element: <Edit />,
+          },
+          {
+            path: 'delete/:id',
+            element: <Delete />,
+          },
+          {
+            path: 'donations',
+            element: <Donation />,
+          }
         ],
       },
     ],
