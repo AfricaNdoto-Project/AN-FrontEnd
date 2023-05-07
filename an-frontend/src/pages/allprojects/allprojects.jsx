@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react'
 import RecipeReviewCard from './projectcard/projectcard'
 
-import getAllProjects from '../../services/allprojectsservice'
+import getAllProjects from '../../services/allProjectsService'
 
 const AllProjects = () => {
   const [allProjects, setAllProjects] = useState([])
@@ -25,7 +24,6 @@ const AllProjects = () => {
                  )
         })
     } 
-    // console.log(allProjects)
   return (
     <div>
       <h1>Hello</h1>

@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { signup } from '../../services/signupService'
-import * as React from 'react'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import getAllProjects from '../../services/allProjectsService'
-import getProducts from '../../services/getproducts'
+import getProducts from '../../services/getProducts'
 import { makeDonation } from '../../services/makeDonation'
 
 import CircularProgress from '@mui/material/CircularProgress'
@@ -26,10 +24,8 @@ import {
 } from '@mui/material'
 
 const Donation = () => {
-
-  console.log(import.meta.env.VITE_TEST)
   const navigate = useNavigate()
-  
+
   const [amount, setAmount] = useState(0)
   const [type, setType] = useState('')
   const [projects, setProjects] = useState([])
@@ -60,7 +56,6 @@ const Donation = () => {
 
   const submit = async () => {
     const form = { amount,type , projectName, name }
-    // console.log(form)
     const result = await makeDonation(form)
     if (result === 200) {
         console.log(result)
@@ -91,8 +86,8 @@ const Donation = () => {
               label="Project"
               onChange={ handleProjectNameChange }
             >
-              {projects.map((elem) => {
-                return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
+              {projects.map((elem, idx) => {
+                return <MenuItem value={ elem.name } key={idx}>{ elem.name }</MenuItem>
               })}
             </Select>
           </FormControl>
@@ -123,8 +118,8 @@ const Donation = () => {
               label="Profession"
               onChange={ handleProductChange }
             >
-              {products.map((elem) => {
-                return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
+              {products.map((elem, idx) => {
+                return <MenuItem value={ elem.name } key={idx}>{ elem.name }</MenuItem>
               })}
             </Select>
           </FormControl>

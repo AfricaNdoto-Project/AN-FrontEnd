@@ -6,8 +6,6 @@ import getProjects from '../../services/projectsService'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
-
-import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 

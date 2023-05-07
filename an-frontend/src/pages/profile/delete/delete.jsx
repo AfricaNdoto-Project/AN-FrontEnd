@@ -1,4 +1,3 @@
-import React from 'react'
 import deleteMember from '../../../services/deleteMember'
 import { getVolunteer, getDonor } from '../../../services/getDonorAndVolunteerById'
 import { useParams, useNavigate } from 'react-router-dom'
