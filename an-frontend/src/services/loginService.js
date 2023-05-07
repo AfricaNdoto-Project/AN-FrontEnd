@@ -8,7 +8,7 @@ const login = async (body) => {
     
     localStorage.setItem('token', data.token)
     localStorage.setItem('role', data.role)
-    console.log(data)
+    console.log(data.role)
     return 200
   } catch (error) {
     return error.response.data

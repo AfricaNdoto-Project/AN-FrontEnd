@@ -5,7 +5,6 @@ import Home from '../pages/home/home'
 import LoginCard from '../pages/login/login'
 import Signup from '../pages/signup/signup'
 import Profile from '../pages/profile/profile'
-import Projects from '../pages/projects/projects'
 import Events from '../pages/events/events'
 import Calendar from '../pages/calendar/calendar'
 import AboutUs from '../pages/aboutUs/aboutUs'
@@ -85,7 +84,7 @@ const router = createBrowserRouter([
       },
       {
         path: '',
-        loader: privateRoutes
+        loader: privateRoutes,
         children: [
           {
             path: 'profile',

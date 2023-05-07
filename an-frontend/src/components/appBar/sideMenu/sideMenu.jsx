@@ -37,7 +37,7 @@ export default function SwipeableTemporaryDrawer() {
       <List>
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
-            <Link to="/projects">
+            <Link to="/allprojects">
               <Button color="inherit">Projects</Button>
             </Link>
             <ListItemIcon></ListItemIcon>

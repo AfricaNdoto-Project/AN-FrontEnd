@@ -1,6 +1,9 @@
 
 import { useState, useEffect } from 'react'
 import RecipeReviewCard from './projectcard/projectcard'
+import { Box } from '@mui/material'
+import {CircularProgress} from '@mui/material'
+import Loading from '../../components/loading/loading'
 
 import getAllProjects from '../../services/allprojectsservice'
 
@@ -25,13 +28,18 @@ const AllProjects = () => {
                  )
         })
     } 
-    // console.log(allProjects)
-  return (
-    <div>
-      <h1>Hello</h1>
-      {displayAllProjects()}
-    </div>
-  )
+    if(allProjects.length !== 0) {
+      return (
+        <div>
+          {displayAllProjects()}
+        </div>
+      )
+    } 
+    else {
+      return (
+          <Loading />
+      )
+    }
 }
 
 export default AllProjects

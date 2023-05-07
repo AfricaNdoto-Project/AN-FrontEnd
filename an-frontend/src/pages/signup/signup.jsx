@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../../services/signupService'
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import getProfessions from '../../services/professionService';
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import getProfessions from '../../services/professionService'
 
-import CircularProgress from '@mui/material/CircularProgress';
 
 
 import {
@@ -22,10 +21,11 @@ import {
   CardActions,
   // Typography
 } from '@mui/material'
+import Loading from '../../components/loading/loading'
 
 const SignupCard = () => {
 
-  console.log(import.meta.env.VITE_TEST)
+  // console.log(import.meta.env.VITE_TEST)
   const navigate = useNavigate()
   
   const [name, setName] = useState('')
@@ -62,14 +62,10 @@ const SignupCard = () => {
         console.log(result)
       navigate('/profile')
     } else {
-      // console.log(result)
+      console.log(result)
     }
   }
   if(Object.keys(professions).length !== 0) {
-  // console.log(profession)
-  // profession.map(elem => console.log(elem.name))
-  // console.log(role)
-  // console.log(profession)
 
   return (
     <Card sx={{ maxWidth: '500px' }}>
@@ -145,7 +141,7 @@ const SignupCard = () => {
               onChange={ handleProfessionChange }
             >
               {professions.map((elem) => {
-                return <MenuItem value={ elem.name }>{ elem.name }</MenuItem>
+                return <MenuItem value={ elem.name } key={ elem.id } >{ elem.name }</MenuItem>
               })}
             </Select>
           </FormControl>
@@ -166,9 +162,7 @@ const SignupCard = () => {
   )}
   else {
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
-        <CircularProgress />
-      </Box>
+        <Loading />
     )
   }
 }
