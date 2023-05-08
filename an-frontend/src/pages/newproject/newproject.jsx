@@ -1,13 +1,9 @@
 // import * as React from 'react';
-
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import getProfessions from '../../services/professionService';
-import { getVolunteers } from '../../services/volunteerService';
-
 import getProfessions from '../../services/professionService'
-import getVolunteers from '../../services/volunteerService';
-import { CreateProject } from '../../services/createProjectService';
+import { getVolunteers } from '../../services/volunteerService'
+import { CreateProject } from '../../services/projectsService'
 import {
     Card,
     CardHeader,
@@ -21,11 +17,9 @@ import {
     FormControlLabel,
     FormControl,
     FormLabel,
-    Box,
     Select,
     InputLabel,
-    MenuItem,
-    CircularProgress
+    MenuItem
     // Typography
   } from '@mui/material'
 import Loading from '../../components/loading/loading'
@@ -34,7 +28,7 @@ const NewProject = () => {
     const navigate = useNavigate()
 
     const [name, setName] = useState('')
-    const [target, setTarget] = useState('')
+    const [target, setTarget] = useState('') 
     const [description, setDescription] = useState('')
     const [objective, setObjective] = useState('')
     const [budget, setBudget] = useState('')
