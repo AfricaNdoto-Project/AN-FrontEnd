@@ -25,6 +25,7 @@ import {
     CircularProgress
     // Typography
   } from '@mui/material'
+import Loading from '../../components/loading/loading'
 
 const NewProject = () => {
     const navigate = useNavigate()
@@ -61,6 +62,7 @@ const NewProject = () => {
 
     const onSubmit = async () => {
       const form = { name, target, description, objective, budget, deadline, status, volunteer, profession, equipmentName, equipmentDescription, equipmentCost}
+      //Aqui hay que añadir el servicio para postear el pryecto
       const result = await NewProject(form)
       if (result === 200) {
         navigate('/newproject')
@@ -219,9 +221,7 @@ const NewProject = () => {
     )}
     else {
         return (
-            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
-              <CircularProgress />
-            </Box>
+              <Loading />
           ) 
     }
 }

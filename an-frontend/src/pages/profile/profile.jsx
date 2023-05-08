@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import Loading from '../../components/loading/loading'
 
 
 import RecipeReviewCard from './userInfo/userInfo'
@@ -113,9 +114,7 @@ const Profile = () => {
   }
   else {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
-      <CircularProgress />
-    </Box>
+      <Loading />
   )
  }
 }
