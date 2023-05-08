@@ -1,4 +1,4 @@
-import api from "./config";
+import api from './config'
 
 const login = async (body) => {
   try {
@@ -12,6 +12,4 @@ const login = async (body) => {
   }
 }
 
-export {
-  login
-}
+export { login }

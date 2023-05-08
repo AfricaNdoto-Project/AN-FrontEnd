@@ -1,13 +1,14 @@
 import { UserContext } from '../../context/userContext'
 import { useEffect, useContext, useState } from "react"
-import getProfile from '../../services/userService'
+import { getProfile } from '../../services/membersService'
+import { getMyDonations } from '../../services/donorsService'
+import { getProjects } from '../../services/projectsService'
+/* import getProfile from '../../services/userService'
 import getDonations from '../../services/memberDonations'
-import getProjects from '../../services/projectsService'
+import getProjects from '../../services/projectsService' */
 import './profile.css'
 import { Link } from 'react-router-dom'
 
-
-import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Loading from '../../components/loading/loading'
@@ -27,7 +28,7 @@ const Profile = () => {
 //In this function search the donations, projects and the info of one member
   const getData = async () => {
     const result = await getProfile()
-    const donations = await getDonations()
+    const donations = await getMyDonations()
     const project = await getProjects()
     setProjects(project)
     setUser(result)

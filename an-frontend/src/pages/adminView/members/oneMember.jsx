@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getOneMember } from '../../../services/members'
+import { getOneMember } from '../../../services/membersService'
 import { useParams } from 'react-router-dom'
-import { getDonations } from '../../../services/donors'
+import { getDonorDonations } from '../../../services/donorsService'
 import useMember from '../../../hooks/useMember'
 
 const OneMember = () => {
@@ -21,7 +21,7 @@ const OneMember = () => {
   }
 
   const getMyDonations = async () => {
-    const donations = await getDonations(id)
+    const donations = await getDonorDonations(id)
     setDonationsList(donations)
   }
 
