@@ -1,5 +1,6 @@
 // import * as React from 'react';
 import { useState, useEffect } from 'react'
+import { useLocation } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import getProfessions from '../../services/professionService'
 import { getVolunteers } from '../../services/volunteerService'
@@ -22,7 +23,8 @@ import {
     MenuItem
     // Typography
   } from '@mui/material'
-import Loading from '../../components/loading/loading'
+
+  import Loading from '../../components/loading/loading'
 
 const NewProject = () => {
     const navigate = useNavigate()
@@ -33,7 +35,7 @@ const NewProject = () => {
     const [objective, setObjective] = useState('')
     const [budget, setBudget] = useState('')
     const [deadline, setDeadline] = useState('')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('draft')
     const [volunteer, setVolunteer] = useState('')
     const [volunteerData, setVolunteerData] = useState([])
     const [profession, setProfession] = useState('')
@@ -49,6 +51,8 @@ const NewProject = () => {
         getProfessionData()
     }, [])
 
+    const location = useLocation()
+    const data = location.state?.data
 
     const getProfessionData = async () => {
         const result = await getProfessions()
@@ -59,7 +63,7 @@ const NewProject = () => {
 
     const onSubmit = async () => {
       const form = { name, target, description, objective, budget, deadline, status, volunteer, profession, equipmentName, equipmentDescription, equipmentCost}
-      //Aqui hay que añadir el servicio para postear el pryecto
+  
       const result = await CreateProject(form)
       if (result === 200) {
         navigate('/newproject')
@@ -76,14 +80,33 @@ const NewProject = () => {
         setProfession(event.target.value);
       };
 
-      const handleVolunteerChange = (event) => {
-        setVolunteer(event.target.value);
+    const handleVolunteerChange = (event) => {
+      setVolunteer(event.target.value);
       };
 
-    if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {
-        console.log(volunteer)
-        console.log(volunteerData.filter(elem => elem.role==='volunteer' && elem.volunteer.professional.name===profession))
-    return (
+    const statusOption = () => {
+
+      if (data.role === "admin") {
+        return (
+          <>
+          <FormControlLabel defaultChecked="true" value="draft" control={<Radio/>} label="Draft" />
+          <FormControlLabel value="accepted" control={<Radio />} label="Accepted" />
+          <FormControlLabel value="denied" control={<Radio />} label="Denied" />
+          </>
+        )
+      }
+      if (data.role === "volunteer") {
+        return (
+         <>
+          <FormControlLabel defaultChecked="true" value="draft" control={<Radio/>} label="Draft" />
+          </>
+        )
+      }
+
+    }
+
+    if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {  
+  return (
       <Card sx={{ maxWidth: '500px' }}>
         <CardHeader title="Project" />
         <CardContent>
@@ -144,11 +167,11 @@ const NewProject = () => {
                 value={status}
                 onChange={handleStatusChange}
             >
-                <FormControlLabel defaultChecked="true" value="draft" control={<Radio />} label="Draft" />
-                <FormControlLabel value="accepted" control={<Radio />} label="Accepted" />
-                <FormControlLabel value="denied" control={<Radio />} label="Denied" />
+                {statusOption()}
+
             </RadioGroup>
         </FormControl>
+
           <p>Select a profession</p>
         <FormControl required fullWidth>
             <InputLabel id="profession-selector">Profession</InputLabel>

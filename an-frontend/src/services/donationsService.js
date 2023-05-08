@@ -13,7 +13,7 @@ const makeDonation = async (body) => {
     } else {
       const { data } = await api.post('/auth/login', {
         email: 'anonymous@email.com',
-        password: 'password1',
+        password: 'password2',
       })
       localStorage.setItem('token', data.token)
 

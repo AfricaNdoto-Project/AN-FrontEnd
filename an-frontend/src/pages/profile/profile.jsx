@@ -112,6 +112,11 @@ const Profile = () => {
           Delete Account
         </button>
       </Link>
+      <Link to={`/newproject`} state={{data: user}}>
+        <button>
+          New project
+        </button>
+      </Link>
      </>
    )
   }
