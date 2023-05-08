@@ -4,7 +4,7 @@ import { Box } from '@mui/material'
 import { CircularProgress } from '@mui/material'
 import Loading from '../../components/loading/loading'
 
-import getAllProjects from '../../services/allProjectsService'
+import { getAllProjects } from '../../services/projectsService'
 
 const AllProjects = () => {
   const [allProjects, setAllProjects] = useState([])

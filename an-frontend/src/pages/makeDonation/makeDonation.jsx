@@ -5,9 +5,9 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import getAllProjects from '../../services/allProjectsService'
-import getProducts from '../../services/getProducts'
-import { makeDonation } from '../../services/makeDonation'
+import { getAllProjects } from '../../services/projectsService'
+import getProducts from '../../services/productService'
+import { makeDonation } from '../../services/donationsService'
 import Loading from '../../components/loading/loading'
 
 
