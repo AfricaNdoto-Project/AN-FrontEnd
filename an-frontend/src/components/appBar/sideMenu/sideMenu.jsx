@@ -81,10 +81,7 @@ export default function SwipeableTemporaryDrawer() {
   return (
     <div
       style={{
-        width: 30,
-        height: 30,
-        display: 'flex',
-        justifyContent: 'center',
+
       }}
     >
       {['right'].map((anchor) => (

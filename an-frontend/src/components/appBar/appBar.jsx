@@ -1,6 +1,6 @@
 import AppBar from '@mui/material/AppBar'
 import { Link, useNavigate } from 'react-router-dom'
-
+import useIsAdmin from '../../hooks/useAdmin'
 import SwipeableTemporaryDrawer from './sideMenu/sideMenu'
 
 import Box from '@mui/material/Box'
@@ -10,8 +10,14 @@ import Button from '@mui/material/Button'
 
 export default function ButtonAppBar() {
   const navigate = useNavigate()
-
+  const { adminData } = useIsAdmin()
+  const { isAdmin, setIsAdmin } = adminData
   const logout = () => {
+    if(isAdmin){
+      setIsAdmin(false)
+    }else {
+     null 
+    }
     localStorage.removeItem('token')
     navigate('/login')
   }

@@ -8,7 +8,7 @@ import { red } from '@mui/material/colors'
 
 export default function RecipeReviewCard({ user }) {
   return (
-    <Card sx={{ maxWidth: 340, display:'flex', flexDirection:'column'}}>
+    <Card sx={{ width: '100%', display:'flex', flexDirection:'column', height: '100%'}}>
       <CardHeader
         sx={{margin: 0}}
         avatar={

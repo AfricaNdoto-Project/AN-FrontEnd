@@ -3,37 +3,38 @@ import { useEffect, useContext, useState } from "react"
 import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
-/* import getProfile from '../../services/userService'
-import getDonations from '../../services/memberDonations'
-import getProjects from '../../services/projectsService' */
 import './profile.css'
 import { Link } from 'react-router-dom'
-
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import ImgMediaCard from './cards/cardsTemplate'
 import Loading from '../../components/loading/loading'
+
+import useIsAdmin from '../../hooks/useAdmin'
 
 
 import RecipeReviewCard from './userInfo/userInfo'
+import { Box, Container, Divider } from '@mui/material'
 
 const Profile = () => {
   const [donation, setDonation] = useState([])
   const [projects, setProjects] = useState([])
   const { user, setUser } = useContext(UserContext)
 
+  const { adminData } = useIsAdmin()
+  const { isAdmin } = adminData
 
-  useEffect(() => {
-    getData()
-  }, [])
+
 //In this function search the donations, projects and the info of one member
-  const getData = async () => {
-    const result = await getProfile()
-    const donations = await getMyDonations()
-    const project = await getProjects()
-    setProjects(project)
-    setUser(result)
-    setDonation(donations)
-  }
+  useEffect(() => {
+    const getData = async () => {
+      const result = await getProfile()
+      const donations = await getMyDonations()
+      const project = await getProjects()
+      setProjects(project)
+      setUser(result)
+      setDonation(donations)
+    }
+    getData()
+  }, [setUser])
 //Here display the user information
   const displayUserName = () => {
     return (
@@ -89,31 +90,49 @@ const Profile = () => {
       }
     }
     else if(user.role === 'admin') {
-      return <div>Soy Admin</div>
+      'e'
     }
     else {
       return displayDonationsAndProjects()
     }
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
-   return (
-     <>
-      { displayUserName() }
-      <div className='donations'>
-        { displayData() }
-      </div>
-      <Link to={`/profile/edit/${user.id}`}>
-        <button>
-          Edit Account
-        </button>
+  
+  return (
+    <Container
+      sx={{
+        padding: '10px',
+        margin: 0,
+        display: 'flex',
+        width: '100vw',
+        height: '100%',
+        border: 2,
+        borderColor: 'green',
+        flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          maxWidth: 334,
+          height: '100%',
+        }}
+      >
+        {displayUserName()}
+        <div className="donations">{displayData()}</div>
+      </Box>
+      <Divider sx={{ margin: 1 }} />
+      <Box sx={{ display: 'flex', width: 370, height: 400 }}><ImgMediaCard/></Box>
+
+      {/*       <Link to={`/profile/edit/${user.id}`}>
+        <button>Edit Account</button>
       </Link>
       <Link to={`/profile/delete/${user.id}`}>
-        <button>
-          Delete Account
-        </button>
-      </Link>
-     </>
-   )
+        <button>Delete Account</button>
+      </Link> */}
+    </Container>
+  )
   }
   else {
   return (

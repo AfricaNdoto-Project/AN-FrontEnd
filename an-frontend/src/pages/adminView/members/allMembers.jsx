@@ -10,13 +10,14 @@ const AllMembers = () => {
   const { membersList, setMembersList } = memberDataList
 
   useEffect(() => {
+     const getMembers = async () => {
+       const members = await getMembersList()
+       setMembersList(members)
+     }
     getMembers()
-  }, [])
+  }, [setMembersList])
 
-  const getMembers = async () => {
-    const members = await getMembersList()
-    setMembersList(members)
-  }
+ 
 
   const users = membersList.map((member, idx) => {
     return (
