@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import getProfessions from '../../services/professionService'
 import getVolunteers from '../../services/volunteerService';
-
+import { CreateProject } from '../../services/createProjectService';
 import {
     Card,
     CardHeader,
@@ -63,7 +63,7 @@ const NewProject = () => {
     const onSubmit = async () => {
       const form = { name, target, description, objective, budget, deadline, status, volunteer, profession, equipmentName, equipmentDescription, equipmentCost}
       //Aqui hay que añadir el servicio para postear el pryecto
-      const result = await NewProject(form)
+      const result = await CreateProject(form)
       if (result === 200) {
         navigate('/newproject')
       } else {
@@ -179,7 +179,7 @@ const NewProject = () => {
                 onChange={handleVolunteerChange}
                 >
             
-                    { volunteerData.filter(elem => elem.role==='volunteer' && elem.volunteer.professional.name===profession).map((elem) =>{
+                    { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
                       return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
                     })
 
