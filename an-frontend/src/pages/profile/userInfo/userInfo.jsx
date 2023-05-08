@@ -4,11 +4,12 @@ import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
+import Container from 'postcss/lib/container'
 
 
 export default function RecipeReviewCard({ user }) {
   return (
-    <Card sx={{ maxWidth: 340, display:'flex', flexDirection:'column'}}>
+    <Card sx={{ maxWidth: 340, width: '500px', minBlockSize: '580px', display:'flex', flexDirection:'column', margin: '15px'}}>
       <CardHeader
         sx={{margin: 0}}
         avatar={

@@ -6,11 +6,12 @@ import { getProjects } from '../../services/projectsService'
 /* import getProfile from '../../services/userService'
 import getDonations from '../../services/memberDonations'
 import getProjects from '../../services/projectsService' */
+import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 import Loading from '../../components/loading/loading'
 
 
@@ -23,24 +24,25 @@ const Profile = () => {
 
 
   useEffect(() => {
+    const getData = async () => {
+      const result = await getProfile()
+      const donations = await getMyDonations()
+      const project = await getProjects()
+      setProjects(project)
+      setUser(result)
+      setDonation(donations)
+    }
     getData()
-  }, [])
+  }, [setUser])
 //In this function search the donations, projects and the info of one member
-  const getData = async () => {
-    const result = await getProfile()
-    const donations = await getMyDonations()
-    const project = await getProjects()
-    setProjects(project)
-    setUser(result)
-    setDonation(donations)
-  }
+  
 //Here display the user information
   const displayUserName = () => {
     return (
       <>
-        <RecipeReviewCard user={ user }/>
+        <RecipeReviewCard sx={{ height: '25%'}} user={ user }/>
       </>
-    )
+    ) 
   }
 //Here show the projects by Member/Volunteer
   const displayProjects = () => {
@@ -97,7 +99,7 @@ const Profile = () => {
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
-     <>
+     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent: 'center'}}>
       { displayUserName() }
       <div className='donations'>
         { displayData() }
@@ -112,7 +114,7 @@ const Profile = () => {
           Delete Account
         </button>
       </Link>
-     </>
+     </Container>
    )
   }
   else {
