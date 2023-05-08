@@ -22,7 +22,7 @@ const AllProjects = () => {
     return allProjects.map((elem) => {
       return (
         <>
-          <RecipeReviewCard key={elem.id} project={elem} />
+          <RecipeReviewCard key={ elem.id } project={ elem } />
         </>
       )
     })

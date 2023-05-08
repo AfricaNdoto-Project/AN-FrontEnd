@@ -10,8 +10,11 @@ import {
   Divider,
   Button,
   CardActions,
+  Container
   // Typography
 } from '@mui/material'
+import ImageList from '@mui/material/ImageList'
+import ImageListItem from '@mui/material/ImageListItem'
 
 const LoginCard = () => {
   const navigate = useNavigate()
@@ -31,35 +34,69 @@ const LoginCard = () => {
   }
 
   return (
-    <Card sx={{ maxWidth: '500px' }}>
-      <CardHeader title="Login" />
-      <CardContent>
-        <TextField
-          onChange={(e) => setEmail(e.target.value)}
-          label="Email"
-          variant="outlined"
-          fullWidth={true}
-          sx={{ marginBottom: '20px' }}
-        />
-        <TextField
-          onChange={(e) => setPassword(e.target.value)}
-          label="Password"
-          variant="outlined"
-          fullWidth={true}
-        />
-        {/* {errorMessage && (
+    <Container
+      id="container"
+      sx={{ display: 'flex', flexDirection: 'row', marginBottom: '25px' }}
+    >
+      <ImageList
+        id="image"
+        sx={{ width: 500, height: '100vh', marginTop: '100px' }}
+        cols={1}
+      >
+        <ImageListItem>
+          <img
+            src="../../assets/ong.jpeg"
+            alt="Imagen de un niño en África"
+            loading="lazy"
+          />
+        </ImageListItem>
+      </ImageList>
+      <Card
+        sx={{
+          maxWidth: '500px',
+          margin: 0,
+          height: '300px',
+          marginTop: '100px',
+        }}
+      >
+        <CardHeader title="Login" />
+        <CardContent>
+          <TextField
+            onChange={(e) => setEmail(e.target.value)}
+            label="Email"
+            variant="outlined"
+            fullWidth={true}
+            // sx={{ marginBottom: '20px' }}
+            sx={{ margin: '10px 0' }}
+          />
+          <TextField
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            variant="outlined"
+            fullWidth={true}
+            sx={{ margin: '10px 0' }}
+          />
+          {/* {errorMessage && (
           <Typography color="error" textAlign="center" mt={2}>
             {errorMessage}
           </Typography>
         )} */}
-      </CardContent>
-      <Divider />
-      <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button onClick={onLogin} color="success">
-          Login
-        </Button>
-      </CardActions>
-    </Card>
+        </CardContent>
+        <Divider />
+        <CardActions
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '5px 0',
+          }}
+        >
+          <Button onClick={onLogin} color="success">
+            Login
+          </Button>
+        </CardActions>
+      </Card>
+    </Container>
   )
 }
 
