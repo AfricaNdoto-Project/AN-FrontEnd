@@ -99,7 +99,7 @@ const Profile = () => {
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
-     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent: 'center'}}>
+     <Container sx={{border: '1px solid black', display: 'flex', flexDirection: 'row', alignItems:'center', justifyContent: 'space-around'}}>
       { displayUserName() }
       <div className='donations'>
         { displayData() }
@@ -109,7 +109,7 @@ const Profile = () => {
           Edit Account
         </button>
       </Link>
-      <Link to={`/profile/delete/${user.id}`}>
+      <Link sx={{border: '1px solid black'}} to={`/profile/delete/${user.id}`}>
         <button>
           Delete Account
         </button>
