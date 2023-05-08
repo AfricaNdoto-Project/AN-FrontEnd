@@ -10,6 +10,12 @@ import Calendar from '../pages/calendar/calendar'
 import AboutUs from '../pages/aboutUs/aboutUs'
 import AllMembers from '../pages/adminView/members/allMembers'
 import OneMember from '../pages/adminView/members/oneMember'
+import NewProject from "../pages/newproject/newproject";
+import Project from "../pages/project/project";
+import AllProjects from "../pages/allprojects/allprojects";
+import Edit from "../pages/profile/edit/edit";
+import Delete from "../pages/profile/delete/delete";
+import Donation from "../pages/makeDonation/makeDonation";
 
 const privateRoutes = () => {
   if (!localStorage.getItem('token')) {
@@ -29,13 +35,6 @@ const adminRoutes = () => {
     return null
   }
 }
-
-import NewProject from "../pages/newproject/newproject";
-import Project from "../pages/project/project";
-import AllProjects from "../pages/allprojects/allprojects";
-import Edit from "../pages/profile/edit/edit";
-import Delete from "../pages/profile/delete/delete";
-import Donation from "../pages/makeDonation/makeDonation";
 
 const router = createBrowserRouter([
   {

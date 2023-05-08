@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import getProfessions from '../../services/professionService'
-import getVolunteers from '../../services/volunteerService';
+import getProfessions from '../../services/professionService';
+import { getVolunteers } from '../../services/volunteerService';
 
 import {
     Card,

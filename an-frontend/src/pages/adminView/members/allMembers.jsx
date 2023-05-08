@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { getMembersList } from '../../../services/members'
+import { getMembersList } from '../../../services/membersService'
 
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'

@@ -26,9 +26,9 @@ export default function ButtonAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: 'flex' }}
           >
-            <a href="/" style={{ textDecoration: 'none', color: 'white' }}>
-              Logo
-            </a>
+            <Link to='/' style={{textDecoration: 'none', color: 'white'}}>
+            Logo
+            </Link>
           </Typography>
           <Link to="/signup">
             <Button color="inherit">Sign Up</Button>
