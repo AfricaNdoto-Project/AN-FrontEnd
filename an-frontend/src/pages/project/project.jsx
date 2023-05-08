@@ -11,7 +11,7 @@ const Project = () => {
   const displayProject = () => {
     return (
       <>
-        <RecipeReviewCard project={data}/>
+        <RecipeReviewCard project={ data }/>
       </>
     )
   } 
@@ -19,14 +19,13 @@ const Project = () => {
   if(!data) {
    return (
     <>
-    <Navigate to='/allprojects' replace={true}/>
+    <Navigate to='/allprojects' replace={ true }/>
     </>
    ) 
   } else {
-    console.log(data)
    return (
    <div>
-      {displayProject()}
+      { displayProject() }
     </div>
    )
   }

@@ -7,11 +7,10 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import getAllProjects from '../../services/allProjectsService'
+import getAllProjects from '../../services/allprojectsservice'
 import getProducts from '../../services/getproducts'
 import { makeDonation } from '../../services/makeDonation'
-
-import CircularProgress from '@mui/material/CircularProgress'
+import Loading from '../../components/loading/loading'
 
 
 import {
@@ -27,7 +26,7 @@ import {
 
 const Donation = () => {
 
-  console.log(import.meta.env.VITE_TEST)
+  // console.log(import.meta.env.VITE_TEST)
   const navigate = useNavigate()
   
   const [amount, setAmount] = useState(0)
@@ -146,10 +145,7 @@ const Donation = () => {
   else {
     return (
       <>
-      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <h1>Loading...</h1>
-        <CircularProgress />
-      </Box>
+        <Loading />
       </>
     )
   }
