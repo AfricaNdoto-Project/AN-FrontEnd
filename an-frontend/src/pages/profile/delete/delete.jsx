@@ -1,6 +1,6 @@
-import React from 'react'
-import deleteMember from '../../../services/deleteMember'
-import { getVolunteer, getDonor } from '../../../services/getDonorAndVolunteerById'
+import { deleteMember } from '../../../services/membersService'
+import { getOneVolunteer } from '../../../services/volunteerService'
+import { getDonor } from '../../../services/donorsService'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -19,7 +19,7 @@ const Delete = () => {
     console.log(id)
     const getData = async () => {
       const donor = await getDonor(id)
-      const volunteer = await getVolunteer(id)
+      const volunteer = await getOneVolunteer(id)
       setDonorUSer(donor)
       setVolunteerUSer(volunteer)
     }
