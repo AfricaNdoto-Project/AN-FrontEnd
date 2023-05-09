@@ -4,16 +4,15 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoMember from '../../../public/assets/profileAdmin/logoMember.png'
 
-const CardMembers = () => {
+export default function ImgMediaCard() {
   return (
     <Card sx={{ width: '100%' }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="140"
-        image={logoMember}
+        image="/static/images/cards/contemplative-reptile.jpg"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -31,5 +30,3 @@ const CardMembers = () => {
     </Card>
   )
 }
-
-export default CardMembers

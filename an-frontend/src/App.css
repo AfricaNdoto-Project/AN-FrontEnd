@@ -1,7 +1,5 @@
 body {
   margin: 0;
-  height: 100%;
-  width: 100%;
 }
 
 
@@ -9,14 +7,6 @@ body {
   text-align: center;
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-html{
-margin: 0;
-width: 100vw;
-height: 100vh;
 }
 
 * {
