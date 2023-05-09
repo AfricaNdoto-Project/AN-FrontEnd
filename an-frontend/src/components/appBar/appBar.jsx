@@ -37,9 +37,28 @@ export default function ButtonAppBar() {
     }
   }
 
+  const displayLogin = () => {
+    if(!token) {
+      return (
+        <Link to="/login">
+            <Button color="inherit">Login</Button>
+        </Link>
+      )
+    }
+  }
+  const displaySignUp = () => {
+    if(token) {
+      return (
+        <Link to="/signup">
+            <Button color="inherit">Sign Up</Button>
+        </Link>
+      )
+    }
+  }
+
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
+    <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw' }}>
       <AppBar position="static">
         <Toolbar>
           <Typography
@@ -51,12 +70,8 @@ export default function ButtonAppBar() {
               Logo
             </Link>
           </Typography>
-          <Link to="/signup">
-            <Button color="inherit">Sign Up</Button>
-          </Link>
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
-          </Link>
+          { displaySignUp() }
+          { displayLogin() }
           <Link to="/donation">
             <Button color="inherit">Donation</Button>
           </Link>

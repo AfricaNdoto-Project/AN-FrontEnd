@@ -109,7 +109,10 @@ const Profile = () => {
        maxWidth={false}
      >
        {displayUserName()}
-       <div className="donations">{displayData()}</div>
+       <div className="donations">{ displayData() }</div>
+       <Link to='/newproject'>
+        <button>New Project</button>
+       </Link>
        {/* <Container
          sx={{
            border: '1px solid green',
