@@ -21,11 +21,23 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function RecipeReviewCard({ user }) {
+export default function Donation({ donations }) {
   const [expanded, setExpanded] = React.useState(false)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
+  }
+
+
+  const displayDonations = () => {
+        return donations.donations.map((donation) => {
+            return (
+              <>
+                <Typography paragraph>Amount:{ donation.ampunt }</Typography>
+                <Typography paragraph>Type: { donation.type } </Typography>
+              </>
+            )
+        })
   }
   return (
     <Card
@@ -36,16 +48,11 @@ export default function RecipeReviewCard({ user }) {
         minBlockSize: '580px',
         display: 'flex',
         flexDirection: 'column',
-        margin: '15px',
+        margin: '15px'
       }}
     >
       <CardHeader
         sx={{ margin: 0 }}
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {user.name.charAt(0).toUpperCase()}
-          </Avatar>
-        }
         title={
           <Typography
             sx={{
@@ -56,71 +63,11 @@ export default function RecipeReviewCard({ user }) {
             variant="body2"
             color="text.secondary"
           >
-            <h3>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</h3>
-          </Typography>
-        }
-        subheader={
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <h3>
-              {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
-            </h3>
+            <Typography>Donations</Typography>
           </Typography>
         }
       />
       <CardContent>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Email: </h3> <p>{user.email}</p>
-        </Typography>
-        <Typography
-          sx={{
-            isplay: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Phone Number:: </h3> <p>{user.phone}</p>
-        </Typography>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>ID Number:: </h3> <p>{user.idNumber}</p>
-        </Typography>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Role: </h3>{' '}
-          <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
-        </Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -132,11 +79,7 @@ export default function RecipeReviewCard({ user }) {
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-            set aside for 10 minutes.
-          </Typography>
+          { displayDonations() }
         </CardContent>
       </Collapse>
     </Card>

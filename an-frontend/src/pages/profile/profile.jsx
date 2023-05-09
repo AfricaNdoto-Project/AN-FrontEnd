@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
 import Loading from '../../components/loading/loading'
+import Donation from './donations/donations'
 
 
 import RecipeReviewCard from './userInfo/userInfo'
@@ -58,17 +59,39 @@ const Profile = () => {
   }
 
 //Here show the donations by Member/Donor
-  const displayDonations = () => {
-    return donation.donations.map(elem => {
-      return (
-        <div className='donation' key={ elem.id }>
-          <div ><h3>Donation { elem.id }</h3></div>
-          <div><p>Amount: </p>{ elem.amount }</div>
-          <div><p>Type: </p>{ elem.type }</div>
-        </div>
-      )
-    })
-  }
+  // const displayDonations = () => {
+  //   return donation.donations.map(elem => {
+  //     return (
+  //       <div className='donation' key={ elem.id }>
+  //         <div ><h3>Donation { elem.id }</h3></div>
+  //         <div><p>Amount: </p>{ elem.amount }</div>
+  //         <div><p>Type: </p>{ elem.type }</div>
+  //       </div>
+  //     )
+  //   })
+  // }
+    const displayDonations = () => {
+      return donation.donations.map((elem) => {
+        return (
+          <div className="donation" key={elem.id}>
+            <div>
+              <h3>Donation {elem.id}</h3>
+            </div>
+            <div>
+              <p>Amount: </p>
+              {elem.amount}
+            </div>
+            <div>
+              <p>Type: </p>
+              {elem.type}
+            </div>
+          </div>
+        )
+      })
+    }
+    const displayNewDonations = () => {
+      return <Donation donations={ donation } />
+    }
 
   const displayDonationsAndProjects = () => {
     return [ displayDonations(), displayProjects() ]
@@ -77,7 +100,12 @@ const Profile = () => {
   const displayData = () => {
     if(user.role === 'donor') {
       if(donation.donations.length !== 0) {
-        return displayDonations()
+        return (
+          <>
+            {displayNewDonations()}
+            {displayDonations()}
+          </>
+        )
       }
       else {
         return <div>No hay donaciones relacionados a este miembro</div>
@@ -100,6 +128,7 @@ const Profile = () => {
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
      <Container
+     id='profile-container'
        sx={{
          border: '1px solid black',
          display: 'flex',

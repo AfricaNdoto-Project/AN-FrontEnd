@@ -1,4 +1,7 @@
-
+#profile-container {
+    background-image: url('../../assets/ong3.JPG');
+    background-size: cover;
+}
 .donations {
     display: flex;
     flex-direction: column;
