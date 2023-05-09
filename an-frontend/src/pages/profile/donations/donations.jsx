@@ -33,7 +33,11 @@ export default function Donation(donations) {
     return donations.donations.donations.map((donation) => {
       return (
         <>
-          <Box>
+          <Box sx= {{
+            border: '1px solid black',
+            borderRadius: '4px',
+            margin: '4px'
+          }}>
             <Typography paragraph>Donation</Typography>
             <Typography paragraph>Amount:{donation.amount}</Typography>
             <Typography paragraph>Type: {donation.type} </Typography>
@@ -44,7 +48,7 @@ export default function Donation(donations) {
   }
 
   return (
-    <Card sx={{ maxWidth: 400, maxHeight: '580px' }}>
+    <Card sx={{ maxWidth: 400, maxHeight: '580px', width: '250px' }}>
       <CardHeader title="Donations" />
       <CardActions disableSpacing>
         <ExpandMore

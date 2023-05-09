@@ -43,20 +43,8 @@ const Profile = () => {
   }
 
 
-  const displayProjects = () => {
-    return projects.map(elem => {
-      return (
-        <div className='donation' key={ elem.id }>
-          <div ><h3>Project Name: { elem.name }</h3></div>
-          <div><p>Target: </p>{ elem.target }</div>
-          <div><p>Description: </p>{ elem.description }</div>
-        </div>
-      )
-    })
-  }
 
-
-   const displayNewProjects = () => {
+   const displayProjects = () => {
        return (
         <Project projects={ projects } />
        )
@@ -83,7 +71,7 @@ const Profile = () => {
     }
     else if(user.role === 'volunteer') {
       if(projects.length !== 0){
-        return displayNewProjects()
+        return displayProjects()
       } else {
         return <div>No hay proyectos relacionados a este miembro</div>
       }
@@ -92,7 +80,17 @@ const Profile = () => {
       return <div>Soy Admin</div>
     }
     else {
-      return displayDonationsAndProjects()
+      return (
+        <Box sx={{
+          border: '1px solid  black',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems:'flex-start'
+        }}>
+          { displayDonationsAndProjects() }
+        </Box>
+        )
     }
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {

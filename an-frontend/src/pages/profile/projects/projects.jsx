@@ -34,7 +34,9 @@ export default function Project(projects) {
       return (
         <>
           <Box sx= {{
-            boder: '1px solid black'
+            border: '1px solid black',
+            borderRadius: '4px',
+            margin: '4px'
           }}>
             <Typography paragraph>Project</Typography>
             <Typography paragraph>Name:{project.name}</Typography>
@@ -46,7 +48,7 @@ export default function Project(projects) {
   }
 
   return (
-    <Card sx={{ maxWidth: 400, maxHeight: '580px' }}>
+    <Card sx={{ maxWidth: 400, maxHeight: '580px', width: '250px' }}>
       <CardHeader title="Projects" />
       <CardActions disableSpacing>
         <ExpandMore
