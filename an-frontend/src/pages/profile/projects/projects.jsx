@@ -1,14 +1,14 @@
-import Card from '@mui/material/Card'
 import * as React from 'react'
+import { styled } from '@mui/material/styles'
+import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import { red } from '@mui/material/colors'
+import CardActions from '@mui/material/CardActions'
 import Collapse from '@mui/material/Collapse'
-import { styled } from '@mui/material/styles'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { IconButton } from '@mui/material'
+import Box from '@mui/material/Box'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -21,106 +21,34 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function Project({ user }) {
+export default function Project(projects) {
   const [expanded, setExpanded] = React.useState(false)
+  const [count, setCount] = React.useState(0)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
+
+  const displayProjects = () => {
+    return projects.projects.map((project) => {
+      return (
+        <>
+          <Box sx= {{
+            boder: '1px solid black'
+          }}>
+            <Typography paragraph>Project</Typography>
+            <Typography paragraph>Name:{project.name}</Typography>
+            <Typography paragraph>Target: {project.target} </Typography>
+          </Box>
+        </>
+      )
+    })
+  }
+
   return (
-    <Card
-      sx={{
-        border: '1px solid black',
-        maxWidth: 340,
-        width: '500px',
-        minBlockSize: '580px',
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '15px',
-      }}
-    >
-      <CardHeader
-        sx={{ margin: 0 }}
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {user.name.charAt(0).toUpperCase()}
-          </Avatar>
-        }
-        title={
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <h3>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</h3>
-          </Typography>
-        }
-        subheader={
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <h3>
-              {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
-            </h3>
-          </Typography>
-        }
-      />
-      <CardContent>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Email: </h3> <p>{user.email}</p>
-        </Typography>
-        <Typography
-          sx={{
-            isplay: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Phone Number:: </h3> <p>{user.phone}</p>
-        </Typography>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>ID Number:: </h3> <p>{user.idNumber}</p>
-        </Typography>
-        <Typography
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          <h3>Role: </h3>{' '}
-          <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
-        </Typography>
+    <Card sx={{ maxWidth: 400, maxHeight: '580px' }}>
+      <CardHeader title="Projects" />
+      <CardActions disableSpacing>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -129,15 +57,9 @@ export default function Project({ user }) {
         >
           <ExpandMoreIcon />
         </ExpandMore>
-      </CardContent>
+      </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-            set aside for 10 minutes.
-          </Typography>
-        </CardContent>
+        <CardContent sx={{ height: 'auto' }}>{displayProjects()}</CardContent>
       </Collapse>
     </Card>
   )

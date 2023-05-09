@@ -3,17 +3,13 @@ import { useEffect, useContext, useState } from "react"
 import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
-/* import getProfile from '../../services/userService'
-import getDonations from '../../services/memberDonations'
-import getProjects from '../../services/projectsService' */
 import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
-
-import CircularProgress from '@mui/material/CircularProgress'
-import Box from '@mui/material/Box'
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
+import Box from '@mui/material/Box'
+import Project from './projects/projects'
 
 
 import RecipeReviewCard from './userInfo/userInfo'
@@ -35,17 +31,18 @@ const Profile = () => {
     }
     getData()
   }, [setUser])
-//In this function search the donations, projects and the info of one member
   
-//Here display the user information
   const displayUserName = () => {
     return (
       <>
-        <RecipeReviewCard sx={{ height: '25%'}} user={ user }/>
+        <Box>
+          <RecipeReviewCard sx={{ height: '25%' }} user={user} />
+        </Box>
       </>
     ) 
   }
-//Here show the projects by Member/Volunteer
+
+
   const displayProjects = () => {
     return projects.map(elem => {
       return (
@@ -58,54 +55,27 @@ const Profile = () => {
     })
   }
 
-//Here show the donations by Member/Donor
-  // const displayDonations = () => {
-  //   return donation.donations.map(elem => {
-  //     return (
-  //       <div className='donation' key={ elem.id }>
-  //         <div ><h3>Donation { elem.id }</h3></div>
-  //         <div><p>Amount: </p>{ elem.amount }</div>
-  //         <div><p>Type: </p>{ elem.type }</div>
-  //       </div>
-  //     )
-  //   })
-  // }
+
+   const displayNewProjects = () => {
+       return (
+        <Project projects={ projects } />
+       )
+   }
+
     const displayDonations = () => {
-      return donation.donations.map((elem) => {
-        return (
-          <div className="donation" key={elem.id}>
-            <div>
-              <h3>Donation {elem.id}</h3>
-            </div>
-            <div>
-              <p>Amount: </p>
-              {elem.amount}
-            </div>
-            <div>
-              <p>Type: </p>
-              {elem.type}
-            </div>
-          </div>
-        )
-      })
-    }
-    const displayNewDonations = () => {
       return <Donation donations={ donation } />
     }
 
   const displayDonationsAndProjects = () => {
     return [ displayDonations(), displayProjects() ]
   }
+
+
 //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if(user.role === 'donor') {
       if(donation.donations.length !== 0) {
-        return (
-          <>
-            {displayNewDonations()}
-            {displayDonations()}
-          </>
-        )
+        return <>{displayDonations()}</>
       }
       else {
         return <div>No hay donaciones relacionados a este miembro</div>
@@ -113,7 +83,7 @@ const Profile = () => {
     }
     else if(user.role === 'volunteer') {
       if(projects.length !== 0){
-        return displayProjects()
+        return displayNewProjects()
       } else {
         return <div>No hay proyectos relacionados a este miembro</div>
       }
@@ -128,7 +98,7 @@ const Profile = () => {
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
      <Container
-     id='profile-container'
+       id="profile-container"
        sx={{
          border: '1px solid black',
          display: 'flex',
@@ -137,14 +107,17 @@ const Profile = () => {
          justifyContent: 'space-around',
          margin: '0px',
          width: '100vw',
+         height: '100vh'
        }}
-       maxWidth={false}
+       maxWidth={ false }
      >
        {displayUserName()}
-       <div className="donations">{displayData()}</div>
-       <Container
+       <div className="donations">
+          {displayData()}
+      </div>
+       {/* <Container
          sx={{
-           border: '1px solid black',
+           border: '1px solid green',
          }}
        >
          <Link to={`/profile/edit/${user.id}`}>
@@ -157,12 +130,12 @@ const Profile = () => {
          }}
        >
          <Link
-           sx={{ border: '1px solid black' }}
+           sx={{ border: '1px solid green' }}
            to={`/profile/delete/${user.id}`}
          >
            <button>Delete Account</button>
          </Link>
-       </Container>
+       </Container> */}
      </Container>
    )
   }
