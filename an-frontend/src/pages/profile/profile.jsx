@@ -18,7 +18,6 @@ import CardCalendar from './cards/cardCalendar'
 
 import useIsAdmin from '../../hooks/useAdmin'
 
-
 import RecipeReviewCard from './userInfo/userInfo'
 import { Box, Container, Divider, Tabs } from '@mui/material'
 
@@ -147,7 +146,7 @@ const Profile = () => {
         <Container
           sx={{
             width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
-            height: { lg: '85%', xl: '1040px' },
+            height: { lg: '85%', xl: '1130px' },
             padding: 3,
             alignSelf: 'center',
             justifyContent: 'center',
@@ -159,7 +158,7 @@ const Profile = () => {
               display: 'flex',
               alignSelf: 'center',
               width: '100%',
-              height: { lg: '98.5%' },
+              height: { lg: '98.5%', xl: '1090px' },
             }}
           >
             {displayUserName()}
@@ -176,7 +175,7 @@ const Profile = () => {
             alignContent: { xl: 'flex-start' },
             flexWrap: 'wrap',
             columnGap: { lg: 4, xl: 5 },
-            rowGap: { lg: 30, xl: 5 },
+            rowGap: { lg: 30, xl: 10 },
             borderColor: 'white',
             width: '80%',
             height: '85%',
@@ -310,13 +309,6 @@ const Profile = () => {
             </Box>
           </Tabs>
         </Container>
-
-        {/*       <Link to={`/profile/edit/${user.id}`}>
-        <button>Edit Account</button>
-      </Link>
-      <Link to={`/profile/delete/${user.id}`}>
-        <button>Delete Account</button>
-      </Link> */}
       </Container>
     )
   } else {

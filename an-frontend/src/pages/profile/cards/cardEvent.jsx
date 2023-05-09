@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import logoEvent from '../../../public/assets/profileAdmin/logoEvent.png'
-
+import { Link } from 'react-router-dom'
 
 const CardEvent = () => {
   return (
@@ -25,9 +25,10 @@ const CardEvent = () => {
           species, ranging across all continents except Antarctica
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
+        <Link to='/events'>
+          <Button size="small">Go</Button>
+        </Link>
       </CardActions>
     </Card>
   )

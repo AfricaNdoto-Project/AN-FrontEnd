@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import logoDonation from '../../../public/assets/profileAdmin/logoDonation.png'
+import { Link } from 'react-router-dom'
 
 const CardDonations= () => {
   return (
@@ -24,9 +25,10 @@ const CardDonations= () => {
           species, ranging across all continents except Antarctica
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
+        <Link to='/allDonations'>
+          <Button size="small">Go</Button>
+        </Link>
       </CardActions>
     </Card>
   )
