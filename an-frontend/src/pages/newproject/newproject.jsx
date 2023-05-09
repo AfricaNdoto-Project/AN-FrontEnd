@@ -20,9 +20,13 @@ import {
     FormLabel,
     Select,
     InputLabel,
-    MenuItem
+    MenuItem,
+    Container, 
+    Box
     // Typography
   } from '@mui/material'
+
+  import './newproject.css'
 
   import Loading from '../../components/loading/loading'
 
@@ -67,8 +71,6 @@ const NewProject = () => {
       const result = await CreateProject(form)
       if (result === 200) {
         navigate('/newproject')
-      } else {
-        console.log(result)
       }
     }
 
@@ -95,7 +97,7 @@ const NewProject = () => {
           </>
         )
       }
-      if (data.role === "volunteer") {
+      if (data.role === "volunteer" || data.role === "volunteer_donor") {
         return (
          <>
           <FormControlLabel defaultChecked="true" value="draft" control={<Radio/>} label="Draft" />
@@ -107,137 +109,183 @@ const NewProject = () => {
 
     if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {  
   return (
-      <Card sx={{ maxWidth: '500px' }}>
-        <CardHeader title="Project" />
-        <CardContent>
-          <TextField
-            required
-            onChange={(e) => setName(e.target.value)}
-            label="Name"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ marginBottom: '20px' }}
-          />
+      <Box
+      id="project-box"
+      sx={{ 
+        display: 'flex',
+        flexDirection: 'row',
+        height:'100%',
+        width: '100vw'
+      }}
+      >
+        <Card 
+        sx={{ 
+          maxWidth: '500px',
+          marginTop: '5vh',
+          marginBottom: '5vh',
+          marginLeft: '5vw',
+          marginRigth: '5vw',
+          isolation: 'isolated',
+          borderRadius: '10px',
+          backgroundColor: 'hsla(210, 100%, 98%, 1)'
+        
+           }}>
+          <CardHeader title="Project" />
+          <CardContent>
+            <TextField
+              required
+              onChange={(e) => setName(e.target.value)}
+              label="Name"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
 
-          <TextField
-            onChange={(e) => setTarget(e.target.value)}
-            label="Target"
-            variant="outlined"
-            fullWidth={true}
-          />
+            <TextField
+              onChange={(e) => setTarget(e.target.value)}
+              label="Target"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
 
-          <TextField
-            required
-            onChange={(e) => setDescription(e.target.value)}
-            label="Description"
-            variant="outlined"
-            fullWidth={true}
-          />
+            <TextField
+              required
+              onChange={(e) => setDescription(e.target.value)}
+              label="Description"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+              multiline
+            />
 
-          <TextField
-            required
-            onChange={(e) => setObjective(e.target.value)}
-            label="Objective"
-            variant="outlined"
-            fullWidth={true}
-          />
+            <TextField
+              required
+              onChange={(e) => setObjective(e.target.value)}
+              label="Objective"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
 
-          <TextField
-            required
-            onChange={(e) => setBudget(e.target.value)}
-            label="Budget"
-            variant="outlined"
-            fullWidth={true}
-          />
+            <TextField
+              required
+              onChange={(e) => setBudget(e.target.value)}
+              label="Budget"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
 
-          <TextField
-            onChange={(e) => setDeadline(e.target.value)}
-            label="Date"
-            variant="outlined"
-            fullWidth={true}
-          />
-         
-           <FormControl>
-        <FormLabel id="status-selector" >Status</FormLabel>
-            <RadioGroup
-                row
-                aria-labelledby="status-selector"
-                defaultValue="draft"
-                name="status"
-                value={status}
-                onChange={handleStatusChange}
+            <TextField
+              onChange={(e) => setDeadline(e.target.value)}
+              label="Date"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
+          
+            <FormControl
+            sx={{ marginBottom: '10px' }}
             >
-                {statusOption()}
+          <FormLabel id="status-selector">Status</FormLabel>
+              <RadioGroup
+                  row
+                  aria-labelledby="status-selector"
+                  defaultValue="draft"
+                  name="status"
+                  value={status}
+                  onChange={handleStatusChange}
+              >
+                  {statusOption()}
 
-            </RadioGroup>
-        </FormControl>
+              </RadioGroup>
+          </FormControl>
 
-          <p>Select a profession</p>
-        <FormControl required fullWidth>
-            <InputLabel id="profession-selector">Profession</InputLabel>
-                <Select
-                labelId="profession-selector"
-                id="profession-selector"
-                placeholder='Select a profession'
-                value={profession}
-                label="Profession"
-                onChange={handleProfessionChange}
-                >
-                    {professionData.map((elem) => {
-                        return <MenuItem value={elem.name} key={elem.id}>{elem.name}</MenuItem>
-                    })}
-                </Select>
-        </FormControl>
-
-        <FormControl fullWidth>
-            <InputLabel id="volunteer-selector">Volunteer</InputLabel>
-                <Select
-                labelId="volunteer-selector"
-                id="volunteer-selector"
-                value={volunteer}
-                label="Volunteer"
-                onChange={handleVolunteerChange}
-                >
-            
-                    { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
-                      return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
-                    })
-
-                    }
-                </Select>
-        </FormControl>
-
-          <TextField
-            onChange={(e) => setEquipmentName(e.target.value)}
-            label="Equipment name"
-            variant="outlined"
+          <FormControl 
+            required 
             fullWidth={true}
-          />
-          <TextField
-            onChange={(e) => setEquipmentDescription(e.target.value)}
-            label="Equipment description"
-            variant="outlined"
+            sx={{ marginBottom: '10px' }}
+          >
+              
+              <InputLabel id="profession-selector">Profession</InputLabel>
+                  <Select
+                  labelId="profession-selector"
+                  id="profession-selector"
+                  placeholder='Select a profession'
+                  value={profession}
+                  label="Profession"
+                  onChange={handleProfessionChange}
+                  >
+                      {professionData.map((elem) => {
+                          return <MenuItem value={elem.name} key={elem.id}>{elem.name}</MenuItem>
+                      })}
+                  </Select>
+          </FormControl>
+
+          <FormControl 
             fullWidth={true}
-          />
-          <TextField
-            onChange={(e) => setEquipmentCost(e.target.value)}
-            label="Equipment cost"
-            variant="outlined"
-            fullWidth={true}
-          />
-          {/* {errorMessage && (
-            <Typography color="error" textAlign="center" mt={2}>
-              {errorMessage}
-            </Typography>
-          )} */}
-        </CardContent>
-        <Divider />
-        <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={onSubmit} color="primary">
-            Submit
-          </Button>
-        </CardActions>
-      </Card>
+            sx={{ marginBottom: '10px' }}
+          >
+              <InputLabel id="volunteer-selector">Volunteer</InputLabel>
+                  <Select
+                  labelId="volunteer-selector"
+                  id="volunteer-selector"
+                  value={volunteer}
+                  label="Volunteer"
+                  onChange={handleVolunteerChange}
+                  >
+              
+                      { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
+                        return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
+                      })
+
+                      }
+                  </Select>
+          </FormControl>
+
+            <TextField
+              onChange={(e) => setEquipmentName(e.target.value)}
+              label="Equipment name"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
+            <TextField
+              onChange={(e) => setEquipmentDescription(e.target.value)}
+              label="Equipment description"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
+            <TextField
+              onChange={(e) => setEquipmentCost(e.target.value)}
+              label="Equipment cost"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ marginBottom: '10px' }}
+            />
+            {/* {errorMessage && (
+              <Typography color="error" textAlign="center" mt={2}>
+                {errorMessage}
+              </Typography>
+            )} */}
+          </CardContent>
+          <Divider />
+          <CardActions 
+            sx={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              margin: '5px 0'
+             }}
+          >
+            <Button onClick={onSubmit} variant="contained" color="primary" borderRadius="100px">
+              Submit
+            </Button>
+          </CardActions>
+        </Card>
+      </Box>
     )}
     else {
         return (
