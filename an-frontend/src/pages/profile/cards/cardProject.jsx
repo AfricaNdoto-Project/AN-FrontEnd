@@ -1,23 +1,34 @@
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoProject from '../../../public/assets/profileAdmin/logoProject.png'
 import { Link } from 'react-router-dom'
+import AccountTreeIcon from '@mui/icons-material/AccountTree'
 
 const CardProject = () => {
   return (
     <Card sx={{ width: '100%' }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={logoProject}
-      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            display: 'flex',
+            alignItems: 'baseline',
+            alignSelf: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <AccountTreeIcon
+            sx={{
+              display: 'flex',
+              alignItems: 'baseline',
+              alignSelf: 'center',
+              justifyContent: 'center',
+            }}
+          />
           Projects
         </Typography>
         <Typography variant="body2" color="text.secondary">

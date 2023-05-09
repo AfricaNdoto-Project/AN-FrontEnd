@@ -9,8 +9,8 @@ const CardMembers = () => {
   return (
     <Card sx={{ width: '100%' }}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" sx={{paddingTop: 1}}>
-          <ManageAccountsIcon /> Members
+        <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', alignItems:'baseline', alignSelf: 'center', justifyContent:'center'}}>
+          <ManageAccountsIcon  sx={{display: 'flex', alignItems:'baseline', alignSelf: 'center', justifyContent:'center'}}/> Members
         </Typography>
         <Typography variant="body2" color="text.secondary">
           See and manage information of our members

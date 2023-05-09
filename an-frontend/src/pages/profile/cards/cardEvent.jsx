@@ -1,23 +1,34 @@
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoEvent from '../../../public/assets/profileAdmin/logoEvent.png'
 import { Link } from 'react-router-dom'
+import EventNoteIcon from '@mui/icons-material/EventNote'
 
 const CardEvent = () => {
   return (
     <Card sx={{ width: '100%' }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={logoEvent}
-      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            display: 'flex',
+            alignItems: 'baseline',
+            alignSelf: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <EventNoteIcon
+            sx={{
+              display: 'flex',
+              alignItems: 'baseline',
+              alignSelf: 'center',
+              justifyContent: 'center',
+            }}
+          />
           Events
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -26,7 +37,7 @@ const CardEvent = () => {
         </Typography>
       </CardContent>
       <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-        <Link to='/events'>
+        <Link to="/events">
           <Button size="small">Go</Button>
         </Link>
       </CardActions>

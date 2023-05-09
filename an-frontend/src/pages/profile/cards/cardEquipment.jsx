@@ -1,23 +1,34 @@
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoEquipment from '../../../public/assets/profileAdmin/logoEquipment.png'
 import { Link } from 'react-router-dom'
+import ConstructionIcon from '@mui/icons-material/Construction'
 
 const CardEquipment = () => {
   return (
     <Card sx={{ width: '100%' }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={logoEquipment}
-      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            display: 'flex',
+            alignItems: 'baseline',
+            alignSelf: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <ConstructionIcon
+            sx={{
+              display: 'flex',
+              alignItems: 'baseline',
+              alignSelf: 'center',
+              justifyContent: 'center',
+            }}
+          />{' '}
           Equipment
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -26,7 +37,7 @@ const CardEquipment = () => {
         </Typography>
       </CardContent>
       <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-        <Link to='/equipment'>
+        <Link to="/equipment">
           <Button size="small">Go</Button>
         </Link>
       </CardActions>

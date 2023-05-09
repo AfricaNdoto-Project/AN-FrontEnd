@@ -1,23 +1,34 @@
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoProfessional from '../../../public/assets/profileAdmin/logoProfessional.png'
 import { Link } from 'react-router-dom'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 
 const CardProfessional = () => {
   return (
     <Card sx={{ width: '100%' }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={logoProfessional}
-      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            display: 'flex',
+            alignItems: 'baseline',
+            alignSelf: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <SupervisorAccountIcon
+            sx={{
+              display: 'flex',
+              alignItems: 'baseline',
+              alignSelf: 'center',
+              justifyContent: 'center',
+            }}
+          />
           Professions
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -26,7 +37,7 @@ const CardProfessional = () => {
         </Typography>
       </CardContent>
       <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-        <Link to='/professions'>
+        <Link to="/professions">
           <Button size="small">Go</Button>
         </Link>
       </CardActions>
