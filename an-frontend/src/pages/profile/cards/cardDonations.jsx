@@ -6,42 +6,40 @@ import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism'
 
-const CardDonations= () => {
+
+const CardDonations = () => {
+
   return (
-    <Card sx={{ width: '100%' }}>
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{
-            display: 'flex',
-            alignItems: 'baseline',
-            alignSelf: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <VolunteerActivismIcon
-            sx={{
-              display: 'flex',
-              alignItems: 'baseline',
-              alignSelf: 'center',
-              justifyContent: 'center',
-            }}
-          />
-          Donations
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-        <Link to="/allDonations">
-          <Button size="small">Go</Button>
-        </Link>
-      </CardActions>
-    </Card>
+    <Card sx={{ width: '100%', height: '100%' }}>
+    <CardContent
+      sx={{
+        display: 'flex',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <VolunteerActivismIcon
+        sx={{
+          display: 'flex',
+          alignItems: 'baseline',
+          alignSelf: 'center',
+          justifyContent: 'center',
+        }}
+      />
+      <Typography gutterBottom variant="h5" component="div">
+        Donations
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        Donations
+      </Typography>
+    </CardContent>
+    <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
+      <Link to="/allDonations">
+        <Button size="small">Go</Button>
+      </Link>
+    </CardActions>
+  </Card>
   )
 }
 

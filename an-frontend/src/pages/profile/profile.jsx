@@ -4,31 +4,24 @@ import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 import './profile.css'
-import { Link } from 'react-router-dom'
-import ImgMediaCard from './cards/cardMembers'
 import Loading from '../../components/loading/loading'
 
-import CardMembers from './cards/cardMembers'
-import CardDonations from './cards/cardDonations'
-import CardProject from './cards/cardProject'
-import CardEvent from './cards/cardEvent'
-import CardProfessional from './cards/cardProfessional'
-import CardEquipment from './cards/cardEquipment'
-import CardCalendar from './cards/cardCalendar'
 
-import useIsAdmin from '../../hooks/useAdmin'
+/* import useIsAdmin from '../../hooks/useAdmin' */
 
 import RecipeReviewCard from './userInfo/userInfo'
-import { Box, Container, Divider, Tabs } from '@mui/material'
+import { Box, Container, Divider } from '@mui/material'
+
+import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
   const [donation, setDonation] = useState([])
   const [projects, setProjects] = useState([])
   const { user, setUser } = useContext(UserContext)
 
-  const { adminData } = useIsAdmin()
+  /* const { adminData } = useIsAdmin()
   const { isAdmin } = adminData
-
+ */
   //In this function search the donations, projects and the info of one member
   useEffect(() => {
     const getData = async () => {
@@ -109,7 +102,7 @@ const Profile = () => {
         return <div>No hay proyectos relacionados a este miembro</div>
       }
     } else if (user.role === 'admin') {
-      ;('e')
+    //algo
     } else {
       return displayDonationsAndProjects()
     }
@@ -165,150 +158,8 @@ const Profile = () => {
             <>{displayData()}</>
           </Box>
         </Container>
-
         <Divider sx={{ margin: 1 }} />
-
-        <Container
-          maxWidth={false}
-          sx={{
-            display: 'flex',
-            alignContent: { xl: 'flex-start' },
-            flexWrap: 'wrap',
-            columnGap: { lg: 4, xl: 5 },
-            rowGap: { lg: 30, xl: 10 },
-            borderColor: 'white',
-            width: '80%',
-            height: '85%',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            padding: 3.5,
-            margin: 0,
-            overflow: { lg: 'scroll', xl: 'clip' },
-            visibility: {
-              xs: 'collapse',
-              sm: 'collapse',
-              md: 'collapse',
-              lg: 'visible',
-              xl: 'visible',
-            },
-          }}
-        >
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardMembers />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardDonations />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardProject />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardEvent />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardProfessional />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardEquipment />
-          </Box>
-          <Box
-            sx={{
-              width: { lg: '270px', xl: '370px' },
-              height: { lg: '180px', xl: '300px' },
-            }}
-          >
-            <CardCalendar />
-          </Box>
-        </Container>
-
-        <Container
-          maxWidth={false}
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'column', md: 'row' },
-            justifyContent: 'space-around',
-            gap: 2,
-            padding: 0,
-            height: { xs: '100', sm: '600px', md: '600px' },
-            width: { xs: '100', sm: '460px', md: '460px' },
-            margin: 0,
-            alignSelf: 'center',
-            flexWrap: {
-              xs: 'nowrap',
-              sm: 'nowrap',
-              md: 'wrap',
-              lg: 'wrap',
-              xl: 'wrap',
-            },
-            visibility: {
-              xs: 'visible',
-              sm: 'visible',
-              md: 'visible',
-              lg: 'collapse',
-              xl: 'collapse',
-            },
-          }}
-        >
-          <Tabs variant="scrollable" scrollButtons="auto" value={7}>
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardMembers />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardDonations />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardProject />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardEvent />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardProfessional />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardEquipment />
-            </Box>
-            <Divider sx={{ margin: 0.5 }} />
-            <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <CardCalendar />
-            </Box>
-          </Tabs>
-        </Container>
+        {user.role === 'admin' ? TaskBoard() : null}
       </Container>
     )
   } else {

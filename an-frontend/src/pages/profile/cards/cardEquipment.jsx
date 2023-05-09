@@ -7,33 +7,30 @@ import { Link } from 'react-router-dom'
 import ConstructionIcon from '@mui/icons-material/Construction'
 
 const CardEquipment = () => {
+ 
   return (
-    <Card sx={{ width: '100%' }}>
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
+    <Card sx={{ width: '100%', height: '100%' }}>
+      <CardContent
+        sx={{
+          display: 'flex',
+          alignSelf: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <ConstructionIcon
           sx={{
             display: 'flex',
             alignItems: 'baseline',
             alignSelf: 'center',
             justifyContent: 'center',
           }}
-        >
-          <ConstructionIcon
-            sx={{
-              display: 'flex',
-              alignItems: 'baseline',
-              alignSelf: 'center',
-              justifyContent: 'center',
-            }}
-          />{' '}
+        />
+        <Typography gutterBottom variant="h5" component="div">
           Equipment
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Equipment
         </Typography>
       </CardContent>
       <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>

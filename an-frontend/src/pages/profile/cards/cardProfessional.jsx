@@ -7,41 +7,36 @@ import { Link } from 'react-router-dom'
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 
 const CardProfessional = () => {
+
   return (
-    <Card sx={{ width: '100%' }}>
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{
-            display: 'flex',
-            alignItems: 'baseline',
-            alignSelf: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <SupervisorAccountIcon
-            sx={{
-              display: 'flex',
-              alignItems: 'baseline',
-              alignSelf: 'center',
-              justifyContent: 'center',
-            }}
-          />
-          Professions
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-        <Link to="/professions">
-          <Button size="small">Go</Button>
-        </Link>
-      </CardActions>
-    </Card>
+    <Card sx={{ width: '100%', height: '100%' }}>
+    <CardContent
+      sx={{
+        display: 'flex',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <SupervisorAccountIcon
+        sx={{
+          display: 'flex',
+          alignItems: 'baseline',
+          alignSelf: 'center',
+          justifyContent: 'center',
+        }}
+      />
+      <Typography>Professions</Typography>
+      <Typography variant="body2" color="text.secondary">
+        Professions
+      </Typography>
+    </CardContent>
+    <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
+      <Link to="/professions">
+        <Button size="small">Go</Button>
+      </Link>
+    </CardActions>
+  </Card>
   )
 }
 
