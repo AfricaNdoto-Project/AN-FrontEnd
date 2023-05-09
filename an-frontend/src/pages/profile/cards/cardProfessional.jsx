@@ -4,20 +4,20 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import logoMember from '../../../public/assets/profileAdmin/logoMember.png'
+import logoProfessional from '../../../public/assets/profileAdmin/logoProfessional.png'
 
-const CardMembers = () => {
+const CardProfessional = () => {
   return (
     <Card sx={{ width: '100%' }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="140"
-        image={logoMember}
+        image={logoProfessional}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Professions
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -32,4 +32,4 @@ const CardMembers = () => {
   )
 }
 
-export default CardMembers
+export default CardProfessional

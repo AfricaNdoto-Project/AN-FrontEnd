@@ -5,11 +5,19 @@ import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 import './profile.css'
 import { Link } from 'react-router-dom'
-import ImgMediaCard from './cards/cardsTemplate'
+import ImgMediaCard from './cards/cardMembers'
 import Loading from '../../components/loading/loading'
-import CardMembers from './cards/cardsTemplate'
+
+import CardMembers from './cards/cardMembers'
+import CardDonations from './cards/cardDonations'
+import CardProject from './cards/cardProject'
+import CardEvent from './cards/cardEvent'
+import CardProfessional from './cards/cardProfessional'
+import CardEquipment from './cards/cardEquipment'
+import CardCalendar from './cards/cardCalendar'
 
 import useIsAdmin from '../../hooks/useAdmin'
+
 
 import RecipeReviewCard from './userInfo/userInfo'
 import { Box, Container, Divider, Tabs } from '@mui/material'
@@ -115,48 +123,72 @@ const Profile = () => {
           padding: '10px',
           display: 'flex',
           width: '100%',
-          height: '100%',
+          height: {
+            xs: '100%',
+            sm: '100%',
+            md: '100%',
+            lg: '1300px',
+            xl: '100%',
+          },
           border: 2,
           margin: 0,
           borderColor: 'green',
+          alignSelf: 'center',
+          justifyContent: 'center',
           flexDirection: {
             xs: 'column',
             sm: 'column',
-            md: 'row',
+            md: 'column',
             lg: 'row',
             xl: 'row',
           },
-          justifyContent: { xs: 'center', sm: 'center' },
         }}
       >
-        <Box
+        <Container
           sx={{
-            display: 'flex',
-            width: { xs: '100%', sm: '70%', md: '30%', lg: '30%', xl: '20%' },
-            height: '90%',
+            width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
+            height: { lg: '85%', xl: '1040px' },
+            padding: 3,
+            alignSelf: 'center',
+            justifyContent: 'center',
+            borderColor: 'pink',
           }}
         >
-          {displayUserName()}
-          <div className="donations">{displayData()}</div>
-        </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              alignSelf: 'center',
+              width: '100%',
+              height: { lg: '98.5%' },
+            }}
+          >
+            {displayUserName()}
+            <>{displayData()}</>
+          </Box>
+        </Container>
+
         <Divider sx={{ margin: 1 }} />
 
         <Container
           maxWidth={false}
           sx={{
             display: 'flex',
-            alignContent: 'flex-start',
+            alignContent: { xl: 'flex-start' },
             flexWrap: 'wrap',
-            gap: 5,
+            columnGap: { lg: 4, xl: 5 },
+            rowGap: { lg: 30, xl: 5 },
             borderColor: 'white',
-            width: '70%',
-            height: '100%',
-            padding: 5,
+            width: '80%',
+            height: '85%',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            padding: 3.5,
             margin: 0,
+            overflow: { lg: 'scroll', xl: 'clip' },
             visibility: {
               xs: 'collapse',
               sm: 'collapse',
-              md: 'visible',
+              md: 'collapse',
               lg: 'visible',
               xl: 'visible',
             },
@@ -164,59 +196,59 @@ const Profile = () => {
         >
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <CardMembers/>
+            <CardMembers />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardDonations />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardProject />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardEvent />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardProfessional />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardEquipment />
           </Box>
           <Box
             sx={{
-              width: 370,
-              height: 300,
+              width: { lg: '270px', xl: '370px' },
+              height: { lg: '180px', xl: '300px' },
             }}
           >
-            <ImgMediaCard />
+            <CardCalendar />
           </Box>
         </Container>
 
@@ -227,9 +259,11 @@ const Profile = () => {
             flexDirection: { xs: 'column', sm: 'column', md: 'row' },
             justifyContent: 'space-around',
             gap: 2,
-            width: '70%',
             padding: 0,
+            height: { xs: '100', sm: '600px', md: '600px' },
+            width: { xs: '100', sm: '460px', md: '460px' },
             margin: 0,
+            alignSelf: 'center',
             flexWrap: {
               xs: 'nowrap',
               sm: 'nowrap',
@@ -240,7 +274,7 @@ const Profile = () => {
             visibility: {
               xs: 'visible',
               sm: 'visible',
-              md: 'collapse',
+              md: 'visible',
               lg: 'collapse',
               xl: 'collapse',
             },
@@ -248,31 +282,31 @@ const Profile = () => {
         >
           <Tabs variant="scrollable" scrollButtons="auto" value={7}>
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardMembers />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardDonations />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardProject />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardEvent />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardProfessional />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardEquipment />
             </Box>
             <Divider sx={{ margin: 0.5 }} />
             <Box sx={{ display: 'flex', width: 300, height: 400 }}>
-              <ImgMediaCard />
+              <CardCalendar />
             </Box>
           </Tabs>
         </Container>
