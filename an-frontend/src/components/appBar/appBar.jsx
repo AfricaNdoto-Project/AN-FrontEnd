@@ -18,7 +18,7 @@ export default function ButtonAppBar() {
 
   
   return (
-    <Box sx={{ flexGrow: 1, bgcolor:'white' }}>
+    <Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
       <AppBar position="static">
         <Toolbar>
           <Typography
@@ -26,8 +26,8 @@ export default function ButtonAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: 'flex' }}
           >
-            <Link to='/' style={{textDecoration: 'none', color: 'white'}}>
-            Logo
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              Logo
             </Link>
           </Typography>
           <Link to="/signup">

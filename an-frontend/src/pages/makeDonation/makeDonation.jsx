@@ -82,7 +82,7 @@ const Donation = () => {
       <Card
         sx={{
           maxWidth: '500px',
-          height: '450px',
+          height: '425px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -162,7 +162,11 @@ const Donation = () => {
         )} */}
         </CardContent>
         <Divider />
-        <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CardActions sx={{ 
+          display: 'flex',
+          justifyContent: 'center',
+          padding: 0 
+        }}>
           <Button onClick={submit} color="success">
             Submit
           </Button>

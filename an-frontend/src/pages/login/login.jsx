@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
 
+
 import {
   Card,
   CardHeader,
@@ -34,12 +35,12 @@ const LoginCard = () => {
 
   return (
     <Container
-      id="container"
+      id="login-container"
       sx={{
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
         height: '100vh',
         width: '100vw',
       }}
@@ -48,7 +49,7 @@ const LoginCard = () => {
       <Card
         sx={{
           maxWidth: '500px',
-          margin: 0,
+          marginTop: '15px',
           height: '300px',
         }}
       >

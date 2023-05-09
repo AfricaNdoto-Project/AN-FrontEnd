@@ -99,21 +99,41 @@ const Profile = () => {
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
-     <Container sx={{border: '1px solid black', display: 'flex', flexDirection: 'row', alignItems:'center', justifyContent: 'space-around'}}>
-      { displayUserName() }
-      <div className='donations'>
-        { displayData() }
-      </div>
-      <Link to={`/profile/edit/${user.id}`}>
-        <button>
-          Edit Account
-        </button>
-      </Link>
-      <Link sx={{border: '1px solid black'}} to={`/profile/delete/${user.id}`}>
-        <button>
-          Delete Account
-        </button>
-      </Link>
+     <Container
+       sx={{
+         border: '1px solid black',
+         display: 'flex',
+         flexDirection: 'row',
+         alignItems: 'center',
+         justifyContent: 'space-around',
+         margin: '5px',
+         width: '100vw',
+       }}
+       maxWidth={false}
+     >
+       {displayUserName()}
+       <div className="donations">{displayData()}</div>
+       <Container
+         sx={{
+           border: '1px solid black',
+         }}
+       >
+         <Link to={`/profile/edit/${user.id}`}>
+           <button>Edit Account</button>
+         </Link>
+       </Container>
+       <Container
+         sx={{
+           border: '1px solid black',
+         }}
+       >
+         <Link
+           sx={{ border: '1px solid black' }}
+           to={`/profile/delete/${user.id}`}
+         >
+           <button>Delete Account</button>
+         </Link>
+       </Container>
      </Container>
    )
   }
