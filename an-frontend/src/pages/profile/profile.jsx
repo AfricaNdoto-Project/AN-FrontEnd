@@ -135,7 +135,7 @@ const Profile = () => {
          flexDirection: 'row',
          alignItems: 'center',
          justifyContent: 'space-around',
-         margin: '5px',
+         margin: '0px',
          width: '100vw',
        }}
        maxWidth={false}

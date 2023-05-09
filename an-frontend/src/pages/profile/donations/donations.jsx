@@ -33,7 +33,7 @@ export default function Donation({ donations }) {
         return donations.donations.map((donation) => {
             return (
               <>
-                <Typography paragraph>Amount:{ donation.ampunt }</Typography>
+                <Typography paragraph>Amount:{ donation.amount }</Typography>
                 <Typography paragraph>Type: { donation.type } </Typography>
               </>
             )
