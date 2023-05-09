@@ -11,7 +11,6 @@ import getProfessions from '../../services/professionService'
 import './signup.css'
 
 
-
 import {
   Card,
   CardHeader,
@@ -21,12 +20,10 @@ import {
   Button,
   CardActions,
   Container,
-
   // Typography
 } from '@mui/material'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
 import Loading from '../../components/loading/loading'
+
 
 const SignupCard = () => {
 
@@ -75,138 +72,129 @@ const SignupCard = () => {
   return (
     <Container
       id="container"
-      sx={{ display: 'flex', flexDirection: 'row', marginBottom: '25px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginBottom: '50px',
+        margin: 0,
+        height: '100%',
+        width: '100vw',
+      }}
+      maxWidth={false}
     >
-      <ImageList
-        id="image"
-        sx={{ width: 500, height: '100vh', marginTop: '100px' }}
-        cols={1}
-      >
-        <ImageListItem>
-          <img
-            src="../../assets/ong.jpeg"
-            alt="Imagen de un niño en África"
-            loading="lazy"
-          />
-        </ImageListItem>
-      </ImageList>
-      <Card
-        sx={{
-          maxWidth: '500px',
-          margin: 0,
-          height: '825px',
-          marginTop: '100px',
-        }}
-      >
-        <CardHeader title="Signup" />
-        <CardContent>
-          <TextField
-            onChange={(e) => setName(e.target.value)}
-            label="Name"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setLastname(e.target.value)}
-            label="Lastname"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            label="Email"
-            variant="outlined"
-            fullWidth={true}
-            // sx={{ marginBottom: '20px' }}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            label="Password"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setIdNumber(e.target.value)}
-            label="idNumber"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setPhone(e.target.value)}
-            label="Phone"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setAddress(e.target.value)}
-            label="Address"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          <Box sx={{ minWidth: 120, margin: '10px 0' }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Role</InputLabel>
-              <Select
-                labelId="role-label"
-                id="role"
-                value={role}
-                label="Role"
-                onChange={handleRoleChange}
-              >
-                <MenuItem value={'donor'}>Donor</MenuItem>
-                <MenuItem value={'volunteer'}>Volunteer</MenuItem>
-                <MenuItem value={'volunteer_donor'}>
-                  Volunteer and Donor
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box sx={{ minWidth: 120, margin: '10px 0' }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Profession</InputLabel>
-              <Select
-                labelId="professione-label"
-                id="profession"
-                value={profession}
-                label="Profession"
-                onChange={handleProfessionChange}
-              >
-                {professions.map((elem) => {
-                  return (
-                    <MenuItem value={elem.name} key={elem.id}>
-                      {elem.name}
-                    </MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
-          </Box>
-          {/* {errorMessage && (
+        <Card sx={{ maxWidth: '500px', margin: '80px 15px', height: '825px' }}>
+          <CardHeader title="Signup" />
+          <CardContent>
+            <TextField
+              onChange={(e) => setName(e.target.value)}
+              label="Name"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setLastname(e.target.value)}
+              label="Lastname"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setEmail(e.target.value)}
+              label="Email"
+              variant="outlined"
+              fullWidth={true}
+              // sx={{ marginBottom: '20px' }}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setPassword(e.target.value)}
+              label="Password"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setIdNumber(e.target.value)}
+              label="idNumber"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setPhone(e.target.value)}
+              label="Phone"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setAddress(e.target.value)}
+              label="Address"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            <Box sx={{ minWidth: 120, margin: '10px 0' }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                <Select
+                  labelId="role-label"
+                  id="role"
+                  value={role}
+                  label="Role"
+                  onChange={handleRoleChange}
+                >
+                  <MenuItem value={'donor'}>Donor</MenuItem>
+                  <MenuItem value={'volunteer'}>Volunteer</MenuItem>
+                  <MenuItem value={'volunteer_donor'}>
+                    Volunteer and Donor
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box sx={{ minWidth: 120, margin: '10px 0' }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Profession
+                </InputLabel>
+                <Select
+                  labelId="professione-label"
+                  id="profession"
+                  value={profession}
+                  label="Profession"
+                  onChange={handleProfessionChange}
+                >
+                  {professions.map((elem) => {
+                    return (
+                      <MenuItem value={elem.name} key={elem.id}>
+                        {elem.name}
+                      </MenuItem>
+                    )
+                  })}
+                </Select>
+              </FormControl>
+            </Box>
+            {/* {errorMessage && (
           <Typography color="error" textAlign="center" mt={2}>
             {errorMessage}
           </Typography>
         )} */}
-        </CardContent>
-        <Divider />
-        <CardActions
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <Button onClick={onSignup} color="success">
-            Submit
-          </Button>
-        </CardActions>
-      </Card>
+          </CardContent>
+          <Divider />
+          <CardActions
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Button onClick={onSignup} color="success">
+              Submit
+            </Button>
+          </CardActions>
+        </Card>
     </Container>
   )}
   else {

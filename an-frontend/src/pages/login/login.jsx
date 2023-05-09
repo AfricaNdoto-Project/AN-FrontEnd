@@ -13,8 +13,7 @@ import {
   Container
   // Typography
 } from '@mui/material'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
+import './login.css'
 
 const LoginCard = () => {
   const navigate = useNavigate()
@@ -36,27 +35,21 @@ const LoginCard = () => {
   return (
     <Container
       id="container"
-      sx={{ display: 'flex', flexDirection: 'row', marginBottom: '25px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        height: '100vh',
+        width: '100vw',
+      }}
+      maxWidth={false}
     >
-      <ImageList
-        id="image"
-        sx={{ width: 500, height: '100vh', marginTop: '100px' }}
-        cols={1}
-      >
-        <ImageListItem>
-          <img
-            src="../../assets/ong.jpeg"
-            alt="Imagen de un niño en África"
-            loading="lazy"
-          />
-        </ImageListItem>
-      </ImageList>
       <Card
         sx={{
           maxWidth: '500px',
           margin: 0,
           height: '300px',
-          marginTop: '100px',
         }}
       >
         <CardHeader title="Login" />

@@ -9,6 +9,7 @@ import { getAllProjects } from '../../services/projectsService'
 import getProducts from '../../services/productService'
 import { makeDonation } from '../../services/donationsService'
 import Loading from '../../components/loading/loading'
+import './makeDonation.css'
 
 
 import {
@@ -19,6 +20,7 @@ import {
   Divider,
   Button,
   CardActions,
+  Container
   // Typography
 } from '@mui/material'
 
@@ -65,77 +67,108 @@ const Donation = () => {
   }
   if(products.length !== 0 && projects.length !== 0) {
   return (
-    <Card sx={{ maxWidth: '500px', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <CardHeader title="Donation" />
-      <CardContent>
-        <TextField
-        sx={{minWidth: 120, margin: '10px'}}
-          onChange={(e) => setAmount(e.target.value)}
-          label="Amount"
-          variant="outlined"
-          fullWidth={true}
-        />
-        <Box sx={{ minWidth: 120, margin: '10px'  }}>
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Projects</InputLabel>
-            <Select
-              labelId="project-label"
-              id="project"
-              value={ projectName }
-              label="Project"
-              onChange={ handleProjectNameChange }
-            >
-              {projects.map((elem, idx) => {
-                return <MenuItem value={ elem.name } key={idx}>{ elem.name }</MenuItem>
-              })}
-            </Select>
-          </FormControl>
-        </Box>
-        <Box sx={{ minWidth: 120, margin: '10px' }}>
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
-            <Select
-              labelId="type-label"
-              id="type"
-              value={ type }
-              label="Type"
-              onChange={ handleTypeChange }
-            >
-              <MenuItem value={'punctual'}>Punctual</MenuItem>
-              <MenuItem value={'monthly'}>Monthly</MenuItem>
-              <MenuItem value={'anual'}>Anual</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box sx={{ minWidth: 120, margin: '10px' }}>
-          <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Product</InputLabel>
-            <Select
-              labelId="professione-label"
-              id="profession"
-              value={ name }
-              label="Profession"
-              onChange={ handleProductChange }
-            >
-              {products.map((elem, idx) => {
-                return <MenuItem value={ elem.name } key={idx}>{ elem.name }</MenuItem>
-              })}
-            </Select>
-          </FormControl>
-        </Box>
-        {/* {errorMessage && (
+    <Container
+      id="container"
+      maxWidth={false}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
+      <Card
+        sx={{
+          maxWidth: '500px',
+          height: '450px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '30px'
+        }}
+      >
+        <CardHeader title="Donation" />
+        <CardContent>
+          <TextField
+            sx={{ minWidth: 120, margin: '10px' }}
+            onChange={(e) => setAmount(e.target.value)}
+            label="Amount"
+            variant="outlined"
+            fullWidth={true}
+          />
+          <Box sx={{ minWidth: 120, margin: '10px' }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Projects</InputLabel>
+              <Select
+                labelId="project-label"
+                id="project"
+                value={projectName}
+                label="Project"
+                onChange={handleProjectNameChange}
+              >
+                {projects.map((elem, idx) => {
+                  return (
+                    <MenuItem value={elem.name} key={idx}>
+                      {elem.name}
+                    </MenuItem>
+                  )
+                })}
+              </Select>
+            </FormControl>
+          </Box>
+          <Box sx={{ minWidth: 120, margin: '10px' }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Type</InputLabel>
+              <Select
+                labelId="type-label"
+                id="type"
+                value={type}
+                label="Type"
+                onChange={handleTypeChange}
+              >
+                <MenuItem value={'punctual'}>Punctual</MenuItem>
+                <MenuItem value={'monthly'}>Monthly</MenuItem>
+                <MenuItem value={'anual'}>Anual</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+          <Box sx={{ minWidth: 120, margin: '10px' }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Product</InputLabel>
+              <Select
+                labelId="professione-label"
+                id="profession"
+                value={name}
+                label="Profession"
+                onChange={handleProductChange}
+              >
+                {products.map((elem, idx) => {
+                  return (
+                    <MenuItem value={elem.name} key={idx}>
+                      {elem.name}
+                    </MenuItem>
+                  )
+                })}
+              </Select>
+            </FormControl>
+          </Box>
+          {/* {errorMessage && (
           <Typography color="error" textAlign="center" mt={2}>
             {errorMessage}
           </Typography>
         )} */}
-      </CardContent>
-      <Divider />
-      <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Button onClick={ submit } color="success">
-          Submit
-        </Button>
-      </CardActions>
-    </Card>
+        </CardContent>
+        <Divider />
+        <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button onClick={submit} color="success">
+            Submit
+          </Button>
+        </CardActions>
+      </Card>
+    </Container>
   )}
   else {
     return (
