@@ -21,10 +21,11 @@ import {
     Select,
     InputLabel,
     MenuItem,
-    Container, 
-    Box
+    Grid, 
+    Container
     // Typography
   } from '@mui/material'
+  import { styled } from '@mui/material/styles';
 
   import './newproject.css'
 
@@ -107,185 +108,189 @@ const NewProject = () => {
 
     }
 
+
     if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {  
   return (
-      <Box
-      id="project-box"
+      <Container
+      id="project-container"
       sx={{ 
         display: 'flex',
         flexDirection: 'row',
-        height:'100%',
-        width: '100vw'
+        justifyContent: 'flex-end',
+        marginBottom: '50px',
+        margin: 0,
+        height: '100%',
+        width: '100vw',
       }}
+      maxWidth={false}
       >
-        <Card 
-        sx={{ 
-          maxWidth: '500px',
-          marginTop: '5vh',
-          marginBottom: '5vh',
-          marginLeft: '5vw',
-          marginRigth: '5vw',
-          isolation: 'isolated',
-          borderRadius: '10px',
-          backgroundColor: 'hsla(210, 100%, 98%, 1)'
-        
-           }}>
-          <CardHeader title="Project" />
-          <CardContent>
-            <TextField
-              required
-              onChange={(e) => setName(e.target.value)}
-              label="Name"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-            />
+        <Grid 
+        item xs={12} sm={12} md={8} lg={8} xl={4}
+         >
+          <Card 
+          sx={{ 
+            maxWidth: '500px', 
+            margin: '80px 15px', 
+            height: '86.5%'
+            }}>
+            <CardHeader title="Project" />
+            <CardContent>
+              <TextField
+                required
+                onChange={(e) => setName(e.target.value)}
+                label="Name"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
 
-            <TextField
-              onChange={(e) => setTarget(e.target.value)}
-              label="Target"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-            />
+              <TextField
+                onChange={(e) => setTarget(e.target.value)}
+                label="Target"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '20px' }}
+              />
 
-            <TextField
-              required
-              onChange={(e) => setDescription(e.target.value)}
-              label="Description"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-              multiline
-            />
+              <TextField
+                required
+                onChange={(e) => setDescription(e.target.value)}
+                label="Description"
+                variant="outlined"
+                fullWidth={true}
+                maxRows={2}
+                sx={{ marginBottom: '20px', overflow:'auto'}}
+                multiline
+              />
 
-            <TextField
-              required
-              onChange={(e) => setObjective(e.target.value)}
-              label="Objective"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-            />
+              <TextField
+                required
+                onChange={(e) => setObjective(e.target.value)}
+                label="Objective"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
 
-            <TextField
-              required
-              onChange={(e) => setBudget(e.target.value)}
-              label="Budget"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-            />
+              <TextField
+                required
+                onChange={(e) => setBudget(e.target.value)}
+                label="Budget"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
 
-            <TextField
-              onChange={(e) => setDeadline(e.target.value)}
-              label="Date"
-              variant="outlined"
-              fullWidth={true}
+              <TextField
+                onChange={(e) => setDeadline(e.target.value)}
+                label="Date"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
+            
+              <FormControl
               sx={{ marginBottom: '10px' }}
-            />
-          
-            <FormControl
-            sx={{ marginBottom: '10px' }}
-            >
-          <FormLabel id="status-selector">Status</FormLabel>
-              <RadioGroup
-                  row
-                  aria-labelledby="status-selector"
-                  defaultValue="draft"
-                  name="status"
-                  value={status}
-                  onChange={handleStatusChange}
               >
-                  {statusOption()}
+            <FormLabel id="status-selector">Status</FormLabel>
+                <RadioGroup
+                    row
+                    aria-labelledby="status-selector"
+                    defaultValue="draft"
+                    name="status"
+                    value={status}
+                    onChange={handleStatusChange}
+                >
+                    {statusOption()}
 
-              </RadioGroup>
-          </FormControl>
+                </RadioGroup>
+            </FormControl>
 
-          <FormControl 
-            required 
-            fullWidth={true}
-            sx={{ marginBottom: '10px' }}
-          >
-              
-              <InputLabel id="profession-selector">Profession</InputLabel>
-                  <Select
-                  labelId="profession-selector"
-                  id="profession-selector"
-                  placeholder='Select a profession'
-                  value={profession}
-                  label="Profession"
-                  onChange={handleProfessionChange}
-                  >
-                      {professionData.map((elem) => {
-                          return <MenuItem value={elem.name} key={elem.id}>{elem.name}</MenuItem>
-                      })}
-                  </Select>
-          </FormControl>
-
-          <FormControl 
-            fullWidth={true}
-            sx={{ marginBottom: '10px' }}
-          >
-              <InputLabel id="volunteer-selector">Volunteer</InputLabel>
-                  <Select
-                  labelId="volunteer-selector"
-                  id="volunteer-selector"
-                  value={volunteer}
-                  label="Volunteer"
-                  onChange={handleVolunteerChange}
-                  >
-              
-                      { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
-                        return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
-                      })
-
-                      }
-                  </Select>
-          </FormControl>
-
-            <TextField
-              onChange={(e) => setEquipmentName(e.target.value)}
-              label="Equipment name"
-              variant="outlined"
+            <FormControl 
+              required 
               fullWidth={true}
               sx={{ marginBottom: '10px' }}
-            />
-            <TextField
-              onChange={(e) => setEquipmentDescription(e.target.value)}
-              label="Equipment description"
-              variant="outlined"
+            >
+                
+                <InputLabel id="profession-selector">Profession</InputLabel>
+                    <Select
+                    labelId="profession-selector"
+                    id="profession-selector"
+                    placeholder='Select a profession'
+                    value={profession}
+                    label="Profession"
+                    onChange={handleProfessionChange}
+                    >
+                        {professionData.map((elem) => {
+                            return <MenuItem value={elem.name} key={elem.id}>{elem.name}</MenuItem>
+                        })}
+                    </Select>
+            </FormControl>
+
+            <FormControl 
               fullWidth={true}
               sx={{ marginBottom: '10px' }}
-            />
-            <TextField
-              onChange={(e) => setEquipmentCost(e.target.value)}
-              label="Equipment cost"
-              variant="outlined"
-              fullWidth={true}
-              sx={{ marginBottom: '10px' }}
-            />
-            {/* {errorMessage && (
-              <Typography color="error" textAlign="center" mt={2}>
-                {errorMessage}
-              </Typography>
-            )} */}
-          </CardContent>
-          <Divider />
-          <CardActions 
-            sx={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              margin: '5px 0'
-             }}
-          >
-            <Button onClick={onSubmit} variant="contained" color="primary" borderRadius="100px">
-              Submit
-            </Button>
-          </CardActions>
-        </Card>
-      </Box>
+            >
+                <InputLabel id="volunteer-selector">Volunteer</InputLabel>
+                    <Select
+                    labelId="volunteer-selector"
+                    id="volunteer-selector"
+                    value={volunteer}
+                    label="Volunteer"
+                    onChange={handleVolunteerChange}
+                    >
+                
+                        { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
+                          return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
+                        })
+
+                        }
+                    </Select>
+            </FormControl>
+
+              <TextField
+                onChange={(e) => setEquipmentName(e.target.value)}
+                label="Equipment name"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
+              <TextField
+                onChange={(e) => setEquipmentDescription(e.target.value)}
+                label="Equipment description"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
+              <TextField
+                onChange={(e) => setEquipmentCost(e.target.value)}
+                label="Equipment cost"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
+              {/* {errorMessage && (
+                <Typography color="error" textAlign="center" mt={2}>
+                  {errorMessage}
+                </Typography>
+              )} */}
+            </CardContent>
+            <Divider />
+            <CardActions 
+              sx={{ 
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                margin: '5px 0'
+              }}
+            >
+              <Button onClick={onSubmit} variant="contained" color="primary" borderRadius="100px">
+                Submit
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Container>
     )}
     else {
         return (
