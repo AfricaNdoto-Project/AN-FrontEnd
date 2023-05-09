@@ -98,21 +98,18 @@ const Profile = () => {
      <Container
        id="profile-container"
        sx={{
-         border: '1px solid black',
          display: 'flex',
          flexDirection: 'row',
          alignItems: 'center',
          justifyContent: 'space-around',
          margin: '0px',
          width: '100vw',
-         height: '100vh'
+         height: '100vh',
        }}
-       maxWidth={ false }
+       maxWidth={false}
      >
        {displayUserName()}
-       <div className="donations">
-          {displayData()}
-      </div>
+       <div className="donations">{displayData()}</div>
        {/* <Container
          sx={{
            border: '1px solid green',
@@ -124,7 +121,7 @@ const Profile = () => {
        </Container>
        <Container
          sx={{
-           border: '1px solid black',
+           border: '1px solid green',
          }}
        >
          <Link

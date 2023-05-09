@@ -30,25 +30,35 @@ export default function Project(projects) {
   }
 
   const displayProjects = () => {
-    return projects.projects.map((project) => {
+    return projects.projects.map((project, index = project.id) => {
       return (
-        <>
-          <Box sx= {{
-            border: '1px solid black',
-            borderRadius: '4px',
-            margin: '4px'
-          }}>
+        
+          <Box
+            key={index}
+            sx={{
+              border: '1px solid black',
+              borderRadius: '4px',
+              margin: '4px',
+            }}
+          >
             <Typography paragraph>Project</Typography>
-            <Typography paragraph>Name:{project.name}</Typography>
-            <Typography paragraph>Target: {project.target} </Typography>
+            <Typography paragraph>Name:{ project.name }</Typography>
+            <Typography paragraph>Target: { project.target } </Typography>
           </Box>
-        </>
+        
       )
     })
   }
 
   return (
-    <Card sx={{ maxWidth: 400, maxHeight: '580px', width: '250px' }}>
+    <Card
+      sx={{
+        maxWidth: 400,
+        maxHeight: '580px',
+        width: '250px',
+        marginLeft: '5px',
+      }}
+    >
       <CardHeader title="Projects" />
       <CardActions disableSpacing>
         <ExpandMore
@@ -61,7 +71,9 @@ export default function Project(projects) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ height: 'auto' }}>{displayProjects()}</CardContent>
+        <CardContent sx={{ height: 'auto', maxHeight: '580px' }}>
+          { displayProjects() }
+        </CardContent>
       </Collapse>
     </Card>
   )

@@ -32,23 +32,31 @@ export default function Donation(donations) {
   const displayDonations = () => {
     return donations.donations.donations.map((donation) => {
       return (
-        <>
-          <Box sx= {{
-            border: '1px solid black',
-            borderRadius: '4px',
-            margin: '4px'
-          }}>
-            <Typography paragraph>Donation</Typography>
-            <Typography paragraph>Amount:{donation.amount}</Typography>
-            <Typography paragraph>Type: {donation.type} </Typography>
+          <Box
+          key={donation.id}
+            sx={{
+              border: '1px solid black',
+              borderRadius: '4px',
+              margin: '4px',
+            }}
+          >
+            <Typography >Donation</Typography>
+            <Typography paragraph>Amount:{ donation.amount }</Typography>
+            <Typography paragraph>Type: { donation.type } </Typography>
           </Box>
-        </>
       )
     })
   }
 
   return (
-    <Card sx={{ maxWidth: 400, maxHeight: '580px', width: '250px' }}>
+    <Card
+      sx={{
+        maxWidth: 400,
+        maxHeight: '580px',
+        width: '250px',
+        marginRight: '5px',
+      }}
+    >
       <CardHeader title="Donations" />
       <CardActions disableSpacing>
         <ExpandMore
@@ -61,8 +69,10 @@ export default function Donation(donations) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ height: 'auto', overflow: 'scroll' }}>
-          {displayDonations()}
+        <CardContent
+          sx={{ height: 'auto', overflow: 'scroll', maxHeight: '580px' }}
+        >
+          { displayDonations() }
         </CardContent>
       </Collapse>
     </Card>
