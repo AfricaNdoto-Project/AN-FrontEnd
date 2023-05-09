@@ -52,11 +52,18 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+              width: '80px'
             }}
             variant="body2"
             color="text.secondary"
           >
-            <h3>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</h3>
+            <Typography
+              sx={{
+                marginLeft: '75px',
+              }}
+            >
+              {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+            </Typography>
           </Typography>
         }
         subheader={
@@ -65,13 +72,18 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+              width: '80px'
             }}
             variant="body2"
             color="text.secondary"
           >
-            <h3>
+            <Typography
+              sx={{
+                marginLeft: '75px',
+              }}
+            >
               {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
-            </h3>
+            </Typography>
           </Typography>
         }
       />

@@ -221,7 +221,7 @@ const NewProject = () => {
                 )
                 .map((elem) => {
                   return (
-                    <MenuItem value={elem.name} key={elem.id}>
+                    <MenuItem value={elem.id} key={elem.id}>
                       {elem.name} {elem.lastname}
                     </MenuItem>
                   )

@@ -16,7 +16,28 @@ export default function ButtonAppBar() {
     navigate('/login')
   }
 
-  
+  const token = localStorage.getItem('token')
+
+  const displayProfileLink = () => {
+    if(token) {
+      return (
+        <Link to="/profile">
+          <Button color="inherit">Profile</Button>
+        </Link>
+      )
+    }
+  }
+  const displayLogout = () => {
+    if(token) {
+      return (
+        <Button color="inherit" onClick={logout}>
+            LogOut
+        </Button>
+      )
+    }
+  }
+
+
   return (
     <Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
       <AppBar position="static">
@@ -39,13 +60,9 @@ export default function ButtonAppBar() {
           <Link to="/donation">
             <Button color="inherit">Donation</Button>
           </Link>
-          <Link to="/profile">
-            <Button color="inherit">Profile</Button>
-          </Link>
+          { displayProfileLink() }
           {/* logout button */}
-          <Button color="inherit" onClick={logout}>
-            LogOut
-          </Button>
+          { displayLogout() }
           <SwipeableTemporaryDrawer />
         </Toolbar>
       </AppBar>
