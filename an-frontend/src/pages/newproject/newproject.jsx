@@ -284,7 +284,7 @@ const NewProject = () => {
                 margin: '5px 0'
               }}
             >
-              <Button onClick={onSubmit} variant="contained" color="primary" borderRadius="100px">
+              <Button onClick={onSubmit} variant="contained" color="primary">
                 Submit
               </Button>
             </CardActions>
