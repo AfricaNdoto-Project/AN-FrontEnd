@@ -1,7 +1,5 @@
 body {
   margin: 0;
-  height: 100%;
-  width: 100%;
 }
 
 
@@ -13,6 +11,8 @@ body {
   flex-direction: column;
 }
 
+
 * {
   border: 0.1px rgb(163, 18, 18) solid;
 }
+

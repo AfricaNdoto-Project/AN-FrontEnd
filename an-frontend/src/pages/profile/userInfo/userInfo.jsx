@@ -1,20 +1,48 @@
 import Card from '@mui/material/Card'
+import * as React from 'react'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
+
+import Collapse from '@mui/material/Collapse'
+import { styled } from '@mui/material/styles'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { IconButton } from '@mui/material'
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props
+  return <IconButton {...other} />
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}))
+
 import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 
+
 export default function RecipeReviewCard({ user }) {
+  const [expanded, setExpanded] = React.useState(false)
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded)
+  }
   return (
     <Card
       sx={{
-        width: '100%',
+
+        border: '1px solid black',
+        maxWidth: 340,
+        width: '500px',
+        minBlockSize: '580px',
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
+        margin: '15px',
       }}
     >
       <CardHeader
@@ -30,11 +58,22 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+
+              width: '80px'
+
             }}
             variant="body2"
             color="text.secondary"
           >
-            <h3>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</h3>
+
+            <Typography
+              sx={{
+                marginLeft: '75px',
+              }}
+            >
+              {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+            </Typography>
+
           </Typography>
         }
         subheader={
@@ -43,13 +82,22 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+
+              width: '80px'
+
             }}
             variant="body2"
             color="text.secondary"
           >
-            <h3>
+
+            <Typography
+              sx={{
+                marginLeft: '75px',
+              }}
+            >
               {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
-            </h3>
+            </Typography>
+
           </Typography>
         }
       />

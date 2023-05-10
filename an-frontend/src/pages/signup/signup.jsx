@@ -11,7 +11,6 @@ import getProfessions from '../../services/professionService'
 import './signup.css'
 
 
-
 import {
   Card,
   CardHeader,
@@ -21,12 +20,10 @@ import {
   Button,
   CardActions,
   Container,
-
   // Typography
 } from '@mui/material'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
 import Loading from '../../components/loading/loading'
+
 
 const SignupCard = () => {
 
@@ -75,27 +72,24 @@ const SignupCard = () => {
   return (
     <Container
       id="container"
-      sx={{ display: 'flex', flexDirection: 'row', marginBottom: '25px' }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginBottom: '50px',
+        margin: 0,
+        height: '100%',
+        width: '100vw',
+        minWidth: '390px',
+        overflow: 'scroll'
+      }}
+      maxWidth={false}
     >
-      <ImageList
-        id="image"
-        sx={{ width: 500, height: '100vh', marginTop: '100px' }}
-        cols={1}
-      >
-        <ImageListItem>
-          <img
-            src="../../assets/ong.jpeg"
-            alt="Imagen de un niño en África"
-            loading="lazy"
-          />
-        </ImageListItem>
-      </ImageList>
       <Card
         sx={{
           maxWidth: '500px',
-          margin: 0,
-          height: '825px',
-          marginTop: '100px',
+          margin: '80px 15px',
+          height: '825px'
         }}
       >
         <CardHeader title="Signup" />

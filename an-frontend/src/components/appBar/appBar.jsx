@@ -23,9 +23,51 @@ export default function ButtonAppBar() {
     navigate('/login')
   }
 
-  
+  const token = localStorage.getItem('token')
+
+  const displayProfileLink = () => {
+    if(token) {
+      return (
+        <Link to="/profile">
+          <Button color="inherit">Profile</Button>
+        </Link>
+      )
+    }
+  }
+  const displayLogout = () => {
+    if(token) {
+      return (
+        <Button color="inherit" onClick={logout}>
+            LogOut
+        </Button>
+      )
+    }
+  }
+
+  const displayLogin = () => {
+    if(!token) {
+      return (
+        <Link to="/login">
+            <Button color="inherit">Login</Button>
+        </Link>
+      )
+    }
+  }
+  const displaySignUp = () => {
+    if(!token) {
+      return (
+        <Link to="/signup">
+            <Button color="inherit">Sign Up</Button>
+        </Link>
+      )
+    }
+  }
+
+
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'white' }}>
+
+    <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw', minWidth: '390px' }}>
+
       <AppBar position="static">
         <Toolbar>
           <Typography
@@ -37,16 +79,16 @@ export default function ButtonAppBar() {
               Logo
             </Link>
           </Typography>
-          <Link to="/signup">
-            <Button color="inherit">Sign Up</Button>
+
+          { displaySignUp() }
+          { displayLogin() }
+          <Link to="/donation">
+            <Button color="inherit">Donation</Button>
           </Link>
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
-          </Link>
+          { displayProfileLink() }
+
           {/* logout button */}
-          <Button color="inherit" onClick={logout}>
-            LogOut
-          </Button>
+          { displayLogout() }
           <SwipeableTemporaryDrawer />
         </Toolbar>
       </AppBar>
