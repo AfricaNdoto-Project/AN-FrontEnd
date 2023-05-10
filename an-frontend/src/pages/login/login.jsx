@@ -44,6 +44,7 @@ const LoginCard = () => {
     if (result === 200) {
       navigate('/profile')
     } else {
+      alert(result)
       console.log(result)
     }
   }
@@ -82,6 +83,7 @@ const LoginCard = () => {
               }}
               // sx={{ marginBottom: '20px' }}
               sx={{ margin: '10px 0' }}
+              InputLabelProps={{ required: true }}
             />
             <TextField
               onChange={(e) => setPassword(e.target.value)}
@@ -91,6 +93,7 @@ const LoginCard = () => {
               sx={{ margin: '10px 0' }}
               type={isPassVisible ? 'text' : 'password'}
               InputProps={{
+                required: true,
                 startAdornment: <Lock />,
                 endAdornment: (
                   <IconButton onClick={changeVisibility}>
