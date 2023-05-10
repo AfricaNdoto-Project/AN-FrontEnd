@@ -6,6 +6,7 @@ import getProfessions from '../../services/professionService'
 import { getVolunteers } from '../../services/volunteerService'
 import { CreateProject } from '../../services/projectsService'
 import {
+
     Card,
     CardHeader,
     TextField,
@@ -73,15 +74,17 @@ const NewProject = () => {
       if (result === 200) {
         navigate('/newproject')
       }
+
     }
+  }
 
-    const handleStatusChange = (event) => {
-        setStatus(event.target.value);
-      };
+  const handleStatusChange = (event) => {
+    setStatus(event.target.value)
+  }
 
-    const handleProfessionChange = (event) => {
-        setProfession(event.target.value);
-      };
+  const handleProfessionChange = (event) => {
+    setProfession(event.target.value)
+  }
 
     const handleVolunteerChange = (event) => {
       setVolunteer(event.target.value);
@@ -298,6 +301,7 @@ const NewProject = () => {
               <Loading />
           ) 
     }
+
 }
 
 export default NewProject
