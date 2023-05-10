@@ -6,41 +6,58 @@ import { useState, useEffect } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
 
-
 const Delete = () => {
-    const [donorUser, setDonorUSer] = useState({})
-    const [volunteerUser, setVolunteerUSer] = useState({})
-    const { id } = useParams()
-    const navigate = useNavigate()
+  const [donorUser, setDonorUSer] = useState({})
+  const [volunteerUser, setVolunteerUSer] = useState({})
+  const { id } = useParams()
+  const navigate = useNavigate()
 
-    useEffect(() => {
-      getData()
-    }, [])
-    console.log(id)
+  useEffect(() => {
     const getData = async () => {
       const donor = await getDonor(id)
       const volunteer = await getOneVolunteer(id)
       setDonorUSer(donor)
       setVolunteerUSer(volunteer)
     }
+    getData()
+  }, [id])
 
-    const deleteMemberById = async () => {
-        await deleteMember(id)
-        localStorage.removeItem('token')
-        alert('Account deleted')
-        return navigate('/login')
-    }
-    
-  if(Object.keys(donorUser).length !== 0 || Object.keys(volunteerUser).length !== 0) {
+  const deleteMemberById = async () => {
+    await deleteMember(id)
+    localStorage.removeItem('token')
+    alert('Account deleted')
+    return navigate('/login')
+  }
+
+  if (
+    Object.keys(donorUser).length !== 0 ||
+    Object.keys(volunteerUser).length !== 0
+  ) {
     return (
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '500px'}}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '500px',
+        }}
+      >
         <h2>Are you Sure?</h2>
         <button onClick={deleteMemberById}>Delete Account</button>
       </div>
     )
   } else {
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '500px',
+        }}
+      >
         <CircularProgress />
       </Box>
     )
