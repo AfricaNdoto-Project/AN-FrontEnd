@@ -1,81 +1,73 @@
 import { UserContext } from '../../context/userContext'
-import { useEffect, useContext, useState } from "react"
+import { useEffect, useContext, useState } from 'react'
 import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
-/* import getProfile from '../../services/userService'
-import getDonations from '../../services/memberDonations'
-import getProjects from '../../services/projectsService' */
+
+import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import Loading from '../../components/loading/loading'
+import Donation from './donations/donations'
+import Box from '@mui/material/Box'
+import Project from './projects/projects'
 
+
+/* import useIsAdmin from '../../hooks/useAdmin' */
 
 import RecipeReviewCard from './userInfo/userInfo'
+import { Box, Container, Divider } from '@mui/material'
+
+import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
-  const [donation, setDonation] = useState([])
-  const [projects, setProjects] = useState([])
-  const { user, setUser } = useContext(UserContext)
 
 
   useEffect(() => {
+    const getData = async () => {
+      const result = await getProfile()
+      const donations = await getMyDonations()
+      const project = await getProjects()
+      setProjects(project)
+      setUser(result)
+      setDonation(donations)
+    }
     getData()
-  }, [])
-//In this function search the donations, projects and the info of one member
-  const getData = async () => {
-    const result = await getProfile()
-    const donations = await getMyDonations()
-    const project = await getProjects()
-    setProjects(project)
-    setUser(result)
-    setDonation(donations)
-  }
-//Here display the user information
+  }, [setUser])
+  
   const displayUserName = () => {
     return (
       <>
-        <RecipeReviewCard user={ user }/>
+        <Box>
+          <RecipeReviewCard sx={{ height: '25%' }} user={user} />
+        </Box>
       </>
-    )
-  }
-//Here show the projects by Member/Volunteer
-  const displayProjects = () => {
-    return projects.map(elem => {
-      return (
-        <div className='donation' key={ elem.id }>
-          <div ><h3>Project Name: { elem.name }</h3></div>
-          <div><p>Target: </p>{ elem.target }</div>
-          <div><p>Description: </p>{ elem.description }</div>
-        </div>
-      )
-    })
+    ) 
   }
 
-//Here show the donations by Member/Donor
-  const displayDonations = () => {
-    return donation.donations.map(elem => {
-      return (
-        <div className='donation' key={ elem.id }>
-          <div ><h3>Donation { elem.id }</h3></div>
-          <div><p>Amount: </p>{ elem.amount }</div>
-          <div><p>Type: </p>{ elem.type }</div>
-        </div>
-      )
-    })
-  }
+
+
+   const displayProjects = () => {
+       return (
+        <Project projects={ projects } />
+       )
+   }
+
+    const displayDonations = () => {
+      return <Donation donations={ donation } />
+    }
 
   const displayDonationsAndProjects = () => {
     return [ displayDonations(), displayProjects() ]
   }
+
+
 //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if(user.role === 'donor') {
       if(donation.donations.length !== 0) {
-        return displayDonations()
+        return <>{displayDonations()}</>
       }
       else {
         return <div>No hay donaciones relacionados a este miembro</div>
@@ -92,32 +84,63 @@ const Profile = () => {
       return <div>Soy Admin</div>
     }
     else {
-      return displayDonationsAndProjects()
+      return (
+        <Box sx={{
+          border: '1px solid  black',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems:'flex-start'
+        }}>
+          { displayDonationsAndProjects() }
+        </Box>
+        )
     }
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
-     <>
-      { displayUserName() }
-      <div className='donations'>
-        { displayData() }
-      </div>
-      <Link to={`/profile/edit/${user.id}`}>
-        <button>
-          Edit Account
-        </button>
-      </Link>
-      <Link to={`/profile/delete/${user.id}`}>
-        <button>
-          Delete Account
-        </button>
-      </Link>
-      <Link to={`/newproject`} state={{data: user}}>
-        <button>
-          New project
-        </button>
-      </Link>
-     </>
+
+     <Container
+       id="profile-container"
+       sx={{
+         display: 'flex',
+         flexDirection: 'row',
+         alignItems: 'center',
+         justifyContent: 'space-around',
+         margin: '0px',
+         width: '100vw',
+         height: '100vh',
+       }}
+       maxWidth={false}
+     >
+       {displayUserName()}
+       <div className="donations">{ displayData() }</div>
+       <Link to='/newproject'>
+        <button>New Project</button>
+       </Link>
+       {/* <Container
+         sx={{
+           border: '1px solid green',
+         }}
+       >
+         <Link to={`/profile/edit/${user.id}`}>
+           <button>Edit Account</button>
+         </Link>
+       </Container>
+       <Container
+         sx={{
+           border: '1px solid green',
+         }}
+       >
+         <Link
+           sx={{ border: '1px solid green' }}
+           to={`/profile/delete/${user.id}`}
+         >
+           <button>Delete Account</button>
+         </Link>
+       </Container> */}
+     </Container>
+
    )
   }
   else {

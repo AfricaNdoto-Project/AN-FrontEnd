@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ProjectCard from './projectcard/projectcard'
 import { Container } from '@mui/material'
 import { CircularProgress } from '@mui/material'
+
 import Loading from '../../components/loading/loading'
 
 import { getAllProjects } from '../../services/projectsService'
@@ -22,7 +23,7 @@ const AllProjects = () => {
     return allProjects.map((elem) => {
       return (
         <>
-        <ProjectCard key={elem.id} project={elem} />
+        <RecipeReviewCard key={elem.id} project={elem} />
         </>
       )
     })

@@ -11,7 +11,6 @@ import getProfessions from '../../services/professionService'
 import './signup.css'
 
 
-
 import {
   Card,
   CardHeader,
@@ -20,9 +19,11 @@ import {
   Divider,
   Button,
   CardActions,
+  Container,
   // Typography
 } from '@mui/material'
 import Loading from '../../components/loading/loading'
+
 
 const SignupCard = () => {
 
@@ -69,11 +70,28 @@ const SignupCard = () => {
   if(Object.keys(professions).length !== 0) {
 
   return (
-    <div className="container">
-      <figure>
-        <img src="" />
-      </figure>
-      <Card sx={{ maxWidth: '500px', margin: 0 }}>
+    <Container
+      id="container"
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginBottom: '50px',
+        margin: 0,
+        height: '100%',
+        width: '100vw',
+        minWidth: '390px',
+        overflow: 'scroll'
+      }}
+      maxWidth={false}
+    >
+      <Card
+        sx={{
+          maxWidth: '500px',
+          margin: '80px 15px',
+          height: '825px'
+        }}
+      >
         <CardHeader title="Signup" />
         <CardContent>
           <TextField
@@ -171,13 +189,19 @@ const SignupCard = () => {
         )} */}
         </CardContent>
         <Divider />
-        <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CardActions
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           <Button onClick={onSignup} color="success">
             Submit
           </Button>
         </CardActions>
       </Card>
-    </div>
+    </Container>
   )}
   else {
     return (
