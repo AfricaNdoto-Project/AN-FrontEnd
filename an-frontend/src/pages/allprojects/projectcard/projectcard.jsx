@@ -6,7 +6,7 @@ import {
   Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-export default function ProjectCard({ project }) {
+const ProjectCard = ({ project }) => {
   return (
     <Card sx={{ 
       width: 340,
@@ -75,3 +75,6 @@ export default function ProjectCard({ project }) {
     </Card>
   )
 }
+
+export default ProjectCard
+
