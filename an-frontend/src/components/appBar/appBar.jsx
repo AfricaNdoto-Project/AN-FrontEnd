@@ -2,12 +2,14 @@ import AppBar from '@mui/material/AppBar'
 import { Link, useNavigate } from 'react-router-dom'
 import useIsAdmin from '../../hooks/useAdmin'
 import SwipeableTemporaryDrawer from './sideMenu/sideMenu'
+import { Avatar } from '@mui/material';
 
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import '../appBar/appBar.css'
+import logo from '../../assets/thumb_AN.png'
 
 export default function ButtonAppBar() {
   const navigate = useNavigate()
@@ -76,7 +78,7 @@ export default function ButtonAppBar() {
             sx={{ flexGrow: 1, display: 'flex' }}
           >
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-              Logo
+            <Avatar alt="Logo AfricaNdoto" src={logo} />
             </Link>
           </Typography>
 
