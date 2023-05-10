@@ -61,7 +61,7 @@ const [donation, setDonation] = useState([])
   const displayDonationsAndProjects = () => {
     return [ displayDonations(), displayProjects() ]
   }
-
+  
 
 //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
@@ -115,7 +115,7 @@ const [donation, setDonation] = useState([])
      >
        {displayUserName()}
        <div className="donations">{ displayData() }</div>
-       <Link to='/newproject'>
+       <Link to='/newproject' state={{data: user}}>
         <button>New Project</button>
        </Link>
        {/* <Container

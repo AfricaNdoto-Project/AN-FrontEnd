@@ -24,7 +24,7 @@ const AllProjects = () => {
       return (
         <>
 
-        <RecipeReviewCard key={elem.id} project={elem} />
+        <ProjectCard key={elem.id} project={elem} />
 
         </>
       )
