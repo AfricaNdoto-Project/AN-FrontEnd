@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
-import useIsAdmin from '../../hooks/useAdmin'
+
+
+
+
+
+
 import {
   Card,
   CardHeader,
@@ -13,8 +18,7 @@ import {
   Container
   // Typography
 } from '@mui/material'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
+import './login.css'
 
 const LoginCard = () => {
   const navigate = useNavigate()
@@ -39,72 +43,68 @@ const LoginCard = () => {
       console.log(result)
     }
   }
-
-  return (
-    <Container
-      id="container"
-      sx={{ display: 'flex', flexDirection: 'row', marginBottom: '25px' }}
-    >
-      <ImageList
-        id="image"
-        sx={{ width: 500, height: '100vh', marginTop: '100px' }}
-        cols={1}
-      >
-        <ImageListItem>
-          <img
-            src="../../assets/ong.jpeg"
-            alt="Imagen de un niño en África"
-            loading="lazy"
-          />
-        </ImageListItem>
-      </ImageList>
-      <Card
+    return (
+      <Container
+        id="login-container"
         sx={{
-          maxWidth: '500px',
-          margin: 0,
-          height: '300px',
-          marginTop: '100px',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          height: '100vh',
+          width: '100vw',
+          margin: '0px',
+          minWidth: '390px',
         }}
+        maxWidth={false}
       >
-        <CardHeader title="Login" />
-        <CardContent>
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            label="Email"
-            variant="outlined"
-            fullWidth={true}
-            // sx={{ marginBottom: '20px' }}
-            sx={{ margin: '10px 0' }}
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            label="Password"
-            variant="outlined"
-            fullWidth={true}
-            sx={{ margin: '10px 0' }}
-          />
-          {/* {errorMessage && (
-          <Typography color="error" textAlign="center" mt={2}>
-            {errorMessage}
-          </Typography>
-        )} */}
-        </CardContent>
-        <Divider />
-        <CardActions
+        <Card
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            margin: '5px 0',
+            maxWidth: '500px',
+            marginTop: '15px',
+            height: '300px',
           }}
         >
-          <Button onClick={onLogin} color="success">
-            Login
-          </Button>
-        </CardActions>
-      </Card>
-    </Container>
-  )
+          <CardHeader title="Login" />
+          <CardContent>
+            <TextField
+              onChange={(e) => setEmail(e.target.value)}
+              label="Email"
+              variant="outlined"
+              fullWidth={true}
+              // sx={{ marginBottom: '20px' }}
+              sx={{ margin: '10px 0' }}
+            />
+            <TextField
+              onChange={(e) => setPassword(e.target.value)}
+              label="Password"
+              variant="outlined"
+              fullWidth={true}
+              sx={{ margin: '10px 0' }}
+            />
+            {/* {errorMessage && (
+            <Typography color="error" textAlign="center" mt={2}>
+              {errorMessage}
+            </Typography>
+          )} */}
+          </CardContent>
+          <Divider />
+          <CardActions
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              margin: '5px 0',
+            }}
+          >
+            <Button onClick={onLogin} color="success">
+              Login
+            </Button>
+          </CardActions>
+        </Card>
+      </Container>
+    )
 }
+
 
 export default LoginCard
