@@ -25,7 +25,6 @@ const ExpandMore = styled((props) => {
 import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-
 export default function RecipeReviewCard({ user }) {
   const [expanded, setExpanded] = React.useState(false)
 
@@ -34,15 +33,11 @@ export default function RecipeReviewCard({ user }) {
   }
   return (
     <Card
-      sx={{
-
-        border: '1px solid black',
-        maxWidth: 340,
-        width: '500px',
-        minBlockSize: '580px',
+    sx={{
+        width: '100%',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        margin: '15px',
       }}
     >
       <CardHeader
@@ -59,21 +54,15 @@ export default function RecipeReviewCard({ user }) {
               flexDirection: 'column',
               justifyContent: 'space-around',
 
-              width: '80px'
-
+              width: '100%',
             }}
             variant="body2"
             color="text.secondary"
           >
-
             <Typography
-              sx={{
-                marginLeft: '75px',
-              }}
             >
               {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
             </Typography>
-
           </Typography>
         }
         subheader={
@@ -83,21 +72,15 @@ export default function RecipeReviewCard({ user }) {
               flexDirection: 'column',
               justifyContent: 'space-around',
 
-              width: '80px'
-
+              width: '100%',
             }}
             variant="body2"
             color="text.secondary"
           >
-
             <Typography
-              sx={{
-                marginLeft: '75px',
-              }}
             >
               {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
             </Typography>
-
           </Typography>
         }
       />
@@ -148,7 +131,7 @@ export default function RecipeReviewCard({ user }) {
           <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
         </Typography>
       </CardContent>
-      <CardActions sx={{alignSelf: 'center', justifyContent: 'center'}}>
+      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
         <Link to={`/profile/edit/${user.id}`}>
           <button>Edit Account</button>
         </Link>
