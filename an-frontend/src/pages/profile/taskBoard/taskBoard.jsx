@@ -1,11 +1,11 @@
 import { Hidden, Container, Box, Divider, Tabs } from "@mui/material"
-import CardMembers from "../cards/cardMembers"
-import CardDonations from "../cards/cardDonations"
-import CardProject from "../cards/cardProject"
-import CardEvent from "../cards/cardEvent"
-import CardProfessional from "../cards/cardProfessional"
-import CardEquipment from "../cards/cardEquipment"
-import CardCalendar from "../cards/cardCalendar"
+import CardMembers from './cards/cardMembers'
+import CardDonations from './cards/cardDonations'
+import CardProject from './cards/cardProject'
+import CardEvent from "./cards/cardEvent"
+import CardProfessional from "./cards/cardProfessional"
+import CardEquipment from "./cards/cardEquipment"
+import CardCalendar from "./cards/cardCalendar"
 /* import {Grow} from "@mui/material" */
 
 const TaskBoard = () => {

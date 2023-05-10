@@ -157,14 +157,14 @@ const Profile = () => {
               }}
             >
               {displayUserName()}
-              <>{displayData()}</>
+               <>{displayData()}</> 
             </Box>
           </Container>
           <Divider sx={{ margin: 1 }} />
 
-          {/*        {user.role !== 'volunteer' && user.role !== 'donor'
+                  {user.role !== 'volunteer' && user.role !== 'donor' && user.role !== 'admin'
          ? displayDonationsAndProjects()
-         : null} */}
+         : null} 
           {user.role === 'admin' ? displayAdminView() : null}
         </Container>
       </>
