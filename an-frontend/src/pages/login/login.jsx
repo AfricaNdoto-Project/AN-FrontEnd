@@ -42,6 +42,8 @@ const LoginCard = () => {
           alignItems: 'flex-start',
           height: '100vh',
           width: '100vw',
+          margin: '0px',
+          minWidth: '390px',
         }}
         maxWidth={false}
       >

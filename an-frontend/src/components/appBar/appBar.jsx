@@ -47,7 +47,7 @@ export default function ButtonAppBar() {
     }
   }
   const displaySignUp = () => {
-    if(token) {
+    if(!token) {
       return (
         <Link to="/signup">
             <Button color="inherit">Sign Up</Button>
@@ -58,7 +58,7 @@ export default function ButtonAppBar() {
 
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw' }}>
+    <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw', minWidth: '390px' }}>
       <AppBar position="static">
         <Toolbar>
           <Typography

@@ -93,7 +93,7 @@ const Donation = () => {
         <CardHeader title="Donation" />
         <CardContent>
           <TextField
-            sx={{ minWidth: 120, margin: '10px' }}
+            sx={{ minWidth: 120, margin: '10px', width: '200px' }}
             onChange={(e) => setAmount(e.target.value)}
             label="Amount"
             variant="outlined"
