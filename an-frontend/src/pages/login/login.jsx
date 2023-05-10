@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
 
 
+
+
+
+
 import {
   Card,
   CardHeader,
@@ -18,14 +22,21 @@ import './login.css'
 
 const LoginCard = () => {
   const navigate = useNavigate()
+  const { adminData } = useIsAdmin()
+  const { setIsAdmin } = adminData
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   // const [errorMessage, setErrorMessage] = useState('')
-
   const onLogin = async () => {
     const form = { email, password }
     const result = await login(form)
+    if (localStorage.getItem('role') === 'admin') {
+      setIsAdmin(true)
+    } else {
+      setIsAdmin(false)
+    }
+
     if (result === 200) {
       navigate('/profile')
     } else {

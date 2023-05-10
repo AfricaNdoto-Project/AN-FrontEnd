@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
+
 import Collapse from '@mui/material/Collapse'
 import { styled } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -21,6 +22,10 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
+import { CardActions } from '@mui/material'
+import { Link } from 'react-router-dom'
+
+
 export default function RecipeReviewCard({ user }) {
   const [expanded, setExpanded] = React.useState(false)
 
@@ -30,6 +35,7 @@ export default function RecipeReviewCard({ user }) {
   return (
     <Card
       sx={{
+
         border: '1px solid black',
         maxWidth: 340,
         width: '500px',
@@ -52,11 +58,14 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+
               width: '80px'
+
             }}
             variant="body2"
             color="text.secondary"
           >
+
             <Typography
               sx={{
                 marginLeft: '75px',
@@ -64,6 +73,7 @@ export default function RecipeReviewCard({ user }) {
             >
               {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
             </Typography>
+
           </Typography>
         }
         subheader={
@@ -72,11 +82,14 @@ export default function RecipeReviewCard({ user }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+
               width: '80px'
+
             }}
             variant="body2"
             color="text.secondary"
           >
+
             <Typography
               sx={{
                 marginLeft: '75px',
@@ -84,6 +97,7 @@ export default function RecipeReviewCard({ user }) {
             >
               {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
             </Typography>
+
           </Typography>
         }
       />
@@ -134,6 +148,14 @@ export default function RecipeReviewCard({ user }) {
           <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
         </Typography>
       </CardContent>
+      <CardActions sx={{alignSelf: 'center', justifyContent: 'center'}}>
+        <Link to={`/profile/edit/${user.id}`}>
+          <button>Edit Account</button>
+        </Link>
+        <Link to={`/profile/delete/${user.id}`}>
+          <button>Delete Account</button>
+        </Link>
+      </CardActions>
     </Card>
   )
 }

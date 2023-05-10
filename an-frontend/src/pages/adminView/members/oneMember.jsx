@@ -11,19 +11,18 @@ const OneMember = () => {
   const { id } = useParams()
 
   useEffect(() => {
+    const getMember = async () => {
+      const member = await getOneMember(id)
+      setMemberData(member)
+    }
+
+    const getMyDonations = async () => {
+      const donations = await getDonorDonations(id)
+      setDonationsList(donations)
+    }
     getMember()
     getMyDonations()
-  }, [])
-
-  const getMember = async () => {
-    const member = await getOneMember(id)
-    setMemberData(member)
-  }
-
-  const getMyDonations = async () => {
-    const donations = await getDonorDonations(id)
-    setDonationsList(donations)
-  }
+  }, [id, setMemberData])
 
   const isDonor = donationsList.map((donation, idx) => {
     if (memberData.role !== 'volunteer' && Object.keys(donation).length !== 0) {
