@@ -4,25 +4,25 @@ import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 
-import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
-import Box from '@mui/material/Box'
 import Project from './projects/projects'
 
 
 /* import useIsAdmin from '../../hooks/useAdmin' */
 
 import RecipeReviewCard from './userInfo/userInfo'
-import { Box, Container, Divider } from '@mui/material'
+import { Box, Container } from '@mui/material'
 
 import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
-
+const [donation, setDonation] = useState([])
+  const [projects, setProjects] = useState([])
+  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     const getData = async () => {

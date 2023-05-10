@@ -76,7 +76,7 @@ const NewProject = () => {
       }
 
     }
-  }
+  
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value)
