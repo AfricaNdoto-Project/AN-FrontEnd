@@ -1,28 +1,26 @@
-/* import { UserContext } from '../../context/userContext'
+import { UserContext } from '../../context/userContext'
 import { useEffect, useContext, useState } from 'react'
 import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
-
-import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
-import Box from '@mui/material/Box'
 import Project from './projects/projects'
 
-
-/* import useIsAdmin from '../../hooks/useAdmin' */
-/* 
 import RecipeReviewCard from './userInfo/userInfo'
-import { Box, Container, Divider } from '@mui/material'
- */
+import { Box, Button, Container } from '@mui/material'
+
 import TaskBoard from './taskBoard/taskBoard'
+import { Divider } from '@mui/material'
 
 const Profile = () => {
-
+  const [donation, setDonation] = useState([])
+  const [projects, setProjects] = useState([])
+  const [active, setIsActive] = useState('donations&projects')
+  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     const getData = async () => {
@@ -35,117 +33,145 @@ const Profile = () => {
     }
     getData()
   }, [setUser])
-  
+
   const displayUserName = () => {
     return (
       <>
-        <Box>
           <RecipeReviewCard sx={{ height: '25%' }} user={user} />
-        </Box>
       </>
-    ) 
+    )
+  }
+  const displayProjects = () => {
+    return <Project projects={projects} />
   }
 
-
-
-   const displayProjects = () => {
-       return (
-        <Project projects={ projects } />
-       )
-   }
-
-    const displayDonations = () => {
-      return <Donation donations={ donation } />
-    }
+  const displayDonations = () => {
+    return <Donation donations={donation} />
+  }
 
   const displayDonationsAndProjects = () => {
-    return [ displayDonations(), displayProjects() ]
+    return [displayDonations(), displayProjects()]
   }
 
+  const displayAdminView = () => {
+    return (
+        
+        <>
+          {active === 'donations&projects' && displayDonationsAndProjects()}
+          {active === 'taskboard' && TaskBoard()}
+        </>
 
-//Based on our role this function show different info for volunteers, donors or volunteers_donors
+    )
+  }
+
+  //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
-    if(user.role === 'donor') {
-      if(donation.donations.length !== 0) {
+    if (user.role === 'donor') {
+      if (donation.donations.length !== 0) {
         return <>{displayDonations()}</>
-      }
-      else {
+      } else {
         return <div>No hay donaciones relacionados a este miembro</div>
       }
-    }
-    else if(user.role === 'volunteer') {
-      if(projects.length !== 0){
+    } else if (user.role === 'volunteer') {
+      if (projects.length !== 0) {
         return displayProjects()
       } else {
         return <div>No hay proyectos relacionados a este miembro</div>
       }
+    } else if (user.role === 'admin') {
+      //
     }
-    else if(user.role === 'admin') {
-      return <div>Soy Admin</div>
-    }
-    else {
-      return (
-        <Box sx={{
-          border: '1px solid  black',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems:'flex-start'
-        }}>
-          { displayDonationsAndProjects() }
+  }
+  if (user !== undefined && Object.keys(donation).length !== 0) {
+    return (
+      <>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            height: '30px',
+            width: '100%',
+            marginTop: 2,
+           justifyContent:'center',
+
+          }}
+        >
+          <Button
+            sx={{ height: '100%' }}
+            onClick={() => setIsActive('donations&projects')}
+          >
+            General
+          </Button>
+          <Divider sx={{ margin: 3 }} />
+          <Button
+            sx={{ height: '100%' }}
+            onClick={() => setIsActive('taskboard')}
+          >
+            TaskBoard
+          </Button>
         </Box>
-        )
-    }
+        <Container
+          maxWidth={false}
+          sx={{
+            padding: '10px',
+            display: 'flex',
+            width: '100%',
+            height: {
+              xs: '100%',
+              sm: '100%',
+              md: '100%',
+              lg: '1300px',
+              xl: '100%',
+            },
+            border: 2,
+            margin: 0,
+            borderColor: 'green',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            flexDirection: {
+              xs: 'column',
+              sm: 'column',
+              md: 'column',
+              lg: 'row',
+              xl: 'row',
+            },
+          }}
+        >
+          <Container
+            sx={{
+              width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
+              height: { lg: '85%', xl: '1130px' },
+              padding: 3,
+              alignSelf: 'center',
+              justifyContent: 'center',
+              borderColor: 'pink',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignSelf: 'center',
+                width: '100%',
+                borderColor: 'green',
+                height: { lg: '98.5%', xl: '1090px' },
+              }}
+            >
+              {displayUserName()}
+              <>{displayData()}</>
+            </Box>
+          </Container>
+          <Divider sx={{ margin: 1 }} />
+
+          {/*        {user.role !== 'volunteer' && user.role !== 'donor'
+         ? displayDonationsAndProjects()
+         : null} */}
+          {user.role === 'admin' ? displayAdminView() : null}
+        </Container>
+      </>
+    )
+  } else {
+    return <Loading />
   }
- if(user !== undefined && Object.keys(donation).length !== 0 ) {
-   return (
-     <Container
-       id="profile-container"
-       sx={{
-         display: 'flex',
-         flexDirection: 'row',
-         alignItems: 'center',
-         justifyContent: 'space-around',
-         margin: '0px',
-         width: '100vw',
-         height: '100vh',
-       }}
-       maxWidth={false}
-     >
-       {displayUserName()}
-       <div className="donations">{ displayData() }</div>
-       <Link to='/newproject'>
-        <button>New Project</button>
-       </Link>
-       {/* <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link to={`/profile/edit/${user.id}`}>
-           <button>Edit Account</button>
-         </Link>
-       </Container>
-       <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link
-           sx={{ border: '1px solid green' }}
-           to={`/profile/delete/${user.id}`}
-         >
-           <button>Delete Account</button>
-         </Link>
-       </Container> */}
-     </Container>
-   )
-  }
-  else {
-  return (
-      <Loading />
-  )
- }
 }
 
 export default Profile
