@@ -5,9 +5,17 @@ import {
     Typography
 } from '@mui/material'
 
-export default function RecipeReviewCard({ project }) {
+export default function FullInfoCard({ project }) {
   return (
-    <Card sx={{ maxWidth: 340, display:'flex', flexDirection:'column'}}>
+    <Card 
+    sx={{ 
+      maxWidth: '80 vw', 
+      display:'flex', 
+      flexDirection:'column',
+      margin: '20px',
+      backgroundColor: 'hsla(30, 100%, 98%, 1)'
+      }}>
+
       <CardHeader
         sx={{margin: 0}}
        
@@ -20,22 +28,22 @@ export default function RecipeReviewCard({ project }) {
       />
       <CardContent>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Description: </h6> <p>{ project.description }</p> 
+          <p>Description: { project.description }</p> 
         </Typography>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Objective: </h6> <p>{ project.objective }</p> 
+          <h4>Objective: { project.objective }</h4> 
         </Typography>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Budget: </h6> <p>{ project.budget }</p> 
+          <p>Budget: { project.budget }</p> 
         </Typography>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Collect: </h6> <p>{ project.collect }</p> 
+          <p>Collect: { project.collect }</p> 
         </Typography>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Staff: </h6> <p>{ project.professionals[0].name }</p> 
+          <p>Staff: { project.professionals[0].name }</p> 
         </Typography>
         <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">
-          <h6>Equipment: </h6> <p>{ project.equipment[0].name }</p> 
+          <p>Equipment: { project.equipment[0].name }</p> 
         </Typography>
         {/* <Link to='/project' state={{data: project}} >
           <Typography sx={{display: 'flex', flexDirection:'column', justifyContent:'space-around'}} variant="body2" color="text.secondary">

@@ -97,6 +97,7 @@ const Profile = () => {
   }
  if(user !== undefined && Object.keys(donation).length !== 0 ) {
    return (
+
      <Container
        id="profile-container"
        sx={{
@@ -137,6 +138,7 @@ const Profile = () => {
          </Link>
        </Container> */}
      </Container>
+
    )
   }
   else {
