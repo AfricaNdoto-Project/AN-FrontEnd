@@ -77,6 +77,8 @@ const Donation = () => {
         alignItems: 'flex-start',
         width: '100vw',
         height: '100vh',
+        minWidth: '390px',
+        overflow: 'scroll',
       }}
     >
       <Card
@@ -87,7 +89,7 @@ const Donation = () => {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: '30px'
+          margin: '30px',
         }}
       >
         <CardHeader title="Donation" />
@@ -162,11 +164,13 @@ const Donation = () => {
         )} */}
         </CardContent>
         <Divider />
-        <CardActions sx={{ 
-          display: 'flex',
-          justifyContent: 'center',
-          padding: 0 
-        }}>
+        <CardActions
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: 0,
+          }}
+        >
           <Button onClick={submit} color="success">
             Submit
           </Button>

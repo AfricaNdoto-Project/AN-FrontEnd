@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
-
+import { Email, Lock, VisibilityOff, Visibility } from '@mui/icons-material'
 
 
 
@@ -15,27 +15,31 @@ import {
   Divider,
   Button,
   CardActions,
-  Container
+  Container,
+  IconButton
   // Typography
 } from '@mui/material'
 import './login.css'
 
 const LoginCard = () => {
   const navigate = useNavigate()
-  const { adminData } = useIsAdmin()
-  const { setIsAdmin } = adminData
+
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   // const [errorMessage, setErrorMessage] = useState('')
+
+
+  const [isPassVisible, setIsPassVisible] = useState(false)
+  const changeVisibility = () => {
+    setIsPassVisible(!isPassVisible)
+  }
+
+
   const onLogin = async () => {
     const form = { email, password }
     const result = await login(form)
-    if (localStorage.getItem('role') === 'admin') {
-      setIsAdmin(true)
-    } else {
-      setIsAdmin(false)
-    }
+
 
     if (result === 200) {
       navigate('/profile')
@@ -55,6 +59,7 @@ const LoginCard = () => {
           width: '100vw',
           margin: '0px',
           minWidth: '390px',
+          overflow: 'scroll',
         }}
         maxWidth={false}
       >
@@ -72,6 +77,9 @@ const LoginCard = () => {
               label="Email"
               variant="outlined"
               fullWidth={true}
+              InputProps={{
+                endAdornment: <Email />,
+              }}
               // sx={{ marginBottom: '20px' }}
               sx={{ margin: '10px 0' }}
             />
@@ -81,6 +89,15 @@ const LoginCard = () => {
               variant="outlined"
               fullWidth={true}
               sx={{ margin: '10px 0' }}
+              type={isPassVisible ? 'text' : 'password'}
+              InputProps={{
+                startAdornment: <Lock />,
+                endAdornment: (
+                  <IconButton onClick={changeVisibility}>
+                    {isPassVisible ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                ),
+              }}
             />
             {/* {errorMessage && (
             <Typography color="error" textAlign="center" mt={2}>

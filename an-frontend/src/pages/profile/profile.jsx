@@ -4,13 +4,11 @@ import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 
-import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
-import Box from '@mui/material/Box'
 import Project from './projects/projects'
 
 
@@ -22,7 +20,9 @@ import { Box, Container, Divider } from '@mui/material'
 import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
-
+  const [donation, setDonation] = useState([])
+  const [projects, setProjects] = useState([])
+  const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
     const getData = async () => {
@@ -45,8 +45,6 @@ const Profile = () => {
       </>
     ) 
   }
-
-
 
    const displayProjects = () => {
        return (
@@ -81,7 +79,7 @@ const Profile = () => {
       }
     }
     else if(user.role === 'admin') {
-      return <div>Soy Admin</div>
+      // return <div>Soy Admin</div>
     }
     else {
       return (
@@ -113,31 +111,11 @@ const Profile = () => {
        maxWidth={false}
      >
        {displayUserName()}
-       <div className="donations">{ displayData() }</div>
-       <Link to='/newproject'>
-        <button>New Project</button>
+       <div className="donations">{displayData()}</div>
+       
+       <Link to="/newproject">
+         <button>New Project</button>
        </Link>
-       {/* <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link to={`/profile/edit/${user.id}`}>
-           <button>Edit Account</button>
-         </Link>
-       </Container>
-       <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link
-           sx={{ border: '1px solid green' }}
-           to={`/profile/delete/${user.id}`}
-         >
-           <button>Delete Account</button>
-         </Link>
-       </Container> */}
      </Container>
    )
   }
