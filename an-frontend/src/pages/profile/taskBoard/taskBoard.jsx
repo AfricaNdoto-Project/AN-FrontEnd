@@ -15,7 +15,6 @@ import { getMyDonations } from "../../../services/donorsService"
 import { getProjects } from "../../../services/projectsService"
 import { useContext } from "react"
 import RecipeReviewCard from "../userInfo/userInfo"
-
 const TaskBoard = () => {
 /*   const [checked] = useState(false);
   const child = (
@@ -113,7 +112,6 @@ const TaskBoard = () => {
   }
 
   return (
-    <>
       <Container
         maxWidth={false}
         sx={{
@@ -296,7 +294,6 @@ const TaskBoard = () => {
           </Container>
         </Hidden>
       </Container>
-    </>
   )
 }
 
