@@ -2,7 +2,8 @@
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-import RecipeReviewCard from "./fullinfocard/fullinfocard";
+import FullInforCard from "./fullinfocard/fullinfocard";
+import { Container } from "@mui/material";
 
 const Project = () => {
   const location = useLocation()
@@ -11,7 +12,20 @@ const Project = () => {
   const displayProject = () => {
     return (
       <>
-        <RecipeReviewCard project={ data }/>
+      <Container
+      sx={{ 
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            marginBottom: '50px',
+            margin: 0,
+            height: '100%',
+            width: '100vw',
+          }}
+          maxWidth={false}
+      >
+        <FullInforCard project={ data }/>
+      </Container>
       </>
     )
   } 

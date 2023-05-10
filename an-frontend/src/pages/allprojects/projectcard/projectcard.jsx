@@ -6,14 +6,15 @@ import {
   Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-export default function RecipeReviewCard({ project }) {
+export default function ProjectCard({ project }) {
   return (
     <Card sx={{ 
-      maxWidth: 340, 
+      width: 340,
+      height: 350,
       display: 'flex', 
       flexDirection: 'column',
-      marginBottom: '20px',
-      backgroundColor: 'hsla(30, 100%, 98%, 1)' }}>
+      margin: '20px',
+      backgroundColor: 'hsla(29, 93%, 89%, 1)' }}>
       <CardHeader
         sx={{ margin: 0 }}
         title={
@@ -48,19 +49,21 @@ export default function RecipeReviewCard({ project }) {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            // justifyContent: 'space-around',
           }}
           variant="body2"
           color="text.secondary"
         >
           <h4>Description: </h4> <p>{project.description}</p>
         </Typography>
-        <Link to="/project" state={{ data: project }}>
+        <Link to="/project" state={{ data: project }}
+          style = {{
+          textDecoration:'none',
+          }} 
+        >
           <Typography
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              // justifyContent: 'space-around',
             }}
             variant="body2"
             color="text.secondary"

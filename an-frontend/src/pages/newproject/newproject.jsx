@@ -149,7 +149,17 @@ const NewProject = () => {
                 label="Target"
                 variant="outlined"
                 fullWidth={true}
-                sx={{ marginBottom: '20px' }}
+                sx={{ marginBottom: '10px' }}
+              />
+
+
+              <TextField
+                required
+                onChange={(e) => setObjective(e.target.value)}
+                label="Objective"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
               />
 
               <TextField
@@ -159,17 +169,8 @@ const NewProject = () => {
                 variant="outlined"
                 fullWidth={true}
                 maxRows={2}
-                sx={{ marginBottom: '20px', overflow:'auto'}}
+                sx={{ marginBottom: '10px', overflow:'scroll'}}
                 multiline
-              />
-
-              <TextField
-                required
-                onChange={(e) => setObjective(e.target.value)}
-                label="Objective"
-                variant="outlined"
-                fullWidth={true}
-                sx={{ marginBottom: '10px' }}
               />
 
               <TextField
