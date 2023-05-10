@@ -112,7 +112,7 @@ const NewProject = () => {
     }
 
 
-    if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {  
+  if(Object.keys(professionData).length!==0 && Object.keys(volunteerData).length!==0) {  
   return (
       <Container
       id="project-container"
@@ -261,13 +261,7 @@ const NewProject = () => {
               />
               <TextField
                 onChange={(e) => setEquipmentDescription(e.target.value)}
-                label="Equipment description"
-                variant="outlined"
-                fullWidth={true}
-                sx={{ marginBottom: '10px' }}
-              />
-              <TextField
-                onChange={(e) => setEquipmentCost(e.target.value)}
+                outsidChange={(e) => setEquipmentCost(e.target.value)}
                 label="Equipment cost"
                 variant="outlined"
                 fullWidth={true}
