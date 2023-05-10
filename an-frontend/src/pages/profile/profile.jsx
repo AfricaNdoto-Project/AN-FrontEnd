@@ -4,13 +4,11 @@ import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 
-import { Container } from '@mui/material'
 import './profile.css'
 import { Link } from 'react-router-dom'
 
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
-import Box from '@mui/material/Box'
 import Project from './projects/projects'
 
 
