@@ -11,3 +11,6 @@ body {
   flex-direction: column;
 }
 
+* {
+  border: 0.1px rgba(50, 175, 33, 0) solid;
+}

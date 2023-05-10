@@ -5,15 +5,13 @@ import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
 import './profile.css'
 import { Link } from 'react-router-dom'
-
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
 import Project from './projects/projects'
 
 import RecipeReviewCard from './userInfo/userInfo'
 import { Box, Button, Container } from '@mui/material'
-
-import TaskBoard from './taskBoard/taskBoard'
+import TaskBoard from './adminView/taskBoard/taskBoard'
 import { Divider } from '@mui/material'
 
 const Profile = () => {
@@ -37,7 +35,7 @@ const Profile = () => {
   const displayUserName = () => {
     return (
       <>
-          <RecipeReviewCard sx={{ height: '25%' }} user={user} />
+        <RecipeReviewCard sx={{ height: '25%' }} user={user} />
       </>
     )
   }
@@ -50,21 +48,26 @@ const Profile = () => {
   }
 
   const displayDonationsAndProjects = () => {
-    return [displayDonations(), displayProjects()]
+    return (
+      <Container maxWidth={false} sx={{ borderColor: 'blue', display: 'flex' }}>
+        <Box>
+          <Donation donations={donation}></Donation>
+        </Box>
+        <Box>
+          <Project projects={projects} />
+        </Box>
+      </Container>
+    )
   }
 
   const displayAdminView = () => {
     return (
-        
-        <>
-          {active === 'donations&projects' && displayDonationsAndProjects()}
-          {active === 'taskboard' && TaskBoard()}
-        </>
-
+      <>
+        {active === 'donations&projects' && displayDonationsAndProjects()}
+        {active === 'taskboard' && <TaskBoard />}
+      </>
     )
   }
-
-  //Based on our role this function show different info for volunteers, donors or volunteers_donors
   const displayData = () => {
     if (user.role === 'donor') {
       if (donation.donations.length !== 0) {
@@ -92,19 +95,24 @@ const Profile = () => {
             height: '30px',
             width: '100%',
             marginTop: 2,
-           justifyContent:'center',
-
+            justifyContent: 'center',
           }}
         >
           <Button
-            sx={{ height: '100%' }}
+            disabled={false}
+            variant="filledTonal"
+            size="small"
+            sx={{ borderRadius: 10, height: 25, fontSize: 12, boxShadow: 5 }}
             onClick={() => setIsActive('donations&projects')}
           >
             General
           </Button>
           <Divider sx={{ margin: 3 }} />
           <Button
-            sx={{ height: '100%' }}
+            disabled={false}
+            variant="filledTonal"
+            size="small"
+            sx={{ borderRadius: 10, height: 25, fontSize: 12, boxShadow: 5 }}
             onClick={() => setIsActive('taskboard')}
           >
             TaskBoard
@@ -140,10 +148,9 @@ const Profile = () => {
           <Container
             sx={{
               width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
-              height: { lg: '85%', xl: '1130px' },
+              height: { lg: '85%', xl: '90%' },
               padding: 3,
-              alignSelf: 'center',
-              justifyContent: 'center',
+              marginLeft: 0,
               borderColor: 'pink',
             }}
           >
@@ -157,14 +164,16 @@ const Profile = () => {
               }}
             >
               {displayUserName()}
-               <>{displayData()}</> 
+              {displayData()}
             </Box>
           </Container>
           <Divider sx={{ margin: 1 }} />
 
-                  {user.role !== 'volunteer' && user.role !== 'donor' && user.role !== 'admin'
-         ? displayDonationsAndProjects()
-         : null} 
+          {user.role !== 'volunteer' &&
+          user.role !== 'donor' &&
+          user.role !== 'admin'
+            ? displayDonationsAndProjects()
+            : null}
           {user.role === 'admin' ? displayAdminView() : null}
         </Container>
       </>

@@ -9,7 +9,7 @@ import { red } from '@mui/material/colors'
 import Collapse from '@mui/material/Collapse'
 import { styled } from '@mui/material/styles'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { IconButton } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -25,7 +25,7 @@ const ExpandMore = styled((props) => {
 import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-export default function RecipeReviewCard({ user }) {
+const UserInfo = ({ user }) => {
   const [expanded, setExpanded] = React.useState(false)
 
   const handleExpandClick = () => {
@@ -133,12 +133,14 @@ export default function RecipeReviewCard({ user }) {
       </CardContent>
       <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
         <Link to={`/profile/edit/${user.id}`}>
-          <button>Edit Account</button>
+          <Button sx={{borderRadius: 10, height: 60, fontSize: 12, boxShadow: 5, size:'medium'}} variant='contained'>Edit Account</Button> 
         </Link>
         <Link to={`/profile/delete/${user.id}`}>
-          <button>Delete Account</button>
+          <Button sx={{borderRadius: 10, height: 60, fontSize: 12, boxShadow: 5}} variant='contained'>Delete Account</Button> 
         </Link>
       </CardActions>
     </Card>
   )
 }
+
+export default UserInfo
