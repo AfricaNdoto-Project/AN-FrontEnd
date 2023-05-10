@@ -17,6 +17,14 @@ import Edit from "../pages/profile/edit/edit";
 import Delete from "../pages/profile/delete/delete";
 import Donation from "../pages/makeDonation/makeDonation";
 
+const role = localStorage.getItem('role')
+const memberRoutes = () => {
+  if(role === '') {
+
+  }
+}
+
+
 const privateRoutes = () => {
   if (!localStorage.getItem('token')) {
     return redirect('/login')
