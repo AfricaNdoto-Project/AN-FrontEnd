@@ -12,6 +12,7 @@ const Main = () => {
         paddingRigth: { sm: '0px' },
         margin: '0px',
         paddingLeft: { sm: '0px' },
+        padding: '0px'
       }}
     >
       <Header />

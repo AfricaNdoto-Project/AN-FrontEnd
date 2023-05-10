@@ -41,14 +41,14 @@ const Home = () => {
   return (
     <Container
       sx={{
-        border: '1px solid black',
         width: '100vw',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        overflow: 'auto'
+        overflow: 'auto',
+        paddingLeft: '0px', paddingRight: '0px'
       }}
       maxWidth={false}
     >
@@ -65,7 +65,7 @@ const Home = () => {
         <CardMedia
           component="img"
           image={frontPage}
-          alt="green iguana"
+          alt="Front-Page"
           sx={{ height: '100%', width: '100%' }}
         />
       </Container>
@@ -105,7 +105,6 @@ const Home = () => {
           alt="Projects"
           sx={{
             width: '45%',
-            border: '4px solid black',
             margin: '5px',
             borderRadius: '100px',
             '&:hover': {
