@@ -6,20 +6,18 @@ import { getProjects } from '../../services/projectsService'
 
 import './profile.css'
 import { Link } from 'react-router-dom'
-
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
 import Project from './projects/projects'
 
-/* import useIsAdmin from '../../hooks/useAdmin' */
 
-import RecipeReviewCard from './userInfo/userInfo'
+import UserInfo from './userInfo/userInfo'
 import { Box, Container } from '@mui/material'
-
-// import TaskBoard from './taskBoard/taskBoard'
+import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
-const [donation, setDonation] = useState([])
+  const [donation, setDonation] = useState([])
+
   const [projects, setProjects] = useState([])
   const { user, setUser } = useContext(UserContext)
 
@@ -34,16 +32,23 @@ const [donation, setDonation] = useState([])
     }
     getData()
   }, [setUser])
-  
+
   const displayUserName = () => {
     return (
       <>
         <Box>
-          <RecipeReviewCard sx={{ height: '25%' }} user={user} />
+          <UserInfo sx={{ height: '25%' }} user={user} />
         </Box>
       </>
-    ) 
+    )
   }
+  const displayProjects = () => {
+    return <Project projects={projects} />
+  }
+  const displayDonations = () => {
+    return <Donation donations={donation} />
+  }
+
 
    const displayProjects = () => {
        return (
@@ -55,75 +60,70 @@ const [donation, setDonation] = useState([])
       return <Donation donations={ donation } />
     }
 
-  const displayDonationsAndProjects = () => {
-    return [ displayDonations(), displayProjects() ]
-  }
-  
 
-//Based on our role this function show different info for volunteers, donors or volunteers_donors
+  const displayDonationsAndProjects = () => {
+    return [displayDonations(), displayProjects()]
+  }
+
   const displayData = () => {
-    if(user.role === 'donor') {
-      if(donation.donations.length !== 0) {
+    if (user.role === 'donor') {
+      if (donation.donations.length !== 0) {
         return <>{displayDonations()}</>
-      }
-      else {
+      } else {
         return <div>No hay donaciones relacionados a este miembro</div>
       }
-    }
-    else if(user.role === 'volunteer') {
-      if(projects.length !== 0){
+    } else if (user.role === 'volunteer') {
+      if (projects.length !== 0) {
         return displayProjects()
       } else {
         return <div>No hay proyectos relacionados a este miembro</div>
       }
-    }
-    else if(user.role === 'admin') {
-      return <div>Soy Admin</div>
-    }
-    else {
+    } else if (user.role === 'admin') {
+      // return <div>Soy Admin</div>
+    } else {
       return (
-        <Box sx={{
-          border: '1px solid  black',
+        <Box
+          sx={{
+            border: '1px solid  black',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+          }}
+        >
+          {displayDonationsAndProjects()}
+        </Box>
+      )
+    }
+  }
+
+  if (user !== undefined && Object.keys(donation).length !== 0) {
+    return (
+      <Container
+        id="profile-container"
+        sx={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems:'flex-start'
-        }}>
-          { displayDonationsAndProjects() }
-        </Box>
-        )
-    }
-  }
- if(user !== undefined && Object.keys(donation).length !== 0 ) {
-   return (
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          margin: '0px',
+          width: '100vw',
+          height: '100vh',
+        }}
+        maxWidth={false}
+      >
+        {displayUserName()}
+        <div className="donations">{displayData()}</div>
 
-     <Container
-       id="profile-container"
-       sx={{
-         display: 'flex',
-         flexDirection: 'row',
-         alignItems: 'center',
-         justifyContent: 'space-around',
-         margin: '0px',
-         width: '100vw',
-         height: '100vh',
-       }}
-       maxWidth={false}
-     >
-       {displayUserName()}
-       <div className="donations">{ displayData() }</div>
-       <Link to='/newproject' state={{data: user}}>
-        <button>New Project</button>
-       </Link>
-     </Container>
+        <Link to="/newproject">
+          <button>New Project</button>
+        </Link>
+      </Container>
+    )
+  } else {
+    return <Loading />
 
-   )
   }
-  else {
-  return (
-      <Loading />
-  )
- }
 }
 
 export default Profile

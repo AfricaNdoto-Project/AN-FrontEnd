@@ -7,6 +7,8 @@ import CardProfessional from "../cards/cardProfessional"
 import CardEquipment from "../cards/cardEquipment"
 import CardCalendar from "../cards/cardCalendar"
 
+/* import {Grow} from "@mui/material" */
+
 const TaskBoard = () => {
 
   return (
@@ -38,7 +40,7 @@ const TaskBoard = () => {
           },
         }}
       >
-       
+
         <Hidden mdDown>
           <Container
             maxWidth={false}
