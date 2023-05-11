@@ -38,7 +38,7 @@ const SignupCard = () => {
   const [phone, setPhone] = useState('')
   const [adress, setAddress] = useState('')
   const [role, setRole] = useState('')
-  const [professions, setProfessions] = useState([])
+  const [profs, setProfs] = useState([])
   const [profession, setProfession] = useState('')
   //const [errorMessage, setErrorMessage] = useState('')
   useEffect(() => {
@@ -47,7 +47,7 @@ const SignupCard = () => {
 
   const getProfessionsData = async () => {
     const professions = await getProfessions()
-    setProfessions(professions)
+    setProfs(professions)
   }
 
   const handleRoleChange = (event) => {
@@ -67,8 +67,7 @@ const SignupCard = () => {
       console.log(result)
     }
   }
-  if(Object.keys(professions).length !== 0) {
-
+  if(Object.keys(profs).length !== 0) {
   return (
     <Container
       id="container"
@@ -82,7 +81,7 @@ const SignupCard = () => {
         width: '100vw',
         minWidth: '390px',
         overflow: 'auto',
-        minHeight: '100%'
+        minHeight: '100%',
       }}
       maxWidth={false}
     >
@@ -90,7 +89,7 @@ const SignupCard = () => {
         sx={{
           maxWidth: '500px',
           margin: '80px 15px',
-          height: '825px'
+          height: '825px',
         }}
       >
         <CardHeader title="Signup" />
@@ -173,7 +172,7 @@ const SignupCard = () => {
                 label="Profession"
                 onChange={handleProfessionChange}
               >
-                {professions.map((elem) => {
+                {profs.map((elem) => {
                   return (
                     <MenuItem value={elem.name} key={elem.id}>
                       {elem.name}
@@ -183,11 +182,6 @@ const SignupCard = () => {
               </Select>
             </FormControl>
           </Box>
-          {/* {errorMessage && (
-          <Typography color="error" textAlign="center" mt={2}>
-            {errorMessage}
-          </Typography>
-        )} */}
         </CardContent>
         <Divider />
         <CardActions
