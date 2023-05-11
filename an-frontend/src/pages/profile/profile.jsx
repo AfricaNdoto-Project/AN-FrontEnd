@@ -104,7 +104,9 @@ const Profile = () => {
         {displayUserName()}
         <div className="donations">{displayData()}</div>
 
+
         <Link to="/newproject" state={{data: user}}>
+
           <button>New Project</button>
         </Link>
       </Container>

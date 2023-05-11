@@ -4,6 +4,8 @@ import { Container } from '@mui/material'
 import Loading from '../../components/loading/loading'
 import { getAllProjects } from '../../services/projectsService'
 
+import { Grow } from '@mui/material';
+
 const AllProjects = () => {
   const [allProjects, setAllProjects] = useState([])
 
