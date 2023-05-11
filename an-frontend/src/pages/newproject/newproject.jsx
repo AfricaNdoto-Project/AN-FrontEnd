@@ -246,7 +246,6 @@ const NewProject = () => {
                         { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
                           return <MenuItem value={elem.id} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
                         })
-
                         }
                     </Select>
             </FormControl>
