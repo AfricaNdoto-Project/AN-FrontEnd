@@ -11,13 +11,12 @@ import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
 import Project from './projects/projects'
 
-
 /* import useIsAdmin from '../../hooks/useAdmin' */
 
 import RecipeReviewCard from './userInfo/userInfo'
 import { Box, Container } from '@mui/material'
 
-import TaskBoard from './taskBoard/taskBoard'
+// import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
 const [donation, setDonation] = useState([])
@@ -45,8 +44,6 @@ const [donation, setDonation] = useState([])
       </>
     ) 
   }
-
-
 
    const displayProjects = () => {
        return (
@@ -118,27 +115,6 @@ const [donation, setDonation] = useState([])
        <Link to='/newproject' state={{data: user}}>
         <button>New Project</button>
        </Link>
-       {/* <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link to={`/profile/edit/${user.id}`}>
-           <button>Edit Account</button>
-         </Link>
-       </Container>
-       <Container
-         sx={{
-           border: '1px solid green',
-         }}
-       >
-         <Link
-           sx={{ border: '1px solid green' }}
-           to={`/profile/delete/${user.id}`}
-         >
-           <button>Delete Account</button>
-         </Link>
-       </Container> */}
      </Container>
 
    )
