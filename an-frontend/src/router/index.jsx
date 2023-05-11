@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from 'react-router-dom'
+import { createBrowserRouter, redirect  } from 'react-router-dom'
 
 import Main from '../layouts'
 import Home from '../pages/home/home'
@@ -16,17 +16,22 @@ import AllProjects from "../pages/allprojects/allprojects";
 import Edit from "../pages/profile/edit/edit";
 import Delete from "../pages/profile/delete/delete";
 import Donation from "../pages/makeDonation/makeDonation";
+import AdminProfile from '../pages/profile/adminView/AdminProfile'
 
 const privateRoutes = () => {
   if (!localStorage.getItem('token')) {
-    return redirect('/login')
+    return redirect('/')
   } else {
     return null
   }
 }
 
 const adminRoutes = () => {
+  console.log(localStorage.getItem('role'))
+  console.log(localStorage.getItem('token'))
   if (
+    
+    
     localStorage.getItem('role') !== 'admin' ||
     !localStorage.getItem('token')
   ) {
@@ -106,13 +111,9 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '/adminView',
+        path: '',
         loader: adminRoutes,
         children: [
-          {
-            path: '',
-            element: <Home />,
-          },
           {
             path: 'members',
             children: [

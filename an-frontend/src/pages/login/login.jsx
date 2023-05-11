@@ -29,7 +29,6 @@ const LoginCard = () => {
   const onLogin = async () => {
     const form = { email, password }
     const result = await login(form)
-
     if (result === 200) {
       navigate('/profile')
     } else {

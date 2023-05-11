@@ -1,27 +1,54 @@
 import { Box, Button, Divider, Container } from "@mui/material"
 import { useState } from "react"
-import UserInfo from "../userInfo/userInfo"
-import { useContext } from "react"
-import { UserContext } from "../../../context/userContext"
 import TaskBoard from "./taskBoard/taskBoard"
-import DonationsProjects from "./DonationsProjects.jsx/DonationsProjects"
+import { useEffect } from "react"
+import { getMyDonations } from "../../../services/donorsService"
+import { getProjects } from "../../../services/projectsService"
+import Donation from "../donations/donations"
+import Project from "../projects/projects"
 
 const AdminProfile = () => {
-    const [active, setIsActive] = useState('donations&projects')
-    const { user } = useContext(UserContext)
+  const [active, setIsActive] = useState('donations&projects')
+  const [donation, setDonation] = useState([])
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      const donations = await getMyDonations()
+      const project = await getProjects()
+      setProjects(project)
+      setDonation(donations)
+    }
+    getData()
+  }, [setProjects, setDonation])
+
+
+
+  const displayDonationsAndProjects = () => {
+    return (
+      <Container maxWidth={false} sx={{ borderColor: 'blue', display: 'flex', width: '100%' }}>
+        <Box>
+          <Donation donations={donation}></Donation>
+        </Box>
+        <Box>
+          <Project projects={projects} />
+        </Box>
+      </Container>
+    )
+  }
 
     const toggleView = () => {
         return (
           <>
-            {active === 'donations&projects' && <DonationsProjects/>}
+            {active === 'donations&projects' && displayDonationsAndProjects()}
             {active === 'taskboard' && <TaskBoard />}
           </>
         )
       }
 
   return (
-   <>
-    <Box
+    <>
+        <Box
           sx={{
             display: 'flex',
             flexDirection: 'row',
@@ -78,31 +105,12 @@ const AdminProfile = () => {
             },
           }}
         >
-          <Container
-            sx={{
-              width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
-              height: { lg: '85%', xl: '90%' },
-              padding: 3,
-              marginLeft: 0,
-              borderColor: 'pink',
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                alignSelf: 'center',
-                width: '100%',
-                borderColor: 'green',
-                height: { lg: '98.5%', xl: '1090px' },
-              }}
-            >
-    <UserInfo sx={{ height: '25%' }} user={user} />
-</Box>
-          </Container>
+          {/*   */}
           <Divider sx={{ margin: 1 }} />
           {toggleView()}
-</Container>
-</>
+        </Container>
+
+    </>
   )
 }
 
