@@ -93,7 +93,6 @@ const MemberProfile = () => {
         },
         border: 2,
         margin: 0,
-        borderColor: 'black',
         alignSelf: 'center',
         justifyContent: 'center',
         flexDirection: {
@@ -112,7 +111,6 @@ const MemberProfile = () => {
           padding: 3,
           marginLeft: 0,
           margin: 0,
-          borderColor: 'pink',
           display: 'flex',
         }}
       >
@@ -121,7 +119,6 @@ const MemberProfile = () => {
             display: 'flex',
             alignSelf: 'center',
             width: '100%',
-            borderColor: 'green',
             height: { lg: '98.5%', xl: '1090px' },
           }}
         >

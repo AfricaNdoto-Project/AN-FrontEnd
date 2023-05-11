@@ -26,7 +26,7 @@ const AdminProfile = () => {
 
   const displayDonationsAndProjects = () => {
     return (
-      <Container maxWidth={false} sx={{ borderColor: 'blue', display: 'flex', width: '100%' }}>
+      <Container maxWidth={false} sx={{ display: 'flex', width: '100%' }}>
         <Box>
           <Donation donations={donation}></Donation>
         </Box>
@@ -91,9 +91,7 @@ const AdminProfile = () => {
               lg: '1300px',
               xl: '100%',
             },
-            border: 2,
             margin: 0,
-            borderColor: 'green',
             alignSelf: 'center',
             justifyContent: 'center',
             flexDirection: {
@@ -105,7 +103,6 @@ const AdminProfile = () => {
             },
           }}
         >
-          {/*   */}
           <Divider sx={{ margin: 1 }} />
           {toggleView()}
         </Container>

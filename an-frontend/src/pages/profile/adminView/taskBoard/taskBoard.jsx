@@ -23,7 +23,6 @@ const TaskBoard = () => {
             flexWrap: 'wrap',
             columnGap: { lg: 4, xl: 5 },
             rowGap: { lg: 10, xl: 10 },
-            borderColor: 'red',
             width: '100%',
             height: '100%',
             alignSelf: 'center',

@@ -38,9 +38,7 @@ const Profile = () => {
               lg: '1300px',
               xl: '100%',
             },
-            border: 2,
             margin: 0,
-            borderColor: 'green',
             alignSelf: 'center',
             justifyContent: 'center',
             flexDirection: {
@@ -58,7 +56,6 @@ const Profile = () => {
               height: { lg: '85%', xl: '90%' },
               padding: 3,
               marginLeft: 0,
-              borderColor: 'pink',
               marginRight: 0,
               display: 'flex',
               justifyContent:'center',
@@ -70,7 +67,6 @@ const Profile = () => {
                 display: 'flex',
                 alignSelf: 'center',
                 width: '100%',
-                borderColor: 'green',
                 height: { lg: '98.5%', xl: '1090px' },
               }}
             >
