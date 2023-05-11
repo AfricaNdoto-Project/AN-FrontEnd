@@ -19,7 +19,7 @@ const Project = () => {
             justifyContent: 'space-evenly',
             marginBottom: '50px',
             margin: 0,
-            height: '100%',
+            height: '100vh',
             width: '100vw',
           }}
           maxWidth={false}
