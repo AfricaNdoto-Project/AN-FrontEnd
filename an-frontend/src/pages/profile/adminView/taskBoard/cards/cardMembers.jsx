@@ -35,7 +35,7 @@ const CardMembers = () => {
       </Typography>
     </CardContent>
     <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-      <Link to="/adminView/members">
+      <Link to="/members">
         <Button size="small">Go</Button>
       </Link>
     </CardActions>
