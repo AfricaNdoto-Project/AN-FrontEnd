@@ -50,17 +50,6 @@ const Profile = () => {
   }
 
 
-   const displayProjects = () => {
-       return (
-        <Project projects={ projects } />
-       )
-   }
-
-    const displayDonations = () => {
-      return <Donation donations={ donation } />
-    }
-
-
   const displayDonationsAndProjects = () => {
     return [displayDonations(), displayProjects()]
   }
