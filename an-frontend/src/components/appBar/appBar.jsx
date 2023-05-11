@@ -31,7 +31,7 @@ export default function ButtonAppBar() {
     if(token) {
       return (
         <Link to="/profile">
-          <Button color="inherit">Profile</Button>
+          <Button color="inherit" sx={{margin:'8px'}}>Profile</Button>
         </Link>
       )
     }
@@ -39,7 +39,7 @@ export default function ButtonAppBar() {
   const displayLogout = () => {
     if(token) {
       return (
-        <Button color="inherit" onClick={logout}>
+        <Button color="inherit" onClick={logout} sx={{margin:'8px'}}>
             LogOut
         </Button>
       )
@@ -50,7 +50,7 @@ export default function ButtonAppBar() {
     if(!token) {
       return (
         <Link to="/login">
-            <Button color="inherit">Login</Button>
+            <Button variant="inherit" color="inherit" sx={{margin:'8px', color:'white'}}>Login</Button>
         </Link>
       )
     }
@@ -59,7 +59,7 @@ export default function ButtonAppBar() {
     if(!token) {
       return (
         <Link to="/signup">
-            <Button color="inherit">Sign Up</Button>
+            <Button color="inherit" sx={{margin:'8px', color:'white'}} >Sign Up</Button>
         </Link>
       )
     }
@@ -85,7 +85,7 @@ export default function ButtonAppBar() {
           { displaySignUp() }
           { displayLogin() }
           <Link to="/donation">
-            <Button color="inherit">Donation</Button>
+            <Button variant="contained" color="secondary" size="large">Donation</Button>
           </Link>
           { displayProfileLink() }
 
