@@ -27,11 +27,7 @@ const privateRoutes = () => {
 }
 
 const adminRoutes = () => {
-  console.log(localStorage.getItem('role'))
-  console.log(localStorage.getItem('token'))
   if (
-    
-    
     localStorage.getItem('role') !== 'admin' ||
     !localStorage.getItem('token')
   ) {
