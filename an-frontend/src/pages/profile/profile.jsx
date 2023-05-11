@@ -3,11 +3,13 @@ import { useEffect, useContext, useState } from 'react'
 import { getProfile } from '../../services/membersService'
 import { getMyDonations } from '../../services/donorsService'
 import { getProjects } from '../../services/projectsService'
+
 import './profile.css'
 import { Link } from 'react-router-dom'
 import Loading from '../../components/loading/loading'
 import Donation from './donations/donations'
 import Project from './projects/projects'
+
 
 import UserInfo from './userInfo/userInfo'
 import { Box, Container } from '@mui/material'
@@ -15,6 +17,7 @@ import TaskBoard from './taskBoard/taskBoard'
 
 const Profile = () => {
   const [donation, setDonation] = useState([])
+
   const [projects, setProjects] = useState([])
   const { user, setUser } = useContext(UserContext)
 
@@ -46,10 +49,22 @@ const Profile = () => {
     return <Donation donations={donation} />
   }
 
+
+   const displayProjects = () => {
+       return (
+        <Project projects={ projects } />
+       )
+   }
+
+    const displayDonations = () => {
+      return <Donation donations={ donation } />
+    }
+
+
   const displayDonationsAndProjects = () => {
     return [displayDonations(), displayProjects()]
   }
-  //Based on our role this function show different info for volunteers, donors or volunteers_donors
+
   const displayData = () => {
     if (user.role === 'donor') {
       if (donation.donations.length !== 0) {
@@ -81,6 +96,7 @@ const Profile = () => {
       )
     }
   }
+
   if (user !== undefined && Object.keys(donation).length !== 0) {
     return (
       <Container
@@ -106,6 +122,7 @@ const Profile = () => {
     )
   } else {
     return <Loading />
+
   }
 }
 
