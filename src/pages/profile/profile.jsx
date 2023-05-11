@@ -6,7 +6,6 @@ import './profile.css'
 import {Box, Container} from '@mui/material'
 import Loading from '../../components/loading/loading'
 import UserInfo from './userInfo/userInfo'
-import { Divider } from '@mui/material'
 import AdminProfile from './adminView/AdminProfile'
 import MemberProfile from './memberView/memberProfile'
 
@@ -58,7 +57,7 @@ const Profile = () => {
               marginLeft: 0,
               marginRight: 0,
               display: 'flex',
-              justifyContent:'center',
+              justifyContent: 'center',
               alignSelf: 'center'
             }}
           >
@@ -83,5 +82,6 @@ const Profile = () => {
     return <Loading />
   }
 }
+
 
 export default Profile
