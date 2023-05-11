@@ -17,8 +17,8 @@ const Home = () => {
     }
     getProjects()
   }, [])
-  console.log(projects)
-  function Example(props) {
+  // console.log(projects)
+  function CarouselProjects(props) {
     useEffect(() => {}, [])
     return (
       <Carousel>
@@ -47,8 +47,9 @@ const Home = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        overflow: 'auto',
-        paddingLeft: '0px', paddingRight: '0px'
+        // overflow: 'auto',
+        paddingRigth: { md: '0px' },
+        paddingLeft: { md: '0px' },
       }}
       maxWidth={false}
     >
@@ -56,11 +57,16 @@ const Home = () => {
       maxWidth={ false }
         sx={{ width: '100%',margin: '0px', paddingLeft: '0px', paddingRight: '0px' }}
       >
-        {Example()}
+        {CarouselProjects()}
       </Container>
       <Container
-      maxWidth={false}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '5px' }}
+        maxWidth={false}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '5px',
+        }}
       >
         <CardMedia
           component="img"
@@ -70,7 +76,7 @@ const Home = () => {
         />
       </Container>
       <Container
-      maxWidth={false}
+        maxWidth={false}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -78,7 +84,7 @@ const Home = () => {
           alignItems: 'center',
           width: '100vw',
           marginTop: '5px',
-          marginBottom: '25px'
+          marginBottom: '25px',
         }}
       >
         <Typography sx={{ margin: '10px' }}>
