@@ -3,31 +3,30 @@ import {
   CardHeader, 
   CardContent, 
   Typography, 
-  Button } from '@mui/material'
+  Button,
+  Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const ProjectCard = ({ project }) => {
   return (
     <Card sx={{ 
-      width: 340,
-      height: 350,
+      width: 365,
+      height: 260,
       display: 'flex', 
       flexDirection: 'column',
       margin: '20px',
-      backgroundColor: 'hsla(29, 93%, 89%, 1)' }}>
+      backgroundColor: '#F5FAFF'
+       }}>
       <CardHeader
-        sx={{ margin: 0 }}
+        sx={{ margin: 0, backgroundColor: '#E4C5A8' }}
         title={
           <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              // justifyContent: 'space-around',
-            }}
-            variant="body2"
-            color="text.secondary"
+            variant="body1"
+            color="text.primary"
           >
-            <h3>{project.name}</h3>
+            <h2 style={{
+              margin: 10,
+            }}>{project.name}</h2>
           </Typography>
         }
         subheader={
@@ -35,12 +34,16 @@ const ProjectCard = ({ project }) => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              // justifyContent: 'space-around',
             }}
-            variant="body2"
-            color="text.secondary"
+            variant="body1"
+            color="text.primary"
           >
-            <h5>{project.target}</h5>
+            <h4 
+            style={{
+              margin: 0,
+            }}>
+            {project.target}
+            </h4>
           </Typography>
         }
       />
@@ -53,23 +56,18 @@ const ProjectCard = ({ project }) => {
           variant="body2"
           color="text.secondary"
         >
-          <h4>Description: </h4> <p>{project.description}</p>
+          <h4 style={{
+              margin: 0,
+            }}>
+              Description: 
+              </h4> <p style={{ width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow:'ellipsis'}}>{project.description}</p>
         </Typography>
         <Link to="/project" state={{ data: project }}
           style = {{
           textDecoration:'none',
           }} 
         >
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <Button variant="contained" color="primary">See more</Button>
-          </Typography>
+            <Button variant="contained" color="primary" sx={{margin:'8px', padding:'8px 48px'}} >See more</Button>
         </Link>
       </CardContent>
     </Card>

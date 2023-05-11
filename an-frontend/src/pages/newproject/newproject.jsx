@@ -90,7 +90,7 @@ const NewProject = () => {
       };
 
     const statusOption = () => {
-
+      
       if (data.role === "admin") {
         return (
           <>
@@ -257,19 +257,27 @@ const NewProject = () => {
                 fullWidth={true}
                 sx={{ marginBottom: '10px' }}
               />
+
               <TextField
                 onChange={(e) => setEquipmentDescription(e.target.value)}
-                outsidChange={(e) => setEquipmentCost(e.target.value)}
+                label="Equipment description"
+                variant="outlined"
+                fullWidth={true}
+                sx={{ marginBottom: '10px' }}
+              />
+
+              <TextField
+                onChange={(e) => setEquipmentCost(e.target.value)}
                 label="Equipment cost"
                 variant="outlined"
                 fullWidth={true}
                 sx={{ marginBottom: '10px' }}
               />
-              {/* {errorMessage && (
-                <Typography color="error" textAlign="center" mt={2}>
-                  {errorMessage}
-                </Typography>
-              )} */}
+                {/* {errorMessage && (
+                  <Typography color="error" textAlign="center" mt={2}>
+                    {errorMessage}
+                  </Typography>
+                )} */}
             </CardContent>
             <Divider />
             <CardActions 
