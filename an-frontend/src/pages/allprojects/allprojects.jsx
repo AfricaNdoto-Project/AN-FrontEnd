@@ -1,30 +1,25 @@
 import { useState, useEffect } from 'react'
 import ProjectCard from './projectcard/projectcard'
-
 import { Container } from '@mui/material'
-import { CircularProgress } from '@mui/material'
-
 import Loading from '../../components/loading/loading'
-
 import { getAllProjects } from '../../services/projectsService'
 
 const AllProjects = () => {
   const [allProjects, setAllProjects] = useState([])
 
   useEffect(() => {
-    getProjectsData()
-  }, [])
-
-  const getProjectsData = async () => {
+    const getProjectsData = async () => {
     const result = await getAllProjects()
     setAllProjects(result)
   }
+    getProjectsData()
+  }, [])
 
   const displayAllProjects = () => {
     return allProjects.map((elem) => {
       return (
         <>
-          <ProjectCard key={elem.id} project={elem} />
+        <ProjectCard key={elem.id} project={elem} />
         </>
       )
     })

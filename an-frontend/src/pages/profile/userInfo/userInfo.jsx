@@ -88,7 +88,7 @@ const UserInfo = ( {user} ) => {
           variant="body2"
           color="text.secondary"
         >
-          <h3>Phone Number:: </h3> <p>{user.phone}</p>
+          <h3>Phone Number: </h3> <p>{user.phone}</p>
         </Typography>
         <Typography
           sx={{
@@ -99,7 +99,7 @@ const UserInfo = ( {user} ) => {
           variant="body2"
           color="text.secondary"
         >
-          <h3>ID Number:: </h3> <p>{user.idNumber}</p>
+          <h3>ID Number: </h3> <p>{user.idNumber}</p>
         </Typography>
         <Typography
           sx={{
@@ -110,7 +110,7 @@ const UserInfo = ( {user} ) => {
           variant="body2"
           color="text.secondary"
         >
-          <h3>Role: </h3>{' '}
+          <h3>Role: </h3>
           <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
         </Typography>
       </CardContent>

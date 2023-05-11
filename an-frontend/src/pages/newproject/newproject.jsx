@@ -6,7 +6,6 @@ import getProfessions from '../../services/professionService'
 import { getVolunteers } from '../../services/volunteerService'
 import { CreateProject } from '../../services/projectsService'
 import {
-
     Card,
     CardHeader,
     TextField,
@@ -34,7 +33,7 @@ import {
 
 const NewProject = () => {
     const navigate = useNavigate()
-
+    
     const [name, setName] = useState('')
     const [target, setTarget] = useState('') 
     const [description, setDescription] = useState('')
@@ -59,7 +58,7 @@ const NewProject = () => {
 
     const location = useLocation()
     const data = location.state?.data
-
+    
     const getProfessionData = async () => {
         const result = await getProfessions()
         const result2 = await getVolunteers()
@@ -245,9 +244,8 @@ const NewProject = () => {
                     >
                 
                         { volunteerData.filter(elem => (elem.role==='volunteer' || elem.role==='volunteer_donor') && elem.volunteer.professional.name===profession).map((elem) =>{
-                          return <MenuItem value={elem.name} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
+                          return <MenuItem value={elem.id} key={elem.id}>{elem.name} {elem.lastname}</MenuItem>
                         })
-
                         }
                     </Select>
             </FormControl>

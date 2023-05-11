@@ -18,6 +18,14 @@ import Delete from "../pages/profile/delete/delete";
 import Donation from "../pages/makeDonation/makeDonation";
 import AdminProfile from '../pages/profile/adminView/AdminProfile'
 
+const role = localStorage.getItem('role')
+const memberRoutes = () => {
+  if(role === '') {
+
+  }
+}
+
+
 const privateRoutes = () => {
   if (!localStorage.getItem('token')) {
     return redirect('/')

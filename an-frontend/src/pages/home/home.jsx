@@ -1,31 +1,29 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import './home.css'
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
-import ButtonBases from '../../components/donationButton/donationButton'
-const Home = () => {
-  function Example(props) {
-    var items = [
-      {
-        name: 'Random Name #1',
-        description: 'Probably the most random thing you have ever seen!',
-      },
-      {
-        name: 'Random Name #2',
-        description: 'Hello World!',
-      },
-    ]
+import { Paper, Button, Container, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { getAllProjects } from '../../services/projectsService'
+import frontPage from '../../assets/Portada.png'
+import CardMedia from '@mui/material/CardMedia'
 
+const Home = () => {
+  const [projects, setProjects] = useState([])
+  useEffect(() => {
+    const getProjects = async () => {
+      const result = await getAllProjects()
+      setProjects(result)
+    }
+    getProjects()
+  }, [])
+  // console.log(projects)
+  function CarouselProjects(props) {
+    useEffect(() => {}, [])
     return (
       <Carousel>
-        {items.map((item, i) => (
-          <Item
-            sx={{
-              height: '100%',
-            }}
-            key={i}
-            item={item}
-          />
+        {projects.map((item) => (
+          <Item key={item.id} item={item} />
         ))}
       </Carousel>
     )
@@ -33,23 +31,128 @@ const Home = () => {
 
   function Item(props) {
     return (
-      <Paper>
+      <Paper sx={{ backgroundColor: '#AED5F5' }}>
         <h2>{props.item.name}</h2>
         <p>{props.item.description}</p>
-
-        <Button className="CheckButton">Check it out!</Button>
+        <Button className="CheckButton">See More</Button>
       </Paper>
     )
   }
-  return ( 
-    <div className="container">
-      <div>
-        {Example()}
-      </div>
-      <div className='button-donation'>
-        <ButtonBases/>
-      </div>
-    </div>
+  return (
+    <Container
+      sx={{
+        width: '100vw',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // overflow: 'auto',
+        paddingRigth: { md: '0px' },
+        paddingLeft: { md: '0px' },
+      }}
+      maxWidth={false}
+    >
+      <Container
+      maxWidth={ false }
+        sx={{ width: '100%',margin: '0px', paddingLeft: '0px', paddingRight: '0px' }}
+      >
+        {CarouselProjects()}
+      </Container>
+      <Container
+        maxWidth={false}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '5px',
+        }}
+      >
+        <CardMedia
+          component="img"
+          image={frontPage}
+          alt="Front-Page"
+          sx={{ height: '100%', width: '100%' }}
+        />
+      </Container>
+      <Container
+        maxWidth={false}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100vw',
+          marginTop: '5px',
+          marginBottom: '25px',
+        }}
+      >
+        <Typography sx={{ margin: '10px' }}>
+          With your donatvwion a month for a year, we can provide complete
+          treatment against malnutrition to 7 children.
+        </Typography>
+        <Link to="/donation">
+          <a className="myButton">Donation</a>
+        </Link>
+      </Container>
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          marginBottom: '10px',
+        }}
+      >
+        <CardMedia
+          component="img"
+          height="140"
+          image={frontPage}
+          alt="Projects"
+          sx={{
+            width: '45%',
+            margin: '5px',
+            borderRadius: '100px',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transition: 'transform 0.2s ease-in-out',
+            },
+          }}
+        />
+        <CardMedia
+          component="img"
+          height="140"
+          image={frontPage}
+          alt="Events"
+          sx={{
+            width: '45%',
+            border: '4px solid black',
+            margin: '5px',
+            borderRadius: '100px',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transition: 'transform 0.2s ease-in-out',
+            },
+          }}
+        />
+        <CardMedia
+          component="img"
+          height="140"
+          image={frontPage}
+          alt="Calendar"
+          sx={{
+            width: '45%',
+            border: '4px solid black',
+            margin: '5px',
+            borderRadius: '100px',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              transition: 'transform 0.2s ease-in-out',
+            },
+          }}
+        />
+      </Container>
+    </Container>
   )
 }
 
