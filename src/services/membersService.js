@@ -8,8 +8,8 @@ const getMembersList = async () => {
       },
     })
     return data
-  } catch (e) {
-    return e.response.data
+  } catch (error) {
+    return error.message
   }
 }
 
@@ -21,8 +21,8 @@ const getOneMember = async (id) => {
       },
     })
     return data
-  } catch (e) {
-    return e.response.data
+  } catch (error) {
+    return error.message
   }
 }
 
