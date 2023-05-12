@@ -5,7 +5,7 @@ import { Paper, Button, Container, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { getAllProjects } from '../../services/projectsService'
 import frontPage from '../../assets/Portada.png'
-import events from  '../../assets/events.jpg'
+import events from '../../assets/events.jpg'
 import project from '../../assets/projects.jpg'
 import calendar from '../../assets/apadrina1.jpg'
 import CardMedia from '@mui/material/CardMedia'
@@ -113,9 +113,6 @@ const Home = () => {
           With your donation a month for a year, we can provide complete
           treatment against malnutrition to 7 children.
         </Typography>
-        {/* <Link to="/donation">
-          <a className="myButton">Donation</a>
-        </Link> */}
         <Link to="/donation">
           <Button
             variant="contained"
@@ -136,79 +133,85 @@ const Home = () => {
           marginBottom: '10px',
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            height: '250px',
-            marginLeft: '10px'
-          }}
-        >
-          <CardMedia
-            component="img"
-            height="250px"
-            image={project}
-            alt="Projects"
+        <Link to="/allprojects">
+          <Box
             sx={{
-              width: '250px',
-              borderRadius: '10px',
-              '&:hover': {
-                transform: 'scale(1.05)',
-                transition: 'transform 0.2s ease-in-out',
-              },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              height: '250px',
+              marginLeft: '10px',
             }}
-          />
-          <Typography variant="h4">Projects</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            height: '250px',
-          }}
-        >
-          <CardMedia
-            component="img"
-            height="250px"
-            image={events}
-            alt="Projects"
+          >
+            <CardMedia
+              component="img"
+              height="250px"
+              image={project}
+              alt="Projects"
+              sx={{
+                width: '250px',
+                borderRadius: '10px',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
+                },
+              }}
+            />
+            <Typography variant="h4">Projects</Typography>
+          </Box>
+        </Link>
+        <Link to="/events">
+          <Box
             sx={{
-              width: '250px',
-              borderRadius: '10px',
-              '&:hover': {
-                transform: 'scale(1.05)',
-                transition: 'transform 0.2s ease-in-out',
-              },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              height: '250px',
             }}
-          />
-          <Typography variant="h4">Events</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            height: '300px',
-          }}
-        >
-          <CardMedia
-            component="img"
-            height="200px"
-            image={calendar}
-            alt="Projects"
+          >
+            <CardMedia
+              component="img"
+              height="250px"
+              image={events}
+              alt="Projects"
+              sx={{
+                width: '250px',
+                borderRadius: '10px',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
+                },
+              }}
+            />
+            <Typography variant="h4">Events</Typography>
+          </Box>
+        </Link>
+        <Link to="/calendar">
+          <Box
             sx={{
-              width: '235px',
-              borderRadius: '10px',
-              '&:hover': {
-                transform: 'scale(1.05)',
-                transition: 'transform 0.2s ease-in-out',
-              },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              height: '300px',
             }}
-          />
-          <Typography variant="h4">Calendar</Typography>
-        </Box>
+          >
+            <CardMedia
+              component="img"
+              height="200px"
+              image={calendar}
+              alt="Projects"
+              sx={{
+                width: '235px',
+                borderRadius: '10px',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  transition: 'transform 0.2s ease-in-out',
+                },
+              }}
+            />
+            <Typography variant="h4">Calendar</Typography>
+          </Box>
+        </Link>
       </Container>
     </Container>
   )
