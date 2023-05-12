@@ -32,13 +32,13 @@ const ProjectCard = ({ project }) => {
           sx={{ margin: 0, backgroundColor: '#E4C5A8' }}
           title={
             <Typography variant="body1" color="text.primary">
-              <h2
+              <h3
                 style={{
                   margin: 10,
                 }}
               >
                 {project.name}
-              </h2>
+              </h3>
             </Typography>
           }
           subheader={

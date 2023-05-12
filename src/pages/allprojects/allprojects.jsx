@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProjectCard from './projectcard/projectcard'
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import Loading from '../../components/loading/loading'
 import { getAllProjects } from '../../services/projectsService'
 

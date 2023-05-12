@@ -1,11 +1,11 @@
-import { 
-    Card,
-    CardHeader,
-    CardContent,
-    Typography, 
-    Box,
-    Button,
-    Divider
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+  Box,
+  Button,
+  Divider,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -18,8 +18,6 @@ export default function FullInfoCard({ project }) {
         alignItems: 'center',
         width: '100%',
         margin: '20px',
-        // border:'solid',
-        // borderColor: 'blue',
         borderRadius: '10px',
       }}
     >
@@ -64,14 +62,7 @@ export default function FullInfoCard({ project }) {
           </Typography>
         }
       />
-      <CardContent
-        sx={
-          {
-            // border:'solid',
-            // borderColor: 'red'
-          }
-        }
-      >
+      <CardContent>
         <Typography
           sx={{
             display: 'flex',
@@ -83,6 +74,7 @@ export default function FullInfoCard({ project }) {
         >
           <h3>Description: {project.description}</h3>
         </Typography>
+        <Divider sx={{ margin: '10px' }}></Divider>
         <Box
           sx={{
             margin: '8px',
@@ -136,7 +128,7 @@ export default function FullInfoCard({ project }) {
             </Typography>
           </Box>
         </Box>
-          <Divider sx={{margin:'10px'}}></Divider>
+        <Divider sx={{ margin: '10px' }}></Divider>
         <Link to="/allprojects">
           <Button
             variant="outlined"
