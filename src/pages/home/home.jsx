@@ -24,9 +24,10 @@ const Home = () => {
     useEffect(() => {}, [])
     return (
       <Carousel>
-        {projects.map((item) => (
+        Algo
+        {/* {projects.map((item) => (
           <Item key={item.id} item={item} />
-        ))}
+        ))} */}
       </Carousel>
     )
   }
