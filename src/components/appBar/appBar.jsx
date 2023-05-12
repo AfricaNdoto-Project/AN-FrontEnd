@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import '../appBar/appBar.css'
-import logo from '../../assets/thumb_AN.png'
+import logo from '../../assets/Images/AN_logo_80.png'
 
 export default function ButtonAppBar() {
   const navigate = useNavigate()
@@ -70,15 +70,15 @@ export default function ButtonAppBar() {
 
     <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw', minWidth: '390px' }}>
 
-      <AppBar position="static">
+      <AppBar position="static" sx={{ height:'100px', paddingTop: '6px' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: 'flex' }}
+            sx={{ flexGrow: 1, display: 'flex', flexDirection:'row' }}
           >
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            <Avatar alt="Logo AfricaNdoto" src={logo} />
+            <Avatar alt="Logo AfricaNdoto" src={ logo } sx={{ height: '85px', width: '90px'}} />
             </Link>
           </Typography>
 
