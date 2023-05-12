@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { getMembersList } from '../../../services/membersService'
-import {CardActions} from '@mui/material'
+import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { Box, Button, Typography, Grow } from '@mui/material'
 import useMember from '../../../hooks/useMember'
-import { Card, CardContent, Container } from '@mui/material'
+import { Card, CardContent, Container, Grid } from '@mui/material'
 import { useState } from 'react'
+
 
 const AllMembers = () => {
   const [checked] = useState(true)
@@ -20,18 +21,15 @@ const AllMembers = () => {
     getMembers()
   }, [setMembersList])
 
-
-  
-
   const users = membersList.map((member, idx) => {
     return (
-      <>
+      <React.Fragment key={idx}>
         <Grow
           in={checked}
           style={{ transformOrigin: '0 0 0' }}
           {...(checked ? { timeout: 1000 } : {})}
         >
-          <Box key={idx} sx={{ display: 'flex', height:'20%' }}>
+          <Box sx={{ display: 'flex', height: '20%' }}>
             <Card
               sx={{
                 flexGrow: 1,
@@ -41,7 +39,7 @@ const AllMembers = () => {
                 height: 155,
                 width: 250,
                 margin: 1,
-                borderRadius: 3
+                borderRadius: 3,
               }}
             >
               <CardContent sx={{ flex: 1 }}>
@@ -69,9 +67,9 @@ const AllMembers = () => {
                     sx={{
                       bgcolor: '#2468A0',
                       fontSize: '12px',
-                      '&:hover':{
-                        fontSize:'15px'
-                      }
+                      '&:hover': {
+                        fontSize: '15px',
+                      },
                     }}
                   >
                     SEE PROFILE
@@ -81,50 +79,42 @@ const AllMembers = () => {
             </Card>
           </Box>
         </Grow>
-      </>
+      </React.Fragment>
     )
   })
-if (Object.keys(membersList).length !== 0) {
-  return (
-    <Container
-      maxWidth={false}
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        width: '100%',
-        padding: 6,
-        border: 2,
-      }}
-    >
-      {/*USE GRID COMPONENT, ITS BETTER*/}
+  if (Object.keys(membersList).length !== 0) {
+    return (
       <Container
         maxWidth={false}
         sx={{
-          display: 'grid flex',
-          flexWrap: 'wrap',
-          height: '100%',
-          width: { lg: '70%', xl: '40%' },
-          borderRadius: 2,
-          boxShadow: 10,
-          bgcolor: '#B37943',
+          display: 'flex',
           justifyContent: 'center',
-          gap: '0 50px',
-          gridTemplateColumns: 'repeat(auto-fit, 1fr)',
-          margin: 0,
-          padding: 3,
-          overflow: 'scroll',
+          alignItems: 'center',
+          height: '100vh',
+          width: '100%',
+          padding: 6,
         }}
       >
-        {users}
+        {/*USE GRID COMPONENT, ITS BETTER*/}
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center"
+          alignItems="stretch"
+          rowSpacing={1}
+          sx={{
+            width: { lg: '70%', xl: '40%' },
+            height: '100%',
+            borderRadius: 2,
+            margin: 0,
+            padding: 3,
+            overflow: 'scroll',
+          }}
+        >
+          {users}
+        </Grid>
       </Container>
-    </Container>
-  )
-}
-
-
-
-   
+    )
+  }
 }
 export default AllMembers

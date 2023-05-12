@@ -46,7 +46,9 @@ const OneMember = () => {
     }
     getMember()
     getMyDonations()
-  }, [memberData, setMemberData, id])
+  }, [])
+
+
 
   const isDonor = donationsList.map((donation, idx) => {
     if (memberData.role !== 'volunteer' && Object.keys(donation).length !== 0) {
@@ -73,7 +75,6 @@ const OneMember = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignSelf: 'center',
-          border: 2,
         }}
       >
         <Card
@@ -81,7 +82,6 @@ const OneMember = () => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            border: 2,
             width: '50%',
             alignSelf: 'center',
           }}
@@ -125,7 +125,6 @@ const OneMember = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            border: 2,
             width: '50%',
             alignSelf: 'center',
           }}
@@ -148,20 +147,18 @@ const OneMember = () => {
                 <Table size="small" aria-label="donor details">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Total Donations</TableCell>
-                      <TableCell>Last Donation</TableCell>
+                      <TableCell>Amount</TableCell>
+                      <TableCell>Type</TableCell>
+                      <TableCell>productId</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    <TableRow>
-                      <TableCell>totalDonations</TableCell>
-                      <TableCell>Lastdonation</TableCell>
-                    </TableRow>
+                    {isDonor}
                   </TableBody>
                 </Table>
               </TableContainer>
               <TableContainer>
-                <Table size="small" aria-label="donation history">
+                {/* <Table size="small" aria-label="donation history">
                   <TableHead>
                     <TableRow>
                       <TableCell>Date</TableCell>
@@ -169,19 +166,19 @@ const OneMember = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>{isDonor}</TableBody>
-                </Table>
+                </Table> */}
               </TableContainer>
             </CardContent>
           </Collapse>
         </Card>
-        <Card
+       {/*  <Card
           sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            border: 2,
             width: '50%',
             alignSelf: 'center',
+            bgcolor: '#55616B',
           }}
         >
           <CardContent>
@@ -208,7 +205,7 @@ const OneMember = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {/* {isProject.map((project) => ( */}
+                    {isProject.map((project) => (
                     <TableRow>
                       <TableCell>Nombre</TableCell>
                       <TableCell>Goal</TableCell>
@@ -219,7 +216,7 @@ const OneMember = () => {
               </TableContainer>
             </CardContent>
           </Collapse>
-        </Card>
+        </Card> */}
       </Container>
     )
   }
