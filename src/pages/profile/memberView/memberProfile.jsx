@@ -19,15 +19,8 @@ const MemberProfile = () => {
       setDonation(donations)
     }
     getData()
-  }, [setProjects, setDonation])
+  }, [])
 
-  const displayProjects = () => {
-    return <Project projects={projects} />
-  }
-
-  const displayDonations = () => {
-    return <Donation donations={donation.donations} />
-  }
 
   const displayDonationsAndProjects = () => {
     
@@ -36,20 +29,18 @@ const MemberProfile = () => {
         <Container
           maxWidth={false}
           sx={{
-            borderColor: 'blue',
             display: 'flex',
             justifyContent: 'center',
             alignSelf: 'center',
           }}
         >
           <Box>
-            <Donation donations={donation}></Donation>
+          <Donation donations={donation} />
           </Box>
         </Container>
         <Container
           maxWidth={false}
           sx={{
-            borderColor: 'blue',
             display: 'flex',
             justifyContent: 'center',
             alignSelf: 'center',
@@ -63,19 +54,6 @@ const MemberProfile = () => {
     )
   }
 
-  const displayData = () => {
-    if (donation.length !== 0 && projects.length !== 0) {
-      return displayDonationsAndProjects()
-    } else if (donation.length !== 0) {
-      return displayDonations()
-    } else if (projects.length !== 0) {
-      return displayProjects()
-    } else {
-      return (
-        <div>No hay donaciones o proyectos relacionados a este miembro</div>
-      )
-    }
-  }
 
   return (
     <Container
@@ -122,7 +100,7 @@ const MemberProfile = () => {
             height: { lg: '98.5%', xl: '1090px' },
           }}
         >
-          {displayData()}
+          {displayDonationsAndProjects()}
         </Box>
       </Container>
     </Container>
