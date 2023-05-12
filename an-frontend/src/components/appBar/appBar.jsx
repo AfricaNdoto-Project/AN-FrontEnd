@@ -70,15 +70,15 @@ export default function ButtonAppBar() {
 
     <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw', minWidth: '390px' }}>
 
-      <AppBar position="static">
+      <AppBar position="static" sx={{ height:'100px', paddingTop: '6px' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: 'flex' }}
+            sx={{ flexGrow: 1, display: 'flex', flexDirection:'row' }}
           >
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            <Avatar alt="Logo AfricaNdoto" src={logo} />
+            <Avatar alt="Logo AfricaNdoto" src={ logo } sx={{ height: '80px', width: '80px'}} />
             </Link>
           </Typography>
 

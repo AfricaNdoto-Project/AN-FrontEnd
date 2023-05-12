@@ -9,9 +9,9 @@ const Main = () => {
       maxWidth={false}
       sx={{
         height: '100%',
-        paddingRigth: { md: '0px' },
+        paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
         margin: '0px',
-        paddingLeft: { md: '0px' },
+        paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
       }}
     >
       <Header />

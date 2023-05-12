@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import './home.css'
 import Carousel from 'react-material-ui-carousel'
@@ -6,7 +5,11 @@ import { Paper, Button, Container, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { getAllProjects } from '../../services/projectsService'
 import frontPage from '../../assets/Portada.png'
+import events from  '../../assets/events.jpg'
+import project from '../../assets/projects.jpg'
+import calendar from '../../assets/apadrina1.jpg'
 import CardMedia from '@mui/material/CardMedia'
+import Box from '@mui/material/Box'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -17,7 +20,6 @@ const Home = () => {
     }
     getProjects()
   }, [])
-  // console.log(projects)
   function CarouselProjects(props) {
     useEffect(() => {}, [])
     return (
@@ -48,14 +50,21 @@ const Home = () => {
         justifyContent: 'center',
         alignItems: 'center',
         // overflow: 'auto',
-        paddingRigth: { md: '0px' },
-        paddingLeft: { md: '0px' },
+        paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
+        paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
+        margin: '0px',
+        // marginLeft: '10px'
       }}
       maxWidth={false}
     >
       <Container
-      maxWidth={ false }
-        sx={{ width: '100%',margin: '0px', paddingLeft: '0px', paddingRight: '0px' }}
+        maxWidth={false}
+        sx={{
+          width: '100%',
+          margin: '0px',
+          paddingLeft: '0px',
+          paddingRight: '0px',
+        }}
       >
         {CarouselProjects()}
       </Container>
@@ -67,10 +76,12 @@ const Home = () => {
           alignItems: 'center',
           marginTop: '5px',
         }}
+        events
       >
         <CardMedia
           component="img"
           image={frontPage}
+          events
           alt="Front-Page"
           sx={{ height: '100%', width: '100%' }}
         />
@@ -87,70 +98,117 @@ const Home = () => {
           marginBottom: '25px',
         }}
       >
-        <Typography sx={{ margin: '10px' }}>
-          With your donatvwion a month for a year, we can provide complete
+        <Typography
+          sx={{
+            margin: '10px',
+            fontSize: {
+              xl: '40px',
+              lg: '36px',
+              md: '28px',
+              sm: '16px',
+              xs: '10px',
+            },
+          }}
+        >
+          With your donation a month for a year, we can provide complete
           treatment against malnutrition to 7 children.
         </Typography>
-        <Link to="/donation">
+        {/* <Link to="/donation">
           <a className="myButton">Donation</a>
+        </Link> */}
+        <Link to="/donation">
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            sx={{ height: '80px', width: '250px', fontSize: '36px' }}
+          >
+            Donation
+          </Button>
         </Link>
       </Container>
       <Container
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           flexWrap: 'wrap',
           marginBottom: '10px',
         }}
       >
-        <CardMedia
-          component="img"
-          height="140"
-          image={frontPage}
-          alt="Projects"
+        <Box
           sx={{
-            width: '45%',
-            margin: '5px',
-            borderRadius: '100px',
-            '&:hover': {
-              transform: 'scale(1.05)',
-              transition: 'transform 0.2s ease-in-out',
-            },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            height: '250px',
+            marginLeft: '10px'
           }}
-        />
-        <CardMedia
-          component="img"
-          height="140"
-          image={frontPage}
-          alt="Events"
+        >
+          <CardMedia
+            component="img"
+            height="250px"
+            image={project}
+            alt="Projects"
+            sx={{
+              width: '250px',
+              borderRadius: '10px',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                transition: 'transform 0.2s ease-in-out',
+              },
+            }}
+          />
+          <Typography variant="h4">Projects</Typography>
+        </Box>
+        <Box
           sx={{
-            width: '45%',
-            border: '4px solid black',
-            margin: '5px',
-            borderRadius: '100px',
-            '&:hover': {
-              transform: 'scale(1.05)',
-              transition: 'transform 0.2s ease-in-out',
-            },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            height: '250px',
           }}
-        />
-        <CardMedia
-          component="img"
-          height="140"
-          image={frontPage}
-          alt="Calendar"
+        >
+          <CardMedia
+            component="img"
+            height="250px"
+            image={events}
+            alt="Projects"
+            sx={{
+              width: '250px',
+              borderRadius: '10px',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                transition: 'transform 0.2s ease-in-out',
+              },
+            }}
+          />
+          <Typography variant="h4">Events</Typography>
+        </Box>
+        <Box
           sx={{
-            width: '45%',
-            border: '4px solid black',
-            margin: '5px',
-            borderRadius: '100px',
-            '&:hover': {
-              transform: 'scale(1.05)',
-              transition: 'transform 0.2s ease-in-out',
-            },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            height: '300px',
           }}
-        />
+        >
+          <CardMedia
+            component="img"
+            height="200px"
+            image={calendar}
+            alt="Projects"
+            sx={{
+              width: '235px',
+              borderRadius: '10px',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                transition: 'transform 0.2s ease-in-out',
+              },
+            }}
+          />
+          <Typography variant="h4">Calendar</Typography>
+        </Box>
       </Container>
     </Container>
   )

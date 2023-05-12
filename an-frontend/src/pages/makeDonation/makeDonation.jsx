@@ -157,11 +157,6 @@ const Donation = () => {
               </Select>
             </FormControl>
           </Box>
-          {/* {errorMessage && (
-          <Typography color="error" textAlign="center" mt={2}>
-            {errorMessage}
-          </Typography>
-        )} */}
         </CardContent>
         <Divider />
         <CardActions
