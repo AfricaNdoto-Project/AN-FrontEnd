@@ -133,7 +133,12 @@ const Home = () => {
           marginBottom: '10px',
         }}
       >
-        <Link to="/allprojects">
+        <Link
+          to="/allprojects"
+          style={{
+            textDecoration: 'none',
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
@@ -160,7 +165,12 @@ const Home = () => {
             <Typography variant="h4">Projects</Typography>
           </Box>
         </Link>
-        <Link to="/events">
+        <Link
+          to="/events"
+          style={{
+            textDecoration: 'none',
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
@@ -186,7 +196,12 @@ const Home = () => {
             <Typography variant="h4">Events</Typography>
           </Box>
         </Link>
-        <Link to="/calendar">
+        <Link
+          to="/calendar"
+          style={{
+            textDecoration: 'none',
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
