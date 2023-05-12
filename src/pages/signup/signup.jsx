@@ -33,7 +33,7 @@ const SignupCard = () => {
   const [password, setPassword] = useState('')
   const [idNumber, setIdNumber] = useState('')
   const [phone, setPhone] = useState('')
-  const [adress, setAddress] = useState('')
+  const [address, setAddress] = useState('')
   const [role, setRole] = useState('')
   const [profs, setProfs] = useState([])
   const [profession, setProfession] = useState('')
@@ -62,7 +62,7 @@ const SignupCard = () => {
       password,
       idNumber,
       phone,
-      adress,
+      address,
       role,
       profession,
     }
