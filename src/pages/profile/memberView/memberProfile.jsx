@@ -72,7 +72,7 @@ const MemberProfile = () => {
       return displayProjects()
     } else {
       return (
-        <div>No hay donaciones o proyectos relacionados a este miembro</div>
+        <div>There is not any donations or projects associated to this profile</div>
       )
     }
   }
