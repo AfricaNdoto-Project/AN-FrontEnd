@@ -54,7 +54,6 @@ const MemberProfile = () => {
     )
   }
 
-
   return (
     <Container
       maxWidth={false}
