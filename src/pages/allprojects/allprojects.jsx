@@ -6,7 +6,9 @@ import { getAllProjects } from '../../services/projectsService'
 
 import { Grow } from '@mui/material';
 
+
 const AllProjects = () => {
+  const [checked] = useState(true)
   const [allProjects, setAllProjects] = useState([])
 
   useEffect(() => {
@@ -20,8 +22,15 @@ const AllProjects = () => {
   const displayAllProjects = () => {
     return allProjects.map((elem) => {
       return (
+        
         <>
-        <ProjectCard key={elem.id} project={elem} />
+         <Grow
+            in={checked}
+            style={{ transformOrigin: '0 0 0' }}
+            {...(checked ? { timeout: 1000 } : {})}
+          >
+            <ProjectCard key={elem.id} project={elem} />
+          </Grow>
         </>
       )
     })
