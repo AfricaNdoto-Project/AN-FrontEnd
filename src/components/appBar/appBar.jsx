@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import '../appBar/appBar.css'
-import logo from '../../assets/thumb_AN.png'
+import logo from '../../assets/Images/AN_logo_80.png'
 
 export default function ButtonAppBar() {
   const navigate = useNavigate()
@@ -78,7 +78,7 @@ export default function ButtonAppBar() {
             sx={{ flexGrow: 1, display: 'flex', flexDirection:'row' }}
           >
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            <Avatar alt="Logo AfricaNdoto" src={ logo } sx={{ height: '80px', width: '80px'}} />
+            <Avatar alt="Logo AfricaNdoto" src={ logo } sx={{ height: '85px', width: '90px'}} />
             </Link>
           </Typography>
 
