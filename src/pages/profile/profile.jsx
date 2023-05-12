@@ -1,119 +1,86 @@
 import { UserContext } from '../../context/userContext'
-import { useEffect, useContext, useState } from 'react'
+import { useEffect, useContext } from 'react'
 import { getProfile } from '../../services/membersService'
-import { getMyDonations } from '../../services/donorsService'
-import { getProjects } from '../../services/projectsService'
 
 import './profile.css'
-import { Link } from 'react-router-dom'
+import {Box, Container} from '@mui/material'
 import Loading from '../../components/loading/loading'
-import Donation from './donations/donations'
-import Project from './projects/projects'
-
-
 import UserInfo from './userInfo/userInfo'
-import { Box, Container } from '@mui/material'
-import TaskBoard from './taskBoard/taskBoard'
+import { Divider } from '@mui/material'
+import AdminProfile from './adminView/AdminProfile'
+import MemberProfile from './memberView/memberProfile'
 
 const Profile = () => {
-  const [donation, setDonation] = useState([])
-
-  const [projects, setProjects] = useState([])
   const { user, setUser } = useContext(UserContext)
 
-  useEffect(() => {
-    const getData = async () => {
-      const result = await getProfile()
-      const donations = await getMyDonations()
-      const project = await getProjects()
-      setProjects(project)
-      setUser(result)
-      setDonation(donations)
-    }
-    getData()
-  }, [setUser])
+  const getData = async () => {
+    const result = await getProfile()
+    setUser(result)
+  }
 
-  const displayUserName = () => {
+  useEffect(() => {
+    getData()
+  }, [])
+
+  if (user !== undefined) {
     return (
       <>
-        <Box>
-          <UserInfo sx={{ height: '25%' }} user={user} />
-        </Box>
-      </>
-    )
-  }
-  const displayProjects = () => {
-    return <Project projects={projects} />
-  }
-  const displayDonations = () => {
-    return <Donation donations={donation} />
-  }
-
-
-  const displayDonationsAndProjects = () => {
-    return [displayDonations(), displayProjects()]
-  }
-
-  const displayData = () => {
-    if (user.role === 'donor') {
-      if (donation.donations.length !== 0) {
-        return <>{displayDonations()}</>
-      } else {
-        return <div>No hay donaciones relacionados a este miembro</div>
-      }
-    } else if (user.role === 'volunteer') {
-      if (projects.length !== 0) {
-        return displayProjects()
-      } else {
-        return <div>No hay proyectos relacionados a este miembro</div>
-      }
-    } else if (user.role === 'admin') {
-      // return <div>Soy Admin</div>
-    } else {
-      return (
-        <Box
+        <Container
+          maxWidth={false}
           sx={{
-            border: '1px solid  black',
+            padding: '10px',
             display: 'flex',
-            flexDirection: 'row',
+            width: '100%',
+            height: {
+              xs: '100%',
+              sm: '100%',
+              md: '100%',
+              lg: '1300px',
+              xl: '100%',
+            },
+            margin: 0,
+            alignSelf: 'center',
             justifyContent: 'center',
-            alignItems: 'flex-start',
+            flexDirection: {
+              xs: 'column',
+              sm: 'column',
+              md: 'column',
+              lg: 'row',
+              xl: 'row',
+            },
           }}
         >
-          {displayDonationsAndProjects()}
-        </Box>
-      )
-    }
-  }
-
-  if (user !== undefined && Object.keys(donation).length !== 0) {
-    return (
-      <Container
-        id="profile-container"
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          margin: '0px',
-          width: '100vw',
-          height: '100vh',
-        }}
-        maxWidth={false}
-      >
-        {displayUserName()}
-        <div className="donations">{displayData()}</div>
-
-
-        <Link to="/newproject" state={{data: user}}>
-
-          <button>New Project</button>
-        </Link>
-      </Container>
+          <Container
+            sx={{
+              width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
+              height: { lg: '85%', xl: '90%' },
+              padding: 3,
+              marginLeft: 0,
+              marginRight: 0,
+              display: 'flex',
+              justifyContent:'center',
+              alignSelf: 'center'
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignSelf: 'center',
+                width: '100%',
+                height: { lg: '98.5%', xl: '1090px' },
+              }}
+            >
+              {user.name && <UserInfo sx={{ height: '25%' }} user={user} />}
+            </Box>
+          </Container>
+          <Container>
+            {user.role === 'admin' ? <AdminProfile /> : <MemberProfile />}
+          </Container>
+        </Container>
+      </>
     )
   } else {
     return <Loading />
-
   }
 }
 

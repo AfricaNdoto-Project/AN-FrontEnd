@@ -7,7 +7,7 @@ import { MemberProvider } from './context/memberProvider'
 import { AdminProvider } from './context/isAdminProvider'
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState('')
   const member = { user, setUser }
 
   return (

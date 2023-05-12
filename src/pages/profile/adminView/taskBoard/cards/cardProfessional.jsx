@@ -4,10 +4,9 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount'
 
-const CardMembers = () => {
-
+const CardProfessional = () => {
 
   return (
     <Card sx={{ width: '100%', height: '100%' }}>
@@ -19,7 +18,7 @@ const CardMembers = () => {
         flexDirection: 'column',
       }}
     >
-      <ManageAccountsIcon
+      <SupervisorAccountIcon
         sx={{
           display: 'flex',
           alignItems: 'baseline',
@@ -27,15 +26,13 @@ const CardMembers = () => {
           justifyContent: 'center',
         }}
       />
-      <Typography gutterBottom variant="h5" component="div">
-        Members
-      </Typography>
+      <Typography>Professions</Typography>
       <Typography variant="body2" color="text.secondary">
-        See and manage information of our members
+        Professions
       </Typography>
     </CardContent>
     <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-      <Link to="/members">
+      <Link to="/professions">
         <Button size="small">Go</Button>
       </Link>
     </CardActions>
@@ -43,4 +40,4 @@ const CardMembers = () => {
   )
 }
 
-export default CardMembers
+export default CardProfessional

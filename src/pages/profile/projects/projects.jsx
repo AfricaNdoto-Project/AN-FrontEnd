@@ -21,18 +21,17 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function Project(projects) {
+export default function Project({ projects }) {
   const [expanded, setExpanded] = React.useState(false)
   const [count, setCount] = React.useState(0)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
-
   const displayProjects = () => {
-    return projects.projects.map((project, index = project.id) => {
-      return (
-        
+    if (Array.isArray(projects) && projects.length !== 0) {
+      return projects.map((project, index = project.id) => {
+        return (
           <Box
             key={index}
             sx={{
@@ -42,12 +41,14 @@ export default function Project(projects) {
             }}
           >
             <Typography paragraph>Project</Typography>
-            <Typography paragraph>Name:{ project.name }</Typography>
-            <Typography paragraph>Target: { project.target } </Typography>
+            <Typography paragraph>Name:{project.name}</Typography>
+            <Typography paragraph>Target: {project.target} </Typography>
           </Box>
-        
-      )
-    })
+        )
+      })
+    } else {
+      return null
+    }
   }
 
   return (
@@ -72,7 +73,7 @@ export default function Project(projects) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent sx={{ height: 'auto', maxHeight: '580px' }}>
-          { displayProjects() }
+          {displayProjects()}
         </CardContent>
       </Collapse>
     </Card>

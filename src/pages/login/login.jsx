@@ -24,7 +24,6 @@ import './login.css'
 const LoginCard = () => {
   const navigate = useNavigate()
 
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   // const [errorMessage, setErrorMessage] = useState('')
@@ -39,8 +38,6 @@ const LoginCard = () => {
   const onLogin = async () => {
     const form = { email, password }
     const result = await login(form)
-
-
     if (result === 200) {
       navigate('/profile')
     } else {

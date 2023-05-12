@@ -21,32 +21,35 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function Donation(donations) {
+export default function Donation({donations}) {
   const [expanded, setExpanded] = React.useState(false)
   const [count, setCount] = React.useState(0)
-
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
 
-  const displayDonations = () => {
-    return donations.donations.donations.map((donation) => {
-      return (
-          <Box
-          key={donation.id}
-            sx={{
-              border: '1px solid black',
-              borderRadius: '4px',
-              margin: '4px',
-            }}
-          >
-            <Typography >Donation</Typography>
-            <Typography paragraph>Amount:{ donation.amount }</Typography>
-            <Typography paragraph>Type: { donation.type } </Typography>
-          </Box>
-      )
-    })
+const displayDonations = () => {
+  if (!donations || !donations.donations) {
+    return null // or return an error message
   }
+
+  return donations.donations.map((donation) => {
+    return (
+      <Box
+        key={donation.id}
+        sx={{
+          border: '1px solid black',
+          borderRadius: '4px',
+          margin: '4px',
+        }}
+      >
+        <Typography>Donation</Typography>
+        <Typography paragraph>Amount: {donation.amount}</Typography>
+        <Typography paragraph>Type: {donation.type}</Typography>
+      </Box>
+    )
+  })
+}
 
   return (
     <Card

@@ -4,13 +4,11 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts'
-
-const CardMembers = () => {
-
+import EventNoteIcon from '@mui/icons-material/EventNote'
+const CardEvent = () => {
 
   return (
-    <Card sx={{ width: '100%', height: '100%' }}>
+<Card sx={{ width: '100%', height: '100%' }}>
     <CardContent
       sx={{
         display: 'flex',
@@ -19,7 +17,7 @@ const CardMembers = () => {
         flexDirection: 'column',
       }}
     >
-      <ManageAccountsIcon
+      <EventNoteIcon
         sx={{
           display: 'flex',
           alignItems: 'baseline',
@@ -28,14 +26,14 @@ const CardMembers = () => {
         }}
       />
       <Typography gutterBottom variant="h5" component="div">
-        Members
+        Events
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        See and manage information of our members
+      Events
       </Typography>
     </CardContent>
     <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
-      <Link to="/members">
+      <Link to="/events">
         <Button size="small">Go</Button>
       </Link>
     </CardActions>
@@ -43,4 +41,4 @@ const CardMembers = () => {
   )
 }
 
-export default CardMembers
+export default CardEvent

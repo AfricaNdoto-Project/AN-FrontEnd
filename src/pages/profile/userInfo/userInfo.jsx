@@ -6,39 +6,21 @@ import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import { red } from '@mui/material/colors'
 
-import Collapse from '@mui/material/Collapse'
-import { styled } from '@mui/material/styles'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import { IconButton } from '@mui/material'
+import { Button } from '@mui/material'
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props
-  return <IconButton {...other} />
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}))
+
 
 import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-
-export default function UserInfo({ user }) {
-
+const UserInfo = ( {user} ) => {
   return (
     <Card
-      sx={{
-
-        border: '1px solid black',
-        maxWidth: 340,
-        width: '500px',
-        minBlockSize: '580px',
+    sx={{
+        width: '100%',
+        height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        margin: '15px',
       }}
     >
       <CardHeader
@@ -55,21 +37,15 @@ export default function UserInfo({ user }) {
               flexDirection: 'column',
               justifyContent: 'space-around',
 
-              width: '80px'
-
+              width: '100%',
             }}
             variant="body2"
             color="text.secondary"
           >
-
             <Typography
-              sx={{
-                marginLeft: '75px',
-              }}
             >
               {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
             </Typography>
-
           </Typography>
         }
         subheader={
@@ -79,21 +55,15 @@ export default function UserInfo({ user }) {
               flexDirection: 'column',
               justifyContent: 'space-around',
 
-              width: '80px'
-
+              width: '100%',
             }}
             variant="body2"
             color="text.secondary"
           >
-
             <Typography
-              sx={{
-                marginLeft: '75px',
-              }}
             >
               {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
             </Typography>
-
           </Typography>
         }
       />
@@ -144,14 +114,16 @@ export default function UserInfo({ user }) {
           <p>{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>
         </Typography>
       </CardContent>
-      <CardActions sx={{alignSelf: 'center', justifyContent: 'center'}}>
+      <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>
         <Link to={`/profile/edit/${user.id}`}>
-          <button>Edit Account</button>
+          <Button sx={{borderRadius: 10, height: 60, fontSize: 12, boxShadow: 5, size:'medium'}} variant='contained'>Edit Account</Button> 
         </Link>
         <Link to={`/profile/delete/${user.id}`}>
-          <button>Delete Account</button>
+          <Button sx={{borderRadius: 10, height: 60, fontSize: 12, boxShadow: 5}} variant='contained'>Delete Account</Button> 
         </Link>
       </CardActions>
     </Card>
   )
 }
+
+export default UserInfo
