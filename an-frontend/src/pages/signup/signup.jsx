@@ -81,7 +81,7 @@ const SignupCard = () => {
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
           marginBottom: '50px',
           margin: 0,
           height: '100%',
