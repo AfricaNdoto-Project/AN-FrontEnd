@@ -21,37 +21,35 @@ const ExpandMore = styled((props) => {
   }),
 }))
 
-export default function Donation({donations}) {
+export default function Donation({ donations }) {
   const [expanded, setExpanded] = React.useState(false)
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
 
   const displayDonations = () => {
-    if (donations.length === 0) {
-      return null
+    if (Array.isArray(donations) && donations.length !== 0) {
+       return donations.donations.map((donation) => {
+         return (
+           <Box
+             key={donation.id}
+             sx={{
+               border: '1px solid black',
+               borderRadius: '4px',
+               margin: '4px',
+             }}
+           >
+             <Typography>Donation</Typography>
+             <Typography paragraph>Amount: {donation.amount}</Typography>
+             <Typography paragraph>Type: {donation.type}</Typography>
+           </Box>
+         )
+       })
+      
+    } else {
+     return <Typography>You dont have donations</Typography>
     }
-  
-    return donations.donations.map((donation) => {
-      return (
-        <Box
-          key={donation.id}
-          sx={{
-            border: '1px solid black',
-            borderRadius: '4px',
-            margin: '4px',
-          }}
-        >
-          <Typography>Donation</Typography>
-          <Typography paragraph>Amount: {donation.amount}</Typography>
-          <Typography paragraph>Type: {donation.type}</Typography>
-        </Box>
-      )
-    })
   }
-  
-  
-
 
   return (
     <Card
@@ -61,7 +59,6 @@ export default function Donation({donations}) {
         height: '500x',
         width: '250px',
         marginRight: '5px',
-
       }}
     >
       <CardHeader title="Donations" />
@@ -79,7 +76,7 @@ export default function Donation({donations}) {
         <CardContent
           sx={{ height: 'auto', overflow: 'scroll', maxHeight: '580px' }}
         >
-          { displayDonations() }
+          {displayDonations()}
         </CardContent>
       </Collapse>
     </Card>
