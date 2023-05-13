@@ -10,6 +10,7 @@ import project from '../../assets/projects.jpg'
 import calendar from '../../assets/apadrina1.jpg'
 import CardMedia from '@mui/material/CardMedia'
 import Box from '@mui/material/Box'
+import Loading from '../../components/loading/loading'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -22,6 +23,7 @@ const Home = () => {
   }, [])
   function CarouselProjects(props) {
     useEffect(() => {}, [])
+    if(Array.isArray(projects) && projects.length !== 0) {
     return (
       <Carousel>
         {projects.map((item) => (
@@ -29,6 +31,10 @@ const Home = () => {
         ))}
       </Carousel>
     )
+    }
+    else {
+      <Loading />
+    }
   }
 
   function Item(props) {
