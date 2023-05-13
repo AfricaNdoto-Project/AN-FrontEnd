@@ -60,7 +60,7 @@ const Home = () => {
         paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
         margin: '0px',
         minHeight: '1000px',
-        // marginLeft: '10px'
+        marginLeft: '10px'
       }}
       maxWidth={false}
     >
