@@ -1,14 +1,16 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Collapse from '@mui/material/Collapse'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
+import {
+  styled,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+  Grid,
+} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import Box from '@mui/material/Box'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -23,7 +25,6 @@ const ExpandMore = styled((props) => {
 
 export default function Project({ projects }) {
   const [expanded, setExpanded] = React.useState(false)
-  const [count, setCount] = React.useState(0)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -32,18 +33,11 @@ export default function Project({ projects }) {
     if (Array.isArray(projects) && projects.length !== 0) {
       return projects.map((project, index = project.id) => {
         return (
-          <Box
-            key={index}
-            sx={{
-              border: '1px solid black',
-              borderRadius: '4px',
-              margin: '4px',
-            }}
-          >
+          <Grid key={index}>
             <Typography paragraph>Project</Typography>
             <Typography paragraph>Name:{project.name}</Typography>
             <Typography paragraph>Target: {project.target} </Typography>
-          </Box>
+          </Grid>
         )
       })
     } else {
@@ -52,30 +46,23 @@ export default function Project({ projects }) {
   }
 
   return (
-    <Card
-      sx={{
-        maxWidth: 400,
-        maxHeight: '580px',
-        width: '250px',
-        marginLeft: '5px',
-      }}
-    >
-      <CardHeader title="Projects" />
-      <CardActions disableSpacing>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ height: 'auto', maxHeight: '580px' }}>
-          {displayProjects()}
-        </CardContent>
-      </Collapse>
-    </Card>
+      <Card>
+        <CardHeader title="Projects" />
+        <CardActions disableSpacing>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent sx={{ height: 'auto' }}>
+            {displayProjects()}
+          </CardContent>
+        </Collapse>
+      </Card>
   )
 }

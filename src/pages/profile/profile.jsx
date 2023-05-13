@@ -3,7 +3,7 @@ import { useEffect, useContext } from 'react'
 import { getProfile } from '../../services/membersService'
 
 import './profile.css'
-import {Box, Container} from '@mui/material'
+import { Grid } from '@mui/material'
 import Loading from '../../components/loading/loading'
 import UserInfo from './userInfo/userInfo'
 import AdminProfile from './adminView/AdminProfile'
@@ -24,64 +24,29 @@ const Profile = () => {
   if (user !== undefined) {
     return (
       <>
-        <Container
-          maxWidth={false}
-          sx={{
-            padding: '10px',
-            display: 'flex',
-            width: '100%',
-            height: {
-              xs: '100%',
-              sm: '100%',
-              md: '100%',
-              lg: '1300px',
-              xl: '100%',
-            },
-            margin: 0,
-            alignSelf: 'center',
-            justifyContent: 'center',
-            flexDirection: {
-              xs: 'column',
-              sm: 'column',
-              md: 'column',
-              lg: 'row',
-              xl: 'row',
-            },
-          }}
+      <Grid 
+        container spacing={2}
+        padding='10px'
+        justifyContent='center'
+        height='100%'
         >
-          <Container
-            sx={{
-              width: { sx: '100%', sm: '50%', md: '60%', lg: '30%', xl: '20%' },
-              height: { lg: '85%', xl: '90%' },
-              padding: 3,
-              marginLeft: 0,
-              marginRight: 0,
-              display: 'flex',
-              justifyContent: 'center',
-              alignSelf: 'center'
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                alignSelf: 'center',
-                width: '100%',
-                height: { lg: '98.5%', xl: '1090px' },
-              }}
-            >
-              {user.name && <UserInfo sx={{ height: '25%' }} user={user} />}
-            </Box>
-          </Container>
-          <Container>
-            {user.role === 'admin' ? <AdminProfile /> : <MemberProfile />}
-          </Container>
-        </Container>
+        <Grid
+          item
+          xs= {12} sm= {6} md={6} lg={4} xl={4}>
+            {user.name && <UserInfo user={user} />}
+        </Grid>
+        <Grid
+         item
+         xs= {12} sm= {6} md={6} lg={8} xl={8}
+         >
+          {user.role === 'admin' ? <AdminProfile /> : <MemberProfile />}
+        </Grid>
+      </Grid>
       </>
     )
   } else {
     return <Loading />
   }
 }
-
 
 export default Profile
