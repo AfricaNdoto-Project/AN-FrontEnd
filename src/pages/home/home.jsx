@@ -59,6 +59,7 @@ const Home = () => {
         paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
         paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
         margin: '0px',
+        minHeight: '1000px',
         // marginLeft: '10px'
       }}
       maxWidth={false}
