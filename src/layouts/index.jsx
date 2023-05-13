@@ -8,11 +8,12 @@ const Main = () => {
     <Container
       maxWidth={false}
       sx={{
-        width:{sm:'90vw', xs: '90vw'},
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
         paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
         margin: '0px',
         paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
+        padding: '0px'
       }}
     >
       <Header />
