@@ -164,7 +164,7 @@ const TaskBoard = () => {
             alignSelf: 'center',
           }}
         >
-          <Tabs variant="scrollable" scrollButtons="auto" value={7}>
+          <Tabs variant="scrollable" scrollButtons="auto" value={false}>
             <Box sx={{ display: 'flex', flexGrow: 1, padding: 2 }}>
               <Box
                 sx={{ display: 'flex', width: 300, height: 400, boxShadow: 5 }}

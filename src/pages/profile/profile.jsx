@@ -72,6 +72,7 @@ const Profile = () => {
               {user.name && <UserInfo sx={{ height: '25%' }} user={user} />}
             </Box>
           </Container>
+          
           <Container>
             {user.role === 'admin' ? <AdminProfile /> : <MemberProfile />}
           </Container>
