@@ -85,7 +85,7 @@ const SignupCard = () => {
           marginBottom: '50px',
           margin: 0,
           height: '100vh',
-          width: '100%',
+          width: '100vw',
           minWidth: '390px',
           // overflow: 'auto',
           minHeight: '100%',
