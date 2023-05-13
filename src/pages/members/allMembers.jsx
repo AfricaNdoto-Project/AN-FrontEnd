@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { getMembersList } from '../../../services/membersService'
+import { getMembersList } from '../../services/membersService'
 import { CardActions } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { Box, Button, Typography, Grow } from '@mui/material'
-import useMember from '../../../hooks/useMember'
+import useMember from '../../hooks/useMember'
 import { Card, CardContent, Container, Grid } from '@mui/material'
 import { useState } from 'react'
 
@@ -85,35 +85,34 @@ const AllMembers = () => {
   if (Object.keys(membersList).length !== 0) {
     return (
       <Container
-        maxWidth={false}
+      maxWidth={false}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        width: '100%',
+        padding: 6,
+      }}
+    >
+      <Grid
+        container
+        spacing={2}
+        justifyContent="center"
+        alignItems="stretch"
+        rowSpacing={1}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          width: '100%',
-          padding: 6,
+          width: { lg: '70%', xl: '60%' },
+          height: '100%',
+          borderRadius: 2,
+          margin: 0,
+          rowGap: {xs: 12},
+          overflow: {xs: 'scroll', sm: 'scroll', md: 'scroll'},
         }}
       >
-        {/*USE GRID COMPONENT, ITS BETTER*/}
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center"
-          alignItems="stretch"
-          rowSpacing={1}
-          sx={{
-            width: { lg: '70%', xl: '40%' },
-            height: '100%',
-            borderRadius: 2,
-            margin: 0,
-            padding: 3,
-            overflow: 'scroll',
-          }}
-        >
-          {users}
-        </Grid>
-      </Container>
+        {users}
+      </Grid>
+    </Container>
     )
   }
 }
