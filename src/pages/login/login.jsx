@@ -55,6 +55,7 @@ const LoginCard = () => {
         minWidth: '390px',
         // overflow: 'auto',
         paddingTop: '2%',
+        minHeight: '700px',
       }}
       maxWidth={false}
     >
@@ -90,10 +91,14 @@ const LoginCard = () => {
             padding: '3%',
           }}
         >
-          With your help, we bring medicine, vaccines, medical attention, and
-          clean water to the children who need it most. Today, many of us
-          believe in a world where all children have equal opportunities, but we
-          need many more, and your help is essential to achieve this goal.
+          With your support, we can provide vital aid and assistance to those
+          children who are most in need. By working together, we can ensure that
+          medicine, vaccines, medical care, and clean water are accessible to
+          all children, regardless of their circumstances. While many of us
+          share the belief in a world where every child has an equal chance, we
+          must strive to reach more and your contribution is crucial to
+          achieving this objective. Let us join forces and make a difference in
+          the lives of these vulnerable children.
         </Typography>
       </Card>
       <Card

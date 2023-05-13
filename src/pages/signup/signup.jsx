@@ -85,12 +85,13 @@ const SignupCard = () => {
           marginBottom: '50px',
           margin: 0,
           height: '100vh',
-          width: '100vw',
+          width: '100%',
           minWidth: '390px',
           // overflow: 'auto',
           minHeight: '100%',
           paddingTop: '2%',
           paddingBottom: '2%',
+         minHeight: '950px'
         }}
         maxWidth={false}
       >
