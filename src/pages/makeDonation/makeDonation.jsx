@@ -81,6 +81,7 @@ const Donation = () => {
           minWidth: '390px',
           // overflow: 'auto',
           paddingTop: '2%',
+         minHeight: '650px'
         }}
       >
         <Card

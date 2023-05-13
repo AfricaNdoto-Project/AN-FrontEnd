@@ -91,6 +91,7 @@ const SignupCard = () => {
           minHeight: '100%',
           paddingTop: '2%',
           paddingBottom: '2%',
+         minHeight: '950px'
         }}
         maxWidth={false}
       >
