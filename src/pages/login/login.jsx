@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Email, Lock, VisibilityOff, Visibility } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
