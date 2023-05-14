@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { getMembersList } from '../../services/membersService'
-import { CardActions } from '@mui/material'
+import { CardActions, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { Box, Button, Typography, Grow } from '@mui/material'
 import useMember from '../../hooks/useMember'
@@ -36,16 +36,21 @@ const AllMembers = () => {
               display: 'flex',
               flexDirection: 'column',
               boxShadow: 4,
-              height: 200,
+              height: 'auto',
+              padding: 2,
               width: 250,
               margin: 1,
               borderRadius: 3,
             }}
           >
             <CardContent sx={{ flex: 1 }}>
-              <Typography variant="h6" gutterBottom>
-                {member.name} {member.lastname}
+              <Typography  gutterBottom sx={{fontWeight: 'bold', fontSize: 20}}>
+                {member.name}
               </Typography>
+              <Typography gutterBottom sx={{fontWeight: 'bold'}}>
+               {member.lastname}
+              </Typography>
+              <Divider sx={{marginBottom: 0.2}}/>
               <Typography variant="subtitle1" gutterBottom>
                 {member.role}
               </Typography>
@@ -67,9 +72,6 @@ const AllMembers = () => {
                   sx={{
                     bgcolor: '#2468A0',
                     fontSize: '12px',
-                    '&:hover': {
-                      fontSize: '15px',
-                    },
                   }}
                 >
                   SEE PROFILE
@@ -86,6 +88,7 @@ const AllMembers = () => {
       <Grid
       container
       justifyContent='center'
+      sx={{bgcolor:'#F5FAFF'}}
       >
       <Grid
         container item
@@ -97,7 +100,7 @@ const AllMembers = () => {
         columns={2}
         sx={{
           flexGrow: 1,
-          padding: 5,
+          padding: 0,
           overflow: { xs: 'scroll', sm: 'scroll', md: 'scroll' },
         }}
       >

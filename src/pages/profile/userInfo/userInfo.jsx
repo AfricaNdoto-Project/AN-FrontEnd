@@ -59,8 +59,8 @@ const UserInfo = ({ user }) => {
       <CardActions sx={{ justifyContent: 'center', margin: '10px 0 10px 0' }}>
         <Link to={`/profile/edit/${user.id}`}>
           <Button
-            sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5 }}
-            variant="contained"
+            sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, color: '#87480E'  }}
+            variant="outlined"
             size="large"
           >
             Edit Account
@@ -68,7 +68,7 @@ const UserInfo = ({ user }) => {
         </Link>
         <Link to={`/profile/delete/${user.id}`}>
           <Button
-            sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5 }}
+            sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, color: '#87480E' }}
             variant="outlined"
             size="large"
           >

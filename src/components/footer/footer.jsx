@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Container
       sx={{
-        backgroundColor: '#1976d2',
+        backgroundColor: '#9E5F25',
         width: '100vw',
         margin: '0px',
         minWidth: '392px',

@@ -22,6 +22,7 @@ import {
   Button,
   Breadcrumbs,
   Box,
+  Divider,
 } from '@mui/material'
 import { ExpandMore, ArrowBack } from '@mui/icons-material'
 
@@ -55,6 +56,7 @@ const OneMember = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignSelf: 'center',
+          bgcolor:'#F5FAFF'
         }}
       >
         <Link to="/members" sx={{
@@ -109,6 +111,7 @@ const OneMember = () => {
             </TableContainer>
           </CardContent>
         </Card>
+        <Divider/>
         {memberData.role === 'donor' ||
         memberData.role === 'volunteer_donor' ? (
           <DonationExpandCard donationData={donationsList} />

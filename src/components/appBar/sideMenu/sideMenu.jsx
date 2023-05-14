@@ -29,7 +29,7 @@ export default function SwipeableTemporaryDrawer() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 250, bgcolor:'#F5FAFF' }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -38,7 +38,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
             <Link to="/allprojects">
-              <Button color="inherit">Projects</Button>
+              <Button sx={{color:'#87480E'}}>Projects</Button>
             </Link>
             <ListItemIcon></ListItemIcon>
           </ListItemButton>
@@ -46,7 +46,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
             <Link to="/events">
-              <Button color="inherit">Events</Button>
+              <Button sx={{color:'#87480E'}}>Events</Button>
             </Link>
             <ListItemIcon></ListItemIcon>
           </ListItemButton>
@@ -54,7 +54,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
             <Link to="/calendar">
-              <Button color="inherit">Calendar</Button>
+              <Button sx={{color:'#87480E'}}>Calendar</Button>
             </Link>
             <ListItemIcon></ListItemIcon>
           </ListItemButton>
@@ -62,7 +62,7 @@ export default function SwipeableTemporaryDrawer() {
         <ListItem disablePadding sx={{ width: 100 }}>
           <ListItemButton>
             <Link to="/aboutus">
-              <Button color="inherit">About Us</Button>
+              <Button sx={{color:'#87480E'}}>About Us</Button>
             </Link>
             <ListItemIcon></ListItemIcon>
           </ListItemButton>
@@ -70,10 +70,10 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <Divider />
       <Link to="/login">
-        <Button color="inherit">Login</Button>
+        <Button sx={{color:'#87480E'}}>Login</Button>
       </Link>
       <Link to="/signup">
-        <Button color="inherit">Sign Up</Button>
+        <Button sx={{color:'#87480E'}}>Sign Up</Button>
       </Link>
     </Box>
   )
@@ -83,7 +83,7 @@ export default function SwipeableTemporaryDrawer() {
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <MenuIcon sx={{ color: 'white' }} />
+            <MenuIcon sx={{ color: '#87480E' }} />
           </Button>
           <SwipeableDrawer
             anchor={anchor}

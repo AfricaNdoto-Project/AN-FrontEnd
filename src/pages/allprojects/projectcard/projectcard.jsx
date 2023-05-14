@@ -25,7 +25,7 @@ const ProjectCard = ({ project }) => {
           display: 'flex',
           flexDirection: 'column',
           margin: '20px 10px 10px 10px',
-          backgroundColor: '#F5FAFF',
+          backgroundColor: 'white',
         }}
       >
         <CardHeader

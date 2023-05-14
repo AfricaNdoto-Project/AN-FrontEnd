@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
     if (token) {
       return (
         <Link to="/profile">
-          <Button color="inherit" sx={{ margin: '8px' }}>
+          <Button  sx={{ margin: '8px', color:'#87480E' }}>
             Profile
           </Button>
         </Link>
@@ -39,7 +39,7 @@ export default function ButtonAppBar() {
   const displayLogout = () => {
     if (token) {
       return (
-        <Button color="inherit" onClick={logout} sx={{ margin: '8px' }}>
+        <Button onClick={logout} sx={{ margin: '8px',  color:'#87480E' }}>
           LogOut
         </Button>
       )
@@ -53,7 +53,7 @@ export default function ButtonAppBar() {
           <Button
             variant="inherit"
             color="inherit"
-            sx={{ margin: '8px', color: 'white' }}
+            sx={{ margin: '8px', color:'#87480E' }}
           >
             Login
           </Button>
@@ -65,7 +65,7 @@ export default function ButtonAppBar() {
     if (!token) {
       return (
         <Link to="/signup">
-          <Button color="inherit" sx={{ margin: '8px', color: 'white' }}>
+          <Button color="inherit" sx={{ margin: '8px', color: '#87480E' }}>
             Sign Up
           </Button>
         </Link>
@@ -77,14 +77,14 @@ export default function ButtonAppBar() {
     <Box
       sx={{ flexGrow: 1, bgcolor: 'white', width: '100vw', minWidth: '390px' }}
     >
-      <AppBar position="static" sx={{ height: '100px', paddingTop: '6px' }}>
+      <AppBar position="static" sx={{ height: '100px', paddingTop: '6px', bgcolor:'#FAEFE4' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}
           >
-            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="/" style={{ textDecoration: 'none'}}>
               <Typography variant="h6" component="div">
                 <img src={logo} alt="Logo AfricaNdoto" />
               </Typography>
@@ -94,13 +94,11 @@ export default function ButtonAppBar() {
           {displaySignUp()}
           {displayLogin()}
           <Link to="/donation">
-            <Button variant="contained" color="secondary" size="large">
+            <Button variant="contained" size="large" sx={{ bgcolor:'#AB3A98', }}>
               Donation
             </Button>
           </Link>
           {displayProfileLink()}
-
-          {/* logout button */}
           {displayLogout()}
           <SwipeableTemporaryDrawer />
         </Toolbar>
