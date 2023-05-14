@@ -91,8 +91,6 @@ const Home = () => {
           events
           alt="Front-Page"
           sx={{
-            // height: '100%',
-            //  width: '100%'
             height: 'auto',
             width: '100%',
             objectFit: 'cover',
@@ -175,7 +173,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Projects</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Projects</Typography>
           </Box>
         </Link>
         <Link
@@ -207,7 +205,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Events</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Events</Typography>
           </Box>
         </Link>
         <Link
@@ -238,7 +236,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Calendar</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Calendar</Typography>
           </Box>
         </Link>
       </Container>

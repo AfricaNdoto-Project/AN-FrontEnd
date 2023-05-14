@@ -1,8 +1,7 @@
-import api from "./config";
+import api from './config'
 
 const makeDonation = async (body) => {
   try {
-    console.log('connecting...')
     const token = localStorage.getItem('token')
     if (token) {
       await api.post('/donations', body, {

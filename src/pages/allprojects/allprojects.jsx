@@ -18,17 +18,21 @@ const AllProjects = () => {
   const displayAllProjects = () => {
     return allProjects.map((elem) => {
       return (
-        <>
-          <Grid item width="auto">
-            <ProjectCard key={elem.id} project={elem} />
-          </Grid>
-        </>
+        <Grid item width="auto" key={elem.id}>
+          <ProjectCard project={elem} />
+        </Grid>
       )
     })
   }
   if (allProjects.length !== 0) {
     return (
-      <Grid container spacing={1} minHeight='100vh' justifyContent="center" sx={{bgcolor:'#F5FAFF'}}>
+      <Grid
+        container
+        spacing={1}
+        minHeight="100vh"
+        justifyContent="center"
+        sx={{ bgcolor: '#F5FAFF' }}
+      >
         {displayAllProjects()}
       </Grid>
     )

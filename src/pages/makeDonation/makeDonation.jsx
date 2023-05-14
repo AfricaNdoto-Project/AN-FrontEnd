@@ -21,8 +21,7 @@ import {
   Button,
   CardActions,
   Container,
-  Grid
-  // Typography
+  Grid,
 } from '@mui/material'
 
 const Donation = () => {
@@ -60,7 +59,6 @@ const Donation = () => {
     const form = { amount, type, projectName, name }
     const result = await makeDonation(form)
     if (result === 200) {
-      console.log(result)
       navigate('/')
     } else {
       navigate('/')
@@ -80,9 +78,8 @@ const Donation = () => {
           width: '100vw',
           margin: '0px',
           minWidth: '390px',
-          // overflow: 'auto',
           paddingTop: '2%',
-         minHeight: '650px'
+          minHeight: '650px',
         }}
       >
         <Card
@@ -206,7 +203,7 @@ const Donation = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              paddingBottom: '15px'
+              paddingBottom: '15px',
             }}
           >
             <Button onClick={submit} color="success" variant="contained">

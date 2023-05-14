@@ -29,7 +29,7 @@ const ProjectCard = ({ project }) => {
         }}
       >
         <CardHeader
-          sx={{ backgroundColor: '#E4C5A8', height: '150px' }}
+          sx={{ backgroundColor: '#E4C5A8', height: '100px' }}
           title={
             <Typography sx={{ fontWeight: 'bold' }}>{project.name}</Typography>
           }
@@ -37,17 +37,15 @@ const ProjectCard = ({ project }) => {
         />
         <CardContent>
           <Typography sx={{ fontWeight: 'bold' }}>Description:</Typography>
-          <Typography>
-            <p
-              style={{
-                width: '100%',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {project.description}
-            </p>
+          <Typography
+            sx={{
+              width: '100%',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {project.description}
           </Typography>
           <Link
             to="/project"

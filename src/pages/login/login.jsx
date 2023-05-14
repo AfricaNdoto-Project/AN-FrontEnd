@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Email, Lock, VisibilityOff, Visibility } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
@@ -15,7 +15,6 @@ import {
   CardActions,
   Container,
   IconButton,
-  // Typography
 } from '@mui/material'
 import './login.css'
 
@@ -24,7 +23,6 @@ const LoginCard = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [errorMessage, setErrorMessage] = useState('')
 
   const [isPassVisible, setIsPassVisible] = useState(false)
   const changeVisibility = () => {
@@ -38,7 +36,6 @@ const LoginCard = () => {
       navigate('/profile')
     } else {
       alert(result)
-      console.log(result)
     }
   }
   return (
@@ -53,7 +50,6 @@ const LoginCard = () => {
         width: '100vw',
         margin: '0px',
         minWidth: '390px',
-        // overflow: 'auto',
         paddingTop: '2%',
         minHeight: '700px',
       }}
@@ -103,7 +99,7 @@ const LoginCard = () => {
       </Card>
       <Card
         sx={{
-          maxWidth: '500px'
+          maxWidth: '500px',
         }}
       >
         <CardHeader title="Login" />
@@ -116,7 +112,6 @@ const LoginCard = () => {
             InputProps={{
               endAdornment: <Email />,
             }}
-            // sx={{ marginBottom: '20px' }}
             sx={{ margin: '10px 0' }}
             InputLabelProps={{ required: true }}
           />
@@ -150,17 +145,12 @@ const LoginCard = () => {
           <Button
             variant="contained"
             onClick={onLogin}
-            color="success"
             sx={{ marginRigth: '5px' }}
           >
             Login
           </Button>
           <Link to="/signup">
-            <Button
-              variant="outlined"
-              color="success"
-              sx={{ marginLeft: '5px' }}
-            >
+            <Button variant="outlined" sx={{ marginLeft: '5px' }}>
               Register
             </Button>
           </Link>
