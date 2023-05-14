@@ -10,6 +10,7 @@ import project from '../../assets/projects.jpg'
 import calendar from '../../assets/apadrina1.jpg'
 import CardMedia from '@mui/material/CardMedia'
 import Box from '@mui/material/Box'
+import Loading from '../../components/loading/loading'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -44,16 +45,18 @@ const Home = () => {
     <Container
       sx={{
         width: '100vw',
-        height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // overflow: 'auto',
-        paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
-        paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
-        margin: '0px',
-        // marginLeft: '10px'
+        alignContent: 'center',
+        minHeight: '100vh',
+        padding: {
+          xs: '0px',
+          sm: '0px',
+          md: '0px',
+          lg: '0px',
+        },
       }}
       maxWidth={false}
     >
@@ -74,7 +77,7 @@ const Home = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '5px',
+          marginTop: '20px',
         }}
         events
       >
@@ -83,7 +86,13 @@ const Home = () => {
           image={frontPage}
           events
           alt="Front-Page"
-          sx={{ height: '100%', width: '100%' }}
+          sx={{
+            // height: '100%',
+            //  width: '100%'
+            height: 'auto',
+            width: '100%',
+            objectFit: 'cover',
+          }}
         />
       </Container>
       <Container
