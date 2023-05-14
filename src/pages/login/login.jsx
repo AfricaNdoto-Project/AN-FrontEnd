@@ -103,8 +103,7 @@ const LoginCard = () => {
       </Card>
       <Card
         sx={{
-          maxWidth: '500px',
-          marginTop: '12px',
+          maxWidth: '500px'
         }}
       >
         <CardHeader title="Login" />
