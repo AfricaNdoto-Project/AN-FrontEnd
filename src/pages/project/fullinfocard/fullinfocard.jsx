@@ -29,17 +29,13 @@ export default function FullInfoCard({ project }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+              fontWeight: 'bold',
+              margin: 2,
             }}
-            variant="body1"
+            variant="h5"
             color="text.secondary"
           >
-            <h2
-              style={{
-                margin: 10,
-              }}
-            >
-              {project.name}
-            </h2>
+            {project.name}
           </Typography>
         }
         subheader={
@@ -48,17 +44,13 @@ export default function FullInfoCard({ project }) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
+              fontWeight: 'bold',
+              margin: 0,
             }}
             variant="body2"
             color="text.secondary"
           >
-            <h4
-              style={{
-                margin: 0,
-              }}
-            >
-              {project.target}
-            </h4>
+            {project.target}
           </Typography>
         }
       />
@@ -68,11 +60,14 @@ export default function FullInfoCard({ project }) {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-around',
+            fontWeight: 'bold',
+            fontSize: 15.7,
+            padding: 1.5,
           }}
           variant="body2"
           color="text.secondary"
         >
-          <h3>Description: {project.description}</h3>
+          Description: {project.description}
         </Typography>
         <Divider sx={{ margin: '10px' }}></Divider>
         <Box
