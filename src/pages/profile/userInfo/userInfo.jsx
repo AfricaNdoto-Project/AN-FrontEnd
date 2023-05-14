@@ -7,8 +7,8 @@ import {
   CardActions,
   Avatar,
   Typography,
-  red,
 } from '@mui/material'
+import { red } from '@mui/material/colors'
 
 import { Link } from 'react-router-dom'
 

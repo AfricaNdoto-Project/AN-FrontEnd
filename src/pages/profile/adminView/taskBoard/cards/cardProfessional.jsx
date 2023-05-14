@@ -26,7 +26,7 @@ const CardProfessional = () => {
           justifyContent: 'center',
         }}
       />
-      <Typography>Professions</Typography>
+      <Typography gutterBottom variant="h5">Professions</Typography>
       <Typography variant="body2" color="text.secondary">
         Professions
       </Typography>

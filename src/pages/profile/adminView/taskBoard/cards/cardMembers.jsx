@@ -27,11 +27,11 @@ const CardMembers = () => {
           justifyContent: 'center',
         }}
       />
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography gutterBottom variant="h5" >
         Members
       </Typography>
       <Typography variant="body2" color="text.secondary">
-        See and manage information of our members
+        Members info
       </Typography>
     </CardContent>
     <CardActions sx={{ alignSelf: 'center', justifyContent: 'center' }}>

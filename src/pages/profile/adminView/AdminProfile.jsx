@@ -33,7 +33,7 @@ const AdminProfile = () => {
           TaskBoard
         </Button>
       </Grid>
-      <Grid>
+      <Grid height='100%'>
         {toggleView()}
       </Grid>
     </React.Fragment>
