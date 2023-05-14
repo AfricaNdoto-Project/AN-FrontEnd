@@ -88,43 +88,44 @@ export default function FullInfoCard({ project }) {
             }}
           >
             <Typography
-              sx={{ display: 'flex', flexDirection: 'row' }}
+              className="projectContent"
+              sx={{ display: 'flex', flexDirection: 'row', fontSize: 17 }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">Objective: {project.objective}</p>
+              Objective: {project.objective}
             </Typography>
             <Typography
-              sx={{ display: 'flex', flexDirection: 'row' }}
+              className="projectContent"
+              sx={{ display: 'flex', flexDirection: 'row', fontSize: 17 }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">Budget: {project.budget} €</p>
+              Budget: {project.budget} €
             </Typography>
             <Typography
-              sx={{ display: 'flex', flexDirection: 'row' }}
+              className="projectContent"
+              sx={{ display: 'flex', flexDirection: 'row', fontSize: 17 }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">Collect: {project.collect} €</p>
+              Collect: {project.collect} €
             </Typography>
             <Typography
-              sx={{ display: 'flex', flexDirection: 'row' }}
+              className="projectContent"
+              sx={{ display: 'flex', flexDirection: 'row', fontSize: 17 }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">
-                Staff: {project.professionals[0].name}
-              </p>
+              Staff: {project.professionals[0].name}
             </Typography>
             <Typography
-              sx={{ display: 'flex', flexDirection: 'row' }}
+              className="projectContent"
+              sx={{ display: 'flex', flexDirection: 'row', fontSize: 17 }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">
-                Equipment: {project.equipment[0].name}
-              </p>
+              Equipment: {project.equipment[0].name}
             </Typography>
           </Box>
         </Box>
