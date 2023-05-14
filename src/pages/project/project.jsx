@@ -26,7 +26,7 @@ const Project = () => {
     )
   } else {
     return (
-      <Grid container justifyContent="center">
+      <Grid container justifyContent="center" minHeigth='100vh'>
         {displayProject()}
       </Grid>
     )
