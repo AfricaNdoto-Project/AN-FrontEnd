@@ -28,14 +28,11 @@ const AllProjects = () => {
   if (allProjects.length !== 0) {
     return (
       <Grid
+        maxWidth={false}
         container
-        spacing={2}
+        spacing xs={1} sm={1} md={2} lg={2} xl={3}
         justifyContent="center"
-        sx={{
-          marginBottom: '50px',
-          margin: 0,
-          height: '100vh',
-          width: '100vw',}}
+        margin="10px 0 10px 0"
       >
         {displayAllProjects()}
       </Grid>

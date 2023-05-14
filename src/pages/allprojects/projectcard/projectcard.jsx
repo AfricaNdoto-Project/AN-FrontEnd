@@ -4,107 +4,69 @@ import {
   CardContent,
   Typography,
   Button,
+  Grid,
+  Grow,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { Grow } from '@mui/material'
 
 const ProjectCard = ({ project }) => {
   const [checked] = useState(true)
 
   return (
-    <Grow
-      in={checked}
-      style={{ transformOrigin: '0 0 0' }}
-      {...(checked ? { timeout: 900 } : {})}
+    <Grid 
+    item xs={12} sm={12} md={6} lg={6} xl={4}
+    maxWidth={false}
     >
-      <Card
-        sx={{
-          width: 365,
-          height: '35%',
-          display: 'flex',
-          flexDirection: 'column',
-          margin: '20px',
-          backgroundColor: '#F5FAFF',
-        }}
+      <Grow
+        in={checked}
+        style={{ transformOrigin: '0 0 0' }}
+        {...(checked ? { timeout: 900 } : {})}
       >
-        <CardHeader
-          sx={{ margin: 0, backgroundColor: '#E4C5A8' }}
-          title={
-            <Typography variant="body1" color="text.primary">
-              <h3
+        <Card
+          sx={{
+            width: 400,
+            backgroundColor: '#F5FAFF',
+          }}
+        >
+          <CardHeader
+            sx={{ backgroundColor: '#E4C5A8' }}
+            title={<Typography variant="h6">{project.name}</Typography>}
+            subheader={<Typography>{project.target}</Typography>}
+          />
+          <CardContent>
+            <Typography variant="h6">Description:</Typography>
+            <Typography>
+              <p
                 style={{
-                  margin: 10,
+                  width: '100%',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                 }}
               >
-                {project.name}
-              </h3>
+                {project.description}
+              </p>
             </Typography>
-          }
-          subheader={
-            <Typography
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
+            <Link
+              to="/project"
+              state={{ data: project }}
+              style={{
+                textDecoration: 'none',
               }}
-              variant="body1"
-              color="text.primary"
             >
-              <h4
-                style={{
-                  margin: 0,
-                }}
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ margin: '8px', padding: '8px 24px' }}
               >
-                {project.target}
-              </h4>
-            </Typography>
-          }
-        />
-        <CardContent>
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <h4
-              style={{
-                margin: 0,
-              }}
-            >
-              Description:
-            </h4>{' '}
-            <p
-              style={{
-                width: '100%',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {project.description}
-            </p>
-          </Typography>
-          <Link
-            to="/project"
-            state={{ data: project }}
-            style={{
-              textDecoration: 'none',
-            }}
-          >
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ margin: '8px', padding: '8px 48px' }}
-            >
-              See more
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
-    </Grow>
+                See more
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </Grow>
+    </Grid>
   )
 }
 
