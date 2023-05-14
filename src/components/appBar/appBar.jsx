@@ -2,8 +2,6 @@ import AppBar from '@mui/material/AppBar'
 import { Link, useNavigate } from 'react-router-dom'
 import useIsAdmin from '../../hooks/useAdmin'
 import SwipeableTemporaryDrawer from './sideMenu/sideMenu'
-import { Avatar } from '@mui/material';
-
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
@@ -16,10 +14,10 @@ export default function ButtonAppBar() {
   const { adminData } = useIsAdmin()
   const { isAdmin, setIsAdmin } = adminData
   const logout = () => {
-    if(isAdmin){
+    if (isAdmin) {
       setIsAdmin(false)
-    }else {
-     null 
+    } else {
+      null
     }
     localStorage.removeItem('token')
     navigate('/login')
@@ -28,69 +26,82 @@ export default function ButtonAppBar() {
   const token = localStorage.getItem('token')
 
   const displayProfileLink = () => {
-    if(token) {
+    if (token) {
       return (
         <Link to="/profile">
-          <Button color="inherit" sx={{margin:'8px'}}>Profile</Button>
+          <Button color="inherit" sx={{ margin: '8px' }}>
+            Profile
+          </Button>
         </Link>
       )
     }
   }
   const displayLogout = () => {
-    if(token) {
+    if (token) {
       return (
-        <Button color="inherit" onClick={logout} sx={{margin:'8px'}}>
-            LogOut
+        <Button color="inherit" onClick={logout} sx={{ margin: '8px' }}>
+          LogOut
         </Button>
       )
     }
   }
 
   const displayLogin = () => {
-    if(!token) {
+    if (!token) {
       return (
         <Link to="/login">
-            <Button variant="inherit" color="inherit" sx={{margin:'8px', color:'white'}}>Login</Button>
+          <Button
+            variant="inherit"
+            color="inherit"
+            sx={{ margin: '8px', color: 'white' }}
+          >
+            Login
+          </Button>
         </Link>
       )
     }
   }
   const displaySignUp = () => {
-    if(!token) {
+    if (!token) {
       return (
         <Link to="/signup">
-            <Button color="inherit" sx={{margin:'8px', color:'white'}} >Sign Up</Button>
+          <Button color="inherit" sx={{ margin: '8px', color: 'white' }}>
+            Sign Up
+          </Button>
         </Link>
       )
     }
   }
 
-
   return (
-
-    <Box sx={{ flexGrow: 1, bgcolor: 'white',width:'100vw', minWidth: '390px' }}>
-
-      <AppBar position="static" sx={{ height:'100px', paddingTop: '6px' }}>
+    <Box
+      sx={{ flexGrow: 1, bgcolor: 'white', width: '100vw', minWidth: '390px' }}
+    >
+      <AppBar position="static" sx={{ height: '100px', paddingTop: '6px' }}>
         <Toolbar>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: 'flex', flexDirection:'row' }}
+            sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row' }}
           >
             <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            <Avatar alt="Logo AfricaNdoto" src={ logo } sx={{ height: '85px', width: '90px'}} />
+              <Typography variant="h6" component="div">
+                <img src={logo} alt="Logo AfricaNdoto" />
+              </Typography>
             </Link>
           </Typography>
 
-          { displaySignUp() }
-          { displayLogin() }
+          {displaySignUp()}
+          {displayLogin()}
           <Link to="/donation">
-            <Button variant="contained" color="secondary" size="large">Donation</Button>
+            <Button variant="contained" color="secondary" size="large">
+              Donation
+            </Button>
           </Link>
-          { displayProfileLink() }
+          {displayProfileLink()}
 
           {/* logout button */}
-          { displayLogout() }
+          {displayLogout()}
           <SwipeableTemporaryDrawer />
         </Toolbar>
       </AppBar>

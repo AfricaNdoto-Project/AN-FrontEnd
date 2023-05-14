@@ -1,14 +1,16 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Collapse from '@mui/material/Collapse'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
+import {
+  styled,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+  Grid,
+} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import Box from '@mui/material/Box'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -29,38 +31,22 @@ export default function Donation({ donations }) {
 
   const displayDonations = () => {
     if (Array.isArray(donations) && donations.length !== 0) {
-       return donations.donations.map((donation) => {
-         return (
-           <Box
-             key={donation.id}
-             sx={{
-               border: '1px solid black',
-               borderRadius: '4px',
-               margin: '4px',
-             }}
-           >
-             <Typography>Donation</Typography>
-             <Typography paragraph>Amount: {donation.amount}</Typography>
-             <Typography paragraph>Type: {donation.type}</Typography>
-           </Box>
-         )
-       })
-      
+      return donations.donations.map((donation) => {
+        return (
+          <Grid key={donation.id}>
+            <Typography>Donation</Typography>
+            <Typography paragraph>Amount: {donation.amount}</Typography>
+            <Typography paragraph>Type: {donation.type}</Typography>
+          </Grid>
+        )
+      })
     } else {
-     return <Typography>You dont have donations</Typography>
+      return <Typography>You dont have donations</Typography>
     }
   }
 
   return (
-    <Card
-      sx={{
-        maxWidth: 400,
-        maxHeight: '580px',
-        height: '500x',
-        width: '250px',
-        marginRight: '5px',
-      }}
-    >
+    <Card>
       <CardHeader title="Donations" />
       <CardActions disableSpacing>
         <ExpandMore
@@ -73,9 +59,7 @@ export default function Donation({ donations }) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent
-          sx={{ height: 'auto', overflow: 'scroll', maxHeight: '580px' }}
-        >
+        <CardContent sx={{ height: 'auto', overflow: 'scroll' }}>
           {displayDonations()}
         </CardContent>
       </Collapse>

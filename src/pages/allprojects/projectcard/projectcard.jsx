@@ -4,10 +4,10 @@ import {
   CardContent,
   Typography,
   Button,
+  Grow,
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { Grow } from '@mui/material'
 
 const ProjectCard = ({ project }) => {
   const [checked] = useState(true)
@@ -21,61 +21,23 @@ const ProjectCard = ({ project }) => {
       <Card
         sx={{
           width: 365,
-          height: '35%',
+          height: '300px',
           display: 'flex',
           flexDirection: 'column',
-          margin: '20px',
+          margin: '20px 10px 10px 10px',
           backgroundColor: '#F5FAFF',
         }}
       >
         <CardHeader
-          sx={{ margin: 0, backgroundColor: '#E4C5A8' }}
+          sx={{ backgroundColor: '#E4C5A8', height: '150px' }}
           title={
-            <Typography variant="body1" color="text.primary">
-              <h3
-                style={{
-                  margin: 10,
-                }}
-              >
-                {project.name}
-              </h3>
-            </Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>{project.name}</Typography>
           }
-          subheader={
-            <Typography
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-              variant="body1"
-              color="text.primary"
-            >
-              <h4
-                style={{
-                  margin: 0,
-                }}
-              >
-                {project.target}
-              </h4>
-            </Typography>
-          }
+          subheader={<Typography>{project.target}</Typography>}
         />
         <CardContent>
-          <Typography
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
-            <h4
-              style={{
-                margin: 0,
-              }}
-            >
-              Description:
-            </h4>{' '}
+          <Typography sx={{ fontWeight: 'bold' }}>Description:</Typography>
+          <Typography>
             <p
               style={{
                 width: '100%',
@@ -97,7 +59,7 @@ const ProjectCard = ({ project }) => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ margin: '8px', padding: '8px 48px' }}
+              sx={{ margin: '8px', padding: '8px 24px' }}
             >
               See more
             </Button>
