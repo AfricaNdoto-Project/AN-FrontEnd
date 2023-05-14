@@ -99,14 +99,14 @@ export default function FullInfoCard({ project }) {
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">Budget: {project.budget}</p>
+              <p className="projectContent">Budget: {project.budget} €</p>
             </Typography>
             <Typography
               sx={{ display: 'flex', flexDirection: 'row' }}
               variant="body2"
               color="text.secondary"
             >
-              <p className="projectContent">Collect: {project.collect}</p>
+              <p className="projectContent">Collect: {project.collect} €</p>
             </Typography>
             <Typography
               sx={{ display: 'flex', flexDirection: 'row' }}
