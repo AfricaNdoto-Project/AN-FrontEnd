@@ -8,22 +8,14 @@ import Profile from '../pages/profile/profile'
 import Events from '../pages/events/events'
 import Calendar from '../pages/calendar/calendar'
 import AboutUs from '../pages/aboutUs/aboutUs'
-import AllMembers from '../pages/adminView/members/allMembers'
-import OneMember from '../pages/adminView/members/oneMember'
+import AllMembers from '../pages/members/allMembers'
+import OneMember from '../pages/members/oneMember'
 import NewProject from "../pages/newproject/newproject";
 import Project from "../pages/project/project";
 import AllProjects from "../pages/allprojects/allprojects";
 import Edit from "../pages/profile/edit/edit";
 import Delete from "../pages/profile/delete/delete";
 import Donation from "../pages/makeDonation/makeDonation";
-import AdminProfile from '../pages/profile/adminView/AdminProfile'
-
-const role = localStorage.getItem('role')
-const memberRoutes = () => {
-  if(role === '') {
-
-  }
-}
 
 
 const privateRoutes = () => {
