@@ -7,7 +7,6 @@ import useMember from '../../hooks/useMember'
 import { Card, CardContent, Container, Grid } from '@mui/material'
 import { useState } from 'react'
 
-
 const AllMembers = () => {
   const [checked] = useState(true)
   const { memberDataList } = useMember()
@@ -23,96 +22,88 @@ const AllMembers = () => {
 
   const users = membersList.map((member, idx) => {
     return (
-      <React.Fragment key={idx}>
+      <Grid key={idx}
+      justifyContent='center'
+     >
         <Grow
           in={checked}
           style={{ transformOrigin: '0 0 0' }}
           {...(checked ? { timeout: 1000 } : {})}
         >
-          <Box sx={{ display: 'flex', height: '20%' }}>
-            <Card
+          <Card
+            sx={{
+              flexGrow: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: 4,
+              height: 200,
+              width: 250,
+              margin: 1,
+              borderRadius: 3,
+            }}
+          >
+            <CardContent sx={{ flex: 1 }}>
+              <Typography variant="h6" gutterBottom>
+                {member.name} {member.lastname}
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom>
+                {member.role}
+              </Typography>
+            </CardContent>
+            <CardActions
               sx={{
-                flexGrow: 1,
                 display: 'flex',
-                flexDirection: 'column',
-                boxShadow: 4,
-                height: 155,
-                width: 250,
-                margin: 1,
-                borderRadius: 3,
+                justifyContent: 'center',
               }}
             >
-              <CardContent sx={{ flex: 1 }}>
-                <Typography variant="h6" gutterBottom>
-                  {member.name} {member.lastname}
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom>
-                  {member.role}
-                </Typography>
-              </CardContent>
-              <CardActions
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
+              <Link
+                to={`/members/${member.id}`}
+                style={{ textDecoration: 'none' }}
               >
-                <Link
-                  to={`/members/${member.id}`}
-                  style={{ textDecoration: 'none' }}
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    bgcolor: '#2468A0',
+                    fontSize: '12px',
+                    '&:hover': {
+                      fontSize: '15px',
+                    },
+                  }}
                 >
-                  <Button
-                    size="small"
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      bgcolor: '#2468A0',
-                      fontSize: '12px',
-                      '&:hover': {
-                        fontSize: '15px',
-                      },
-                    }}
-                  >
-                    SEE PROFILE
-                  </Button>
-                </Link>
-              </CardActions>
-            </Card>
-          </Box>
+                  SEE PROFILE
+                </Button>
+              </Link>
+            </CardActions>
+          </Card>
         </Grow>
-      </React.Fragment>
+      </Grid>
     )
   })
   if (Object.keys(membersList).length !== 0) {
     return (
-      <Container
-      maxWidth={false}
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        width: '100%',
-        padding: 6,
-      }}
-    >
       <Grid
-        container
-        spacing={2}
+      container
+      justifyContent='center'
+      >
+      <Grid
+        container item
         justifyContent="center"
-        alignItems="stretch"
-        rowSpacing={1}
+        alignItems="center"
+        minHeight="100vh"
+        maxWidth="50%"
+        zeroMinWidth
+        columns={2}
         sx={{
-          width: { lg: '70%', xl: '60%' },
-          height: '100%',
-          borderRadius: 2,
-          margin: 0,
-          rowGap: {xs: 12},
-          overflow: {xs: 'scroll', sm: 'scroll', md: 'scroll'},
+          flexGrow: 1,
+          padding: 5,
+          overflow: { xs: 'scroll', sm: 'scroll', md: 'scroll' },
         }}
       >
         {users}
       </Grid>
-    </Container>
+      </Grid>
     )
   }
 }
