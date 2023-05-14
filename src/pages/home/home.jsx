@@ -154,7 +154,6 @@ const Home = () => {
               flexDirection: 'column',
               alignItems: 'center',
               height: '250px',
-              marginLeft: '10px',
             }}
           >
             <CardMedia
