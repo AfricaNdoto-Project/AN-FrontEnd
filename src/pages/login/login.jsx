@@ -88,7 +88,7 @@ const LoginCard = () => {
             },
             color: 'black',
             textAlign: 'justify',
-            padding: '3%',
+            padding: '2%',
           }}
         >
           With your support, we can provide vital aid and assistance to those
