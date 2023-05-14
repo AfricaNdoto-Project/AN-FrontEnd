@@ -114,7 +114,7 @@ const Donation = () => {
               },
               color: 'black',
               textAlign: 'justify',
-              padding: '3%',
+              padding: '2%',
             }}
           >
             With your help, we bring medicine, vaccines, medical attention, and
