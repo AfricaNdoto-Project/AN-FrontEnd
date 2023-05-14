@@ -28,7 +28,7 @@ const Profile = () => {
         container spacing={2}
         padding='10px'
         justifyContent='center'
-        minHeight='750px'
+        minHeight='100vh'
         >
         <Grid
           item
