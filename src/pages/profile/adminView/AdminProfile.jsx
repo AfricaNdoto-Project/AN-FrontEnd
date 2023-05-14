@@ -19,7 +19,7 @@ const AdminProfile = () => {
         <Button
           variant="outlined"
           size="medium"
-          sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, margin: '8px' }}
+          sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, margin: '8px', color: '#87480E' }}
           onClick={() => setIsActive('donations&projects')}
         >
           General
@@ -27,7 +27,7 @@ const AdminProfile = () => {
         <Button
           variant="outlined"
           size="medium"
-          sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, margin: '8px' }}
+          sx={{ borderRadius: 10, padding: '8px 10px', boxShadow: 5, margin: '8px', color: '#87480E' }}
           onClick={() => setIsActive('taskboard')}
         >
           TaskBoard

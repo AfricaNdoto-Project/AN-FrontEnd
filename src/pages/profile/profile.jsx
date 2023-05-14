@@ -29,6 +29,7 @@ const Profile = () => {
         padding='10px'
         justifyContent='center'
         minHeight='100vh'
+        sx={{bgcolor:'#F5FAFF'}}
         >
         <Grid
           item

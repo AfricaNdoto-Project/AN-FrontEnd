@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './home.css'
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button, Container, Typography } from '@mui/material'
+import { Paper, Button, Container, Typography, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { getAllProjects } from '../../services/projectsService'
 import frontPage from '../../assets/Portada.png'
@@ -34,11 +34,14 @@ const Home = () => {
 
   function Item(props) {
     return (
-      <Paper sx={{ backgroundColor: '#AED5F5' }}>
+      <>
+      <Divider/>
+      <Paper sx={{ opacity: '0.0 - 1.0'}}>
         <h2>{props.item.name}</h2>
         <p>{props.item.description}</p>
-        <Button className="CheckButton">See More</Button>
+        <Button className="CheckButton"  sx={{color:'#87480E'}}>See More</Button>
       </Paper>
+      </>
     )
   }
   return (
@@ -57,6 +60,7 @@ const Home = () => {
           md: '0px',
           lg: '0px',
         },
+        bgcolor:'#F5FAFF'
       }}
       maxWidth={false}
     >
@@ -125,9 +129,10 @@ const Home = () => {
         <Link to="/donation">
           <Button
             variant="contained"
-            color="secondary"
             size="large"
-            sx={{ height: '80px', width: '250px', fontSize: '36px' }}
+            sx={{ height: '80px', width: '250px', fontSize: '36px', bgcolor:'#AB3A98', '&:hover': {
+              fontSize:40
+            }  }}
           >
             Donation
           </Button>
