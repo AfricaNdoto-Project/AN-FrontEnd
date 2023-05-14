@@ -11,7 +11,7 @@ const Project = () => {
   const displayProject = () => {
     return (
       <>
-        <Grid>
+        <Grid item>
           <FullInforCard project={data} />
         </Grid>
       </>
@@ -25,7 +25,11 @@ const Project = () => {
       </>
     )
   } else {
-    return <div>{displayProject()}</div>
+    return (
+      <Grid container justifyContent="center">
+        {displayProject()}
+      </Grid>
+    )
   }
 }
 

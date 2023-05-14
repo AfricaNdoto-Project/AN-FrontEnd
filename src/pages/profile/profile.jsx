@@ -45,7 +45,11 @@ const Profile = () => {
       </>
     )
   } else {
-    return <Loading />
+    return (
+      <Grid container justifyContent="center">
+        <Loading />
+      </Grid>
+    )
   }
 }
 

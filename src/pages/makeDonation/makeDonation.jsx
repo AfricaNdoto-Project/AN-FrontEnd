@@ -21,6 +21,7 @@ import {
   Button,
   CardActions,
   Container,
+  Grid
   // Typography
 } from '@mui/material'
 
@@ -217,9 +218,9 @@ const Donation = () => {
     )
   } else {
     return (
-      <>
+      <Grid container justifyContent="center">
         <Loading />
-      </>
+      </Grid>
     )
   }
 }

@@ -6,7 +6,7 @@ import { Grid } from '@mui/material'
 const Main = () => {
   return (
     <>
-    <Grid>
+    <Grid container>
       <Header />
       <Outlet />
       <Footer />

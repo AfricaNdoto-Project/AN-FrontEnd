@@ -5,14 +5,13 @@ import Loading from '../../components/loading/loading'
 import { getAllProjects } from '../../services/projectsService'
 
 const AllProjects = () => {
-
   const [allProjects, setAllProjects] = useState([])
 
   useEffect(() => {
     const getProjectsData = async () => {
-    const result = await getAllProjects()
-    setAllProjects(result)
-  }
+      const result = await getAllProjects()
+      setAllProjects(result)
+    }
     getProjectsData()
   }, [])
 
@@ -20,25 +19,25 @@ const AllProjects = () => {
     return allProjects.map((elem) => {
       return (
         <>
-          <ProjectCard key={elem.id} project={elem} />
+          <Grid item width="auto">
+            <ProjectCard key={elem.id} project={elem} />
+          </Grid>
         </>
       )
     })
   }
   if (allProjects.length !== 0) {
     return (
-      <Grid
-        maxWidth={false}
-        container
-        spacing xs={1} sm={1} md={2} lg={2} xl={3}
-        justifyContent="center"
-        margin="10px 0 10px 0"
-      >
+      <Grid container spacing={1} height="90vh" justifyContent="center">
         {displayAllProjects()}
       </Grid>
     )
   } else {
-    return <Loading />
+    return (
+      <Grid container justifyContent="center">
+        <Loading />
+      </Grid>
+    )
   }
 }
 

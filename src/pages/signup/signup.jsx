@@ -19,6 +19,7 @@ import {
   Button,
   CardActions,
   Container,
+  Grid
   // Typography
 } from '@mui/material'
 import Loading from '../../components/loading/loading'
@@ -253,7 +254,11 @@ const SignupCard = () => {
       </Container>
     )
   } else {
-    return <Loading />
+    return (
+      <Grid container justifyContent="center">
+        <Loading />
+      </Grid>
+    )
   }
 }
 
