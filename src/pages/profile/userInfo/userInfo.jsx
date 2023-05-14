@@ -23,12 +23,18 @@ const UserInfo = ({ user }) => {
           </Avatar>
         }
         title={
-          <Typography>
+          <Typography sx={{
+            marginRight: '55px'
+          }}
+          >
             {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
           </Typography>
         }
         subheader={
-          <Typography>
+          <Typography sx={{
+            marginRight: '55px'
+          }}
+          >
             {user.lastname.charAt(0).toUpperCase() + user.lastname.slice(1)}
           </Typography>
         }
