@@ -246,7 +246,7 @@ const SignupCard = () => {
               justifyContent: 'center',
             }}
           >
-            <Button onClick={onSignup} color="success" variant='contained'>
+            <Button onClick={onSignup} variant='contained'>
               Submit
             </Button>
           </CardActions>

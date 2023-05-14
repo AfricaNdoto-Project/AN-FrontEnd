@@ -150,7 +150,6 @@ const LoginCard = () => {
           <Button
             variant="contained"
             onClick={onLogin}
-            color="success"
             sx={{ marginRigth: '5px' }}
           >
             Login
@@ -158,7 +157,6 @@ const LoginCard = () => {
           <Link to="/signup">
             <Button
               variant="outlined"
-              color="success"
               sx={{ marginLeft: '5px' }}
             >
               Register
