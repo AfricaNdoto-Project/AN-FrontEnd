@@ -28,7 +28,7 @@ const AllProjects = () => {
   }
   if (allProjects.length !== 0) {
     return (
-      <Grid container spacing={1} height="90vh" justifyContent="center">
+      <Grid container spacing={1} height="100vh" justifyContent="center">
         {displayAllProjects()}
       </Grid>
     )
