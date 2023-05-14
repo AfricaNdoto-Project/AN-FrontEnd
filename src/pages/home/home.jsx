@@ -91,8 +91,6 @@ const Home = () => {
           events
           alt="Front-Page"
           sx={{
-            // height: '100%',
-            //  width: '100%'
             height: 'auto',
             width: '100%',
             objectFit: 'cover',

@@ -19,13 +19,11 @@ import {
   Button,
   CardActions,
   Container,
-  Grid
-  // Typography
+  Grid,
 } from '@mui/material'
 import Loading from '../../components/loading/loading'
 
 const SignupCard = () => {
-  // console.log(import.meta.env.VITE_TEST)
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
@@ -38,7 +36,7 @@ const SignupCard = () => {
   const [role, setRole] = useState('')
   const [profs, setProfs] = useState([])
   const [profession, setProfession] = useState('')
-  //const [errorMessage, setErrorMessage] = useState('')
+
   useEffect(() => {
     getProfessionsData()
   }, [])
@@ -69,14 +67,12 @@ const SignupCard = () => {
     }
     const result = await signup(form)
     if (result === 200) {
-      console.log(result)
       navigate('/profile')
     } else {
-      console.log(result)
+      null
     }
   }
-  if (Object.keys(profs).length !== 0 && (typeof profs) !== 'string') {
-    console.log(profs)
+  if (Object.keys(profs).length !== 0 && typeof profs !== 'string') {
     return (
       <Container
         id="container"
@@ -89,10 +85,9 @@ const SignupCard = () => {
           height: '100vh',
           width: '100vw',
           minWidth: '390px',
-          // overflow: 'auto',
           paddingTop: '2%',
           paddingBottom: '2%',
-         minHeight: '950px'
+          minHeight: '950px',
         }}
         maxWidth={false}
       >
@@ -141,7 +136,6 @@ const SignupCard = () => {
         <Card
           sx={{
             maxWidth: '500px',
-            // margin: '80px 15px',
             height: '825px',
           }}
         >
@@ -166,7 +160,6 @@ const SignupCard = () => {
               label="Email"
               variant="outlined"
               fullWidth={true}
-              // sx={{ marginBottom: '20px' }}
               sx={{ margin: '10px 0' }}
             />
             <TextField
@@ -246,7 +239,7 @@ const SignupCard = () => {
               justifyContent: 'center',
             }}
           >
-            <Button onClick={onSignup} variant='contained'>
+            <Button onClick={onSignup} variant="contained">
               Submit
             </Button>
           </CardActions>
