@@ -5,23 +5,22 @@ import Loading from '../../components/loading/loading'
 import { getAllProjects } from '../../services/projectsService'
 
 const AllProjects = () => {
-
   const [allProjects, setAllProjects] = useState([])
 
   useEffect(() => {
     const getProjectsData = async () => {
-    const result = await getAllProjects()
-    setAllProjects(result)
-  }
+      const result = await getAllProjects()
+      setAllProjects(result)
+    }
     getProjectsData()
   }, [])
 
   const displayAllProjects = () => {
     return allProjects.map((elem) => {
       return (
-        <>
-          <ProjectCard key={elem.id} project={elem} />
-        </>
+        <Grid item width="auto" key={elem.id}>
+          <ProjectCard project={elem} />
+        </Grid>
       )
     })
   }
@@ -29,19 +28,20 @@ const AllProjects = () => {
     return (
       <Grid
         container
-        spacing={2}
+        spacing={1}
+        minHeight="100vh"
         justifyContent="center"
-        sx={{
-          marginBottom: '50px',
-          margin: 0,
-          height: '100vh',
-          width: '100vw',}}
+        sx={{ bgcolor: '#F5FAFF' }}
       >
         {displayAllProjects()}
       </Grid>
     )
   } else {
-    return <Loading />
+    return (
+      <Grid container justifyContent="center">
+        <Loading />
+      </Grid>
+    )
   }
 }
 

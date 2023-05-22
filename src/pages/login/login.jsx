@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../../services/loginService'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Email, Lock, VisibilityOff, Visibility } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
@@ -15,7 +15,6 @@ import {
   CardActions,
   Container,
   IconButton,
-  // Typography
 } from '@mui/material'
 import './login.css'
 
@@ -24,7 +23,6 @@ const LoginCard = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [errorMessage, setErrorMessage] = useState('')
 
   const [isPassVisible, setIsPassVisible] = useState(false)
   const changeVisibility = () => {
@@ -38,7 +36,6 @@ const LoginCard = () => {
       navigate('/profile')
     } else {
       alert(result)
-      console.log(result)
     }
   }
   return (
@@ -53,8 +50,8 @@ const LoginCard = () => {
         width: '100vw',
         margin: '0px',
         minWidth: '390px',
-        // overflow: 'auto',
         paddingTop: '2%',
+        minHeight: '700px',
       }}
       maxWidth={false}
     >
@@ -62,11 +59,11 @@ const LoginCard = () => {
         sx={{
           width: '50%',
           height: {
-            xs: '350px',
-            sm: '350px',
-            md: '350px',
-            lg: '350px',
-            xl: '350px',
+            xs: '200px',
+            sm: '250px',
+            md: '300px',
+            lg: '300px',
+            xl: '300px',
           },
           display: 'flex',
           flexDirection: 'row',
@@ -81,25 +78,28 @@ const LoginCard = () => {
             fontSize: {
               xs: '8px',
               sm: '12px',
-              md: '20px',
-              lg: '24px',
-              xl: '26px',
+              md: '18px',
+              lg: '20px',
+              xl: '22px',
             },
             color: 'black',
             textAlign: 'justify',
-            padding: '3%',
+            padding: '2%',
           }}
         >
-          With your help, we bring medicine, vaccines, medical attention, and
-          clean water to the children who need it most. Today, many of us
-          believe in a world where all children have equal opportunities, but we
-          need many more, and your help is essential to achieve this goal.
+          With your support, we can provide vital aid and assistance to those
+          children who are most in need. By working together, we can ensure that
+          medicine, vaccines, medical care, and clean water are accessible to
+          all children, regardless of their circumstances. While many of us
+          share the belief in a world where every child has an equal chance, we
+          must strive to reach more and your contribution is crucial to
+          achieving this objective. Let us join forces and make a difference in
+          the lives of these vulnerable children.
         </Typography>
       </Card>
       <Card
         sx={{
           maxWidth: '500px',
-          marginTop: '12px',
         }}
       >
         <CardHeader title="Login" />
@@ -112,7 +112,6 @@ const LoginCard = () => {
             InputProps={{
               endAdornment: <Email />,
             }}
-            // sx={{ marginBottom: '20px' }}
             sx={{ margin: '10px 0' }}
             InputLabelProps={{ required: true }}
           />
@@ -146,17 +145,12 @@ const LoginCard = () => {
           <Button
             variant="contained"
             onClick={onLogin}
-            color="success"
             sx={{ marginRigth: '5px' }}
           >
             Login
           </Button>
           <Link to="/signup">
-            <Button
-              variant="outlined"
-              color="success"
-              sx={{ marginLeft: '5px' }}
-            >
+            <Button variant="outlined" sx={{ marginLeft: '5px' }}>
               Register
             </Button>
           </Link>

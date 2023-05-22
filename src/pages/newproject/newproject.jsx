@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import { useState, useEffect } from 'react'
 import { useLocation } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
@@ -23,9 +22,7 @@ import {
     MenuItem,
     Grid, 
     Container
-    // Typography
   } from '@mui/material'
-  import { styled } from '@mui/material/styles';
 
   import './newproject.css'
 
@@ -44,13 +41,10 @@ const NewProject = () => {
     const [volunteer, setVolunteer] = useState('')
     const [volunteerData, setVolunteerData] = useState([])
     const [profession, setProfession] = useState('')
-    // const [professionId, setProfessionId] = useState(0)
     const [professionData, setProfessionData] = useState([])
     const [equipmentName, setEquipmentName] = useState('')
     const [equipmentDescription, setEquipmentDescription] = useState('')
     const [equipmentCost, setEquipmentCost] = useState('')
-
-    // const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         getProfessionData()
@@ -297,9 +291,11 @@ const NewProject = () => {
       </Container>
     )}
     else {
-        return (
-              <Loading />
-          ) 
+      return (
+        <Grid container justifyContent="center">
+          <Loading />
+        </Grid>
+      )
     }
 
 }

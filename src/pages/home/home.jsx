@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './home.css'
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button, Container, Typography } from '@mui/material'
+import { Paper, Button, Container, Typography, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { getAllProjects } from '../../services/projectsService'
 import frontPage from '../../assets/Portada.png'
@@ -10,6 +10,7 @@ import project from '../../assets/projects.jpg'
 import calendar from '../../assets/apadrina1.jpg'
 import CardMedia from '@mui/material/CardMedia'
 import Box from '@mui/material/Box'
+import Loading from '../../components/loading/loading'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -33,27 +34,33 @@ const Home = () => {
 
   function Item(props) {
     return (
-      <Paper sx={{ backgroundColor: '#AED5F5' }}>
+      <>
+      <Divider/>
+      <Paper sx={{ opacity: '0.0 - 1.0'}}>
         <h2>{props.item.name}</h2>
         <p>{props.item.description}</p>
-        <Button className="CheckButton">See More</Button>
+        <Button className="CheckButton"  sx={{color:'#87480E'}}>See More</Button>
       </Paper>
+      </>
     )
   }
   return (
     <Container
       sx={{
         width: '100vw',
-        height: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // overflow: 'auto',
-        paddingRigth: { xs: '0px', sm: '0px', md: '0px' },
-        paddingLeft: { xs: '0px', sm: '0px', md: '0px' },
-        margin: '0px',
-        // marginLeft: '10px'
+        alignContent: 'center',
+        minHeight: '100vh',
+        padding: {
+          xs: '0px',
+          sm: '0px',
+          md: '0px',
+          lg: '0px',
+        },
+        bgcolor:'#F5FAFF'
       }}
       maxWidth={false}
     >
@@ -74,7 +81,7 @@ const Home = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '5px',
+          marginTop: '20px',
         }}
         events
       >
@@ -83,7 +90,11 @@ const Home = () => {
           image={frontPage}
           events
           alt="Front-Page"
-          sx={{ height: '100%', width: '100%' }}
+          sx={{
+            height: 'auto',
+            width: '100%',
+            objectFit: 'cover',
+          }}
         />
       </Container>
       <Container
@@ -116,9 +127,10 @@ const Home = () => {
         <Link to="/donation">
           <Button
             variant="contained"
-            color="secondary"
             size="large"
-            sx={{ height: '80px', width: '250px', fontSize: '36px' }}
+            sx={{ height: '80px', width: '250px', fontSize: '36px', bgcolor:'#AB3A98', '&:hover': {
+              fontSize:40
+            }  }}
           >
             Donation
           </Button>
@@ -145,7 +157,6 @@ const Home = () => {
               flexDirection: 'column',
               alignItems: 'center',
               height: '250px',
-              marginLeft: '10px',
             }}
           >
             <CardMedia
@@ -162,7 +173,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Projects</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Projects</Typography>
           </Box>
         </Link>
         <Link
@@ -177,6 +188,7 @@ const Home = () => {
               flexDirection: 'column',
               alignItems: 'center',
               height: '250px',
+              marginRight: '10px'
             }}
           >
             <CardMedia
@@ -193,7 +205,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Events</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Events</Typography>
           </Box>
         </Link>
         <Link
@@ -224,7 +236,7 @@ const Home = () => {
                 },
               }}
             />
-            <Typography variant="h4">Calendar</Typography>
+            <Typography variant="h4" sx={{ color: '#87480E' }}>Calendar</Typography>
           </Box>
         </Link>
       </Container>
